@@ -1,0 +1,1 @@
+{"nodes":[{"center":{"x":561,"y":358},"type":"TAD","name":"Timer","selected":false,"bounds":{"x":501,"y":298,"width":120,"height":120},"holdName":true},{"center":{"x":916,"y":364},"type":"TAD","name":"LCD","selected":true,"bounds":{"x":856,"y":304,"width":120,"height":120},"holdName":true}],"edges":[],"actions":[],"stateCount":0,"interfaceCount":0}
