@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "LcTLCD.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,127 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
+# 1 "LcTLCD.c" 2
+# 20 "LcTLCD.c"
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
+# 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 3
+extern const char __xc8_OPTIM_SPEED;
+
+extern double __fpnormalize(double);
+
+
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\xc8debug.h" 1 3
+
+
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdlib.h" 1 3
+
+
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\musl_xc8.h" 1 3
+# 4 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdlib.h" 2 3
+
+
+
+
+
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\features.h" 1 3
+# 10 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdlib.h" 2 3
+# 21 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdlib.h" 3
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 1 3
+# 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long int wchar_t;
+# 122 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef unsigned size_t;
+# 168 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef __int24 int24_t;
+# 204 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef __uint24 uint24_t;
+# 21 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdlib.h" 2 3
+
+
+int atoi (const char *);
+long atol (const char *);
+long long atoll (const char *);
+double atof (const char *);
+
+float strtof (const char *restrict, char **restrict);
+double strtod (const char *restrict, char **restrict);
+long double strtold (const char *restrict, char **restrict);
+
+
+
+long strtol (const char *restrict, char **restrict, int);
+unsigned long strtoul (const char *restrict, char **restrict, int);
+long long strtoll (const char *restrict, char **restrict, int);
+unsigned long long strtoull (const char *restrict, char **restrict, int);
+
+int rand (void);
+void srand (unsigned);
+
+          void abort (void);
+int atexit (void (*) (void));
+          void exit (int);
+          void _Exit (int);
+
+void *bsearch (const void *, const void *, size_t, size_t, int (*)(const void *, const void *));
+
+__attribute__((nonreentrant)) void qsort (void *, size_t, size_t, int (*)(const void *, const void *));
+
+int abs (int);
+long labs (long);
+long long llabs (long long);
+
+typedef struct { int quot, rem; } div_t;
+typedef struct { long quot, rem; } ldiv_t;
+typedef struct { long long quot, rem; } lldiv_t;
+
+div_t div (int, int);
+ldiv_t ldiv (long, long);
+lldiv_t lldiv (long long, long long);
+
+typedef struct { unsigned int quot, rem; } udiv_t;
+typedef struct { unsigned long quot, rem; } uldiv_t;
+udiv_t udiv (unsigned int, unsigned int);
+uldiv_t uldiv (unsigned long, unsigned long);
+
+
+
+
+
+size_t __ctype_get_mb_cur_max(void);
+# 4 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\xc8debug.h" 2 3
+
+
+
+
+
+
+
+
+#pragma intrinsic(__builtin_software_breakpoint)
+extern void __builtin_software_breakpoint(void);
+# 23 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
+# 32 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 3
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\pic18.h" 1 3
+
+
+
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\htc.h" 1 3
+
+
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
+# 4 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\htc.h" 2 3
+# 5 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\pic18.h" 2 3
+
+
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\pic18_chip_select.h" 1 3
+# 519 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\pic18_chip_select.h" 3
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\pic18f4321.h" 1 3
 # 44 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\pic18f4321.h" 3
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\__at.h" 1 3
@@ -4358,126 +4478,7 @@ extern volatile __bit nWR __attribute__((address(0x7C21)));
 
 
 extern volatile __bit nWRITE __attribute__((address(0x7E3A)));
-# 1 "main.c" 2
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
-# 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 3
-extern const char __xc8_OPTIM_SPEED;
-
-extern double __fpnormalize(double);
-
-
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\xc8debug.h" 1 3
-
-
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdlib.h" 1 3
-
-
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\musl_xc8.h" 1 3
-# 4 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdlib.h" 2 3
-
-
-
-
-
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\features.h" 1 3
-# 10 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdlib.h" 2 3
-# 21 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdlib.h" 3
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 1 3
-# 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef long int wchar_t;
-# 122 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef unsigned size_t;
-# 168 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef __int24 int24_t;
-# 204 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef __uint24 uint24_t;
-# 21 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdlib.h" 2 3
-
-
-int atoi (const char *);
-long atol (const char *);
-long long atoll (const char *);
-double atof (const char *);
-
-float strtof (const char *restrict, char **restrict);
-double strtod (const char *restrict, char **restrict);
-long double strtold (const char *restrict, char **restrict);
-
-
-
-long strtol (const char *restrict, char **restrict, int);
-unsigned long strtoul (const char *restrict, char **restrict, int);
-long long strtoll (const char *restrict, char **restrict, int);
-unsigned long long strtoull (const char *restrict, char **restrict, int);
-
-int rand (void);
-void srand (unsigned);
-
-          void abort (void);
-int atexit (void (*) (void));
-          void exit (int);
-          void _Exit (int);
-
-void *bsearch (const void *, const void *, size_t, size_t, int (*)(const void *, const void *));
-
-__attribute__((nonreentrant)) void qsort (void *, size_t, size_t, int (*)(const void *, const void *));
-
-int abs (int);
-long labs (long);
-long long llabs (long long);
-
-typedef struct { int quot, rem; } div_t;
-typedef struct { long quot, rem; } ldiv_t;
-typedef struct { long long quot, rem; } lldiv_t;
-
-div_t div (int, int);
-ldiv_t ldiv (long, long);
-lldiv_t lldiv (long long, long long);
-
-typedef struct { unsigned int quot, rem; } udiv_t;
-typedef struct { unsigned long quot, rem; } uldiv_t;
-udiv_t udiv (unsigned int, unsigned int);
-uldiv_t uldiv (unsigned long, unsigned long);
-
-
-
-
-
-size_t __ctype_get_mb_cur_max(void);
-# 4 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\xc8debug.h" 2 3
-
-
-
-
-
-
-
-
-#pragma intrinsic(__builtin_software_breakpoint)
-extern void __builtin_software_breakpoint(void);
-# 23 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 32 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 3
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\pic18.h" 1 3
-
-
-
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\htc.h" 1 3
-
-
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
-# 4 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\htc.h" 2 3
-# 5 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\pic18.h" 2 3
-
-
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\pic18_chip_select.h" 1 3
+# 519 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\pic18_chip_select.h" 2 3
 # 8 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\pic18.h" 2 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\pic18.h" 3
 __attribute__((__unsupported__("The " "flash_write" " routine is no longer supported. Please use the MPLAB X MCC."))) void flash_write(const unsigned char *, unsigned int, __far unsigned char *);
@@ -4514,8 +4515,7 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 32 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 2 "main.c" 2
-
+# 20 "LcTLCD.c" 2
 
 # 1 "./TAD_TIMER.h" 1
 # 13 "./TAD_TIMER.h"
@@ -4543,7 +4543,7 @@ void TI_CloseTimer (unsigned char TimerHandle);
 
 
 void TI_End (void);
-# 4 "main.c" 2
+# 21 "LcTLCD.c" 2
 
 # 1 "./LcTLCD.h" 1
 # 65 "./LcTLCD.h"
@@ -4577,19 +4577,226 @@ void LcGotoXY(char Column, char Row);
 void LcPutChar(char c);
 # 103 "./LcTLCD.h"
 void LcPutString(char *s);
-# 5 "main.c" 2
-
-
-#pragma config OSC = INTIO2
-#pragma config PBADEN = DIG
-#pragma config WDT = OFF
-
-
-void main(void) {
+# 22 "LcTLCD.c" 2
+# 44 "LcTLCD.c"
+static unsigned char Rows, Columns;
+static unsigned char RowAct, ColumnAct;
+static unsigned char Timer;
 
 
 
-    OSCCON = 0b01100000;
-    OSCTUNEbits.PLLEN = 1;
-    return;
+
+
+
+
+void Espera(unsigned char Timer, int ms);
+void CantaIR(char IR);
+void CantaData(char Data);
+void WaitForBusy(void);
+void EscriuPrimeraOrdre(char);
+# 68 "LcTLCD.c"
+void LcInit(char rows, char columns) {
+
+
+
+
+
+ int i;
+ TI_NewTimer(&Timer);
+ Rows = rows; Columns = columns;
+ RowAct = ColumnAct = 0;
+ (TRISBbits.TRISB3 = TRISBbits.TRISB15 = TRISBbits.TRISB5 = 0);
+ for (i = 0; i < 2; i++) {
+  Espera(Timer, 100);
+
+
+  EscriuPrimeraOrdre(0x02 | 0x01);
+  Espera(Timer, 5);
+  EscriuPrimeraOrdre(0x02 | 0x01);
+  Espera(Timer, 1);
+  EscriuPrimeraOrdre(0x02 | 0x01);
+  Espera(Timer, 1);
+
+
+  EscriuPrimeraOrdre(0x02);
+  Espera(Timer, 1);
+  CantaIR(0x20 | 0x08);
+
+
+  WaitForBusy(); CantaIR(0x08);
+  WaitForBusy(); CantaIR(0x01);
+  Espera(Timer,3);
+  WaitForBusy(); CantaIR(0x04 | 0x02);
+  WaitForBusy(); CantaIR(0x08 | 0x04 | 0x02 | 0x01);
+ }
+
+
+
+
+}
+
+void LcEnd(void) {
+
+ TI_CloseTimer(Timer);
+}
+
+void LcClear(void) {
+
+
+ WaitForBusy(); CantaIR(0x01);
+ Espera(Timer, 3);
+}
+
+void LcCursorOn(void) {
+
+
+ WaitForBusy();
+ CantaIR(0x08 | 0x04 | 0x02);
+}
+
+void LcCursorOff(void) {
+
+
+ WaitForBusy();
+ CantaIR(0x08 | 0x04);
+}
+
+void LcGotoXY(char Column, char Row) {
+
+
+
+ int Fisics;
+
+ switch (Rows) {
+  case 2:
+   Fisics = Column + (!Row ? 0 : 0x40); break;
+  case 4:
+   Fisics = Column;
+   if (Row == 1) Fisics += 0x40; else
+   if (Row == 2) Fisics += Columns; else
+   if (Row == 3) Fisics += 0x40+Columns;
+   break;
+  case 1:
+  default:
+   Fisics = Column; break;
+ }
+
+ WaitForBusy();
+ CantaIR(0x80 | Fisics);
+
+ RowAct = Row;
+ ColumnAct = Column;
+}
+
+void LcPutChar(char c) {
+# 171 "LcTLCD.c"
+ WaitForBusy(); CantaData(c);
+
+ ++ColumnAct;
+ if (Rows == 3) {
+  if (ColumnAct >= 20) {
+   ColumnAct = 0;
+   if (++RowAct >= 4) RowAct = 0;
+   LcGotoXY(ColumnAct, RowAct);
+  }
+ } else
+ if (Rows == 2) {
+  if (ColumnAct >= 40) {
+   ColumnAct = 0;
+   if (++RowAct >= 2) RowAct = 0;
+   LcGotoXY(ColumnAct, RowAct);
+  }
+ } else
+ if (RowAct == 1) {
+  if (ColumnAct >= 40) ColumnAct = 0;
+  LcGotoXY(ColumnAct, RowAct);
+ }
+}
+
+
+void LcPutString(char *s) {
+
+
+
+ while(*s) LcPutChar(*s++);
+}
+# 210 "LcTLCD.c"
+void Espera(unsigned char Timer, int ms) {
+ TI_ResetTics(Timer);
+ while(TI_GetTics(Timer) < ms);
+}
+
+void CantaPartAlta(char c) {
+  (LATBbits.LATB9 = (c & 0x80 ? 1 : 0));
+  (LATBbits.LATB8 = (c & 0x40 ? 1 : 0));
+  (LATBbits.LATB7 = (c & 0x20 ? 1 : 0));
+  (LATBbits.LATB6 = (c & 0x10 ? 1 : 0));
+}
+
+void CantaPartBaixa(char c) {
+  (LATBbits.LATB9 = (c & 0x08 ? 1 : 0));
+  (LATBbits.LATB8 = (c & 0x04 ? 1 : 0));
+  (LATBbits.LATB7 = (c & 0x02 ? 1 : 0));
+  (LATBbits.LATB6 = (c & 0x01 ? 1 : 0));
+}
+
+void CantaIR(char IR) {
+ (TRISBbits.TRISB6 = TRISBbits.TRISB7 = TRISBbits.TRISB8 = TRISBbits.TRISB9 = 0);
+ (LATBbits.LATB3 = 0);
+ (LATBbits.LATB15 = 0);
+ (LATBbits.LATB5 = 1);
+ CantaPartAlta(IR);
+ (LATBbits.LATB5 = 1);
+ (LATBbits.LATB5 = 0);
+ (LATBbits.LATB5 = 0);
+ (LATBbits.LATB5 = 1);
+ CantaPartBaixa(IR);
+ (LATBbits.LATB5 = 1);
+ (LATBbits.LATB5 = 0);
+ (TRISBbits.TRISB6 = TRISBbits.TRISB7 = TRISBbits.TRISB8 = TRISBbits.TRISB9 = 1);
+}
+
+void CantaData(char Data) {
+ (TRISBbits.TRISB6 = TRISBbits.TRISB7 = TRISBbits.TRISB8 = TRISBbits.TRISB9 = 0);
+ (LATBbits.LATB3 = 1);
+ (LATBbits.LATB15 = 0);
+ (LATBbits.LATB5 = 1);
+ CantaPartAlta(Data);
+ (LATBbits.LATB5 = 1);
+ (LATBbits.LATB5 = 0);
+ (LATBbits.LATB5 = 0);
+ (LATBbits.LATB5 = 1);
+ CantaPartBaixa(Data);
+ (LATBbits.LATB5 = 1);
+ (LATBbits.LATB5 = 0);
+ (TRISBbits.TRISB6 = TRISBbits.TRISB7 = TRISBbits.TRISB8 = TRISBbits.TRISB9 = 1);
+}
+
+void WaitForBusy(void) { char Busy;
+ (TRISBbits.TRISB6 = TRISBbits.TRISB7 = TRISBbits.TRISB8 = TRISBbits.TRISB9 = 1);
+ (LATBbits.LATB3 = 0);
+ (LATBbits.LATB15 = 1);
+ TI_ResetTics(Timer);
+ do {
+  (LATBbits.LATB5 = 1);(LATBbits.LATB5 = 1);
+  Busy = (PORTBbits.RB9);
+  (LATBbits.LATB5 = 0);
+  (LATBbits.LATB5 = 0);
+  (LATBbits.LATB5 = 1);(LATBbits.LATB5 = 1);
+
+  (LATBbits.LATB5 = 0);
+  (LATBbits.LATB5 = 0);
+  if (TI_GetTics(Timer)) break;
+ } while(Busy);
+}
+
+void EscriuPrimeraOrdre(char ordre) {
+
+ (TRISBbits.TRISB6 = TRISBbits.TRISB7 = TRISBbits.TRISB8 = TRISBbits.TRISB9 = 0); (LATBbits.LATB3 = 0); (LATBbits.LATB15 = 0);
+ (LATBbits.LATB5 = 1); (LATBbits.LATB5 = 1);
+  (LATBbits.LATB9 = (ordre & 0x08 ? 1 : 0));
+  (LATBbits.LATB8 = (ordre & 0x04 ? 1 : 0));
+  (LATBbits.LATB7 = (ordre & 0x02 ? 1 : 0));
+  (LATBbits.LATB6 = (ordre & 0x01 ? 1 : 0));
+ (LATBbits.LATB5 = 0);
 }
