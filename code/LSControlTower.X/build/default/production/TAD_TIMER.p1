@@ -1,6 +1,6 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"19 TAD_TIMER.c
-[; ;TAD_TIMER.c: 19: struct Timer {
+"18 TAD_TIMER.c
+[; ;TAD_TIMER.c: 18: struct Timer {
 [s S280 `ul 1 `uc 1 ]
 [n S280 Timer TicsInicials Busy ]
 "6260 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h
@@ -12,6 +12,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6183
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 6183: extern volatile unsigned char T0CON __attribute__((address(0xFD5)));
 [v _T0CON `Vuc ~T0 @X0 0 e@4053 ]
+"6267
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 6267: extern volatile unsigned char TMR0L __attribute__((address(0xFD6)));
+[v _TMR0L `Vuc ~T0 @X0 0 e@4054 ]
 "6707
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 6707:     struct {
 [s S274 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -445,42 +448,42 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7010
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 7010: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"22 TAD_TIMER.c
-[; ;TAD_TIMER.c: 22: } static Timers[4];
+"21 TAD_TIMER.c
+[; ;TAD_TIMER.c: 21: } static Timers[4];
 [v _Timers `S280 ~T0 @X0 -> 4 `i s ]
-"24
-[; ;TAD_TIMER.c: 24: static volatile unsigned long Tics=0;
+"23
+[; ;TAD_TIMER.c: 23: static volatile unsigned long Tics=0;
 [v _Tics `Vul ~T0 @X0 1 s ]
 [i _Tics
 -> -> -> 0 `i `l `ul
 ]
-"26
-[; ;TAD_TIMER.c: 26: void RSI_Timer0 () {
+"25
+[; ;TAD_TIMER.c: 25: void RSI_Timer0 () {
 [v _RSI_Timer0 `(v ~T0 @X0 1 ef ]
 {
 [e :U _RSI_Timer0 ]
 [f ]
+"27
+[; ;TAD_TIMER.c: 27:     TMR0=56;
+[e = _TMR0 -> -> 56 `i `us ]
 "28
-[; ;TAD_TIMER.c: 28:     TMR0=64911;
-[e = _TMR0 -> -> 64911 `l `us ]
-"29
-[; ;TAD_TIMER.c: 29:     TMR0IF=0;
+[; ;TAD_TIMER.c: 28:     TMR0IF=0;
 [e = _TMR0IF -> -> 0 `i `b ]
-"30
-[; ;TAD_TIMER.c: 30:     Tics++;
+"29
+[; ;TAD_TIMER.c: 29:     Tics++;
 [e ++ _Tics -> -> 1 `i `Vul ]
-"31
-[; ;TAD_TIMER.c: 31: }
+"30
+[; ;TAD_TIMER.c: 30: }
 [e :UE 281 ]
 }
-"33
-[; ;TAD_TIMER.c: 33: void TI_Init () {
+"34
+[; ;TAD_TIMER.c: 34: void TI_Init () {
 [v _TI_Init `(v ~T0 @X0 1 ef ]
 {
 [e :U _TI_Init ]
 [f ]
-"34
-[; ;TAD_TIMER.c: 34:  for (unsigned char counter=0; counter<4; counter++) {
+"35
+[; ;TAD_TIMER.c: 35:  for (unsigned char counter=0; counter<4; counter++) {
 {
 [v _counter `uc ~T0 @X0 1 a ]
 [e = _counter -> -> 0 `i `uc ]
@@ -488,134 +491,134 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $U 284  ]
 [e :U 283 ]
 {
-"35
-[; ;TAD_TIMER.c: 35:   Timers[counter].Busy=0;
-[e = . *U + &U _Timers * -> _counter `ux -> -> # *U &U _Timers `ui `ux 1 -> -> 0 `i `uc ]
 "36
-[; ;TAD_TIMER.c: 36:  }
+[; ;TAD_TIMER.c: 36:   Timers[counter].Busy=0;
+[e = . *U + &U _Timers * -> _counter `ux -> -> # *U &U _Timers `ui `ux 1 -> -> 0 `i `uc ]
+"37
+[; ;TAD_TIMER.c: 37:  }
 }
 [e ++ _counter -> -> 1 `i `uc ]
 [e $ < -> _counter `i -> 4 `i 283  ]
 [e :U 284 ]
 }
-"37
-[; ;TAD_TIMER.c: 37:  T0CON=0x82;
-[e = _T0CON -> -> 130 `i `uc ]
 "38
-[; ;TAD_TIMER.c: 38:     TMR0=64911;
-[e = _TMR0 -> -> 64911 `l `us ]
+[; ;TAD_TIMER.c: 38:  T0CON=0b11000001;
+[e = _T0CON -> -> 193 `i `uc ]
 "39
-[; ;TAD_TIMER.c: 39:  INTCONbits.TMR0IF = 0;
-[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+[; ;TAD_TIMER.c: 39:     TMR0L=56;
+[e = _TMR0L -> -> 56 `i `uc ]
 "40
-[; ;TAD_TIMER.c: 40:  INTCONbits.TMR0IE = 1;
+[; ;TAD_TIMER.c: 40:  INTCONbits.TMR0IF = 0;
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+"41
+[; ;TAD_TIMER.c: 41:  INTCONbits.TMR0IE = 1;
 [e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
-"42
-[; ;TAD_TIMER.c: 42: }
+"43
+[; ;TAD_TIMER.c: 43: }
 [e :UE 282 ]
 }
-"44
-[; ;TAD_TIMER.c: 44: unsigned char TI_NewTimer(unsigned char *TimerHandle) {
+"45
+[; ;TAD_TIMER.c: 45: unsigned char TI_NewTimer(unsigned char *TimerHandle) {
 [v _TI_NewTimer `(uc ~T0 @X0 1 ef1`*uc ]
 {
 [e :U _TI_NewTimer ]
 [v _TimerHandle `*uc ~T0 @X0 1 r1 ]
 [f ]
-"45
-[; ;TAD_TIMER.c: 45:  unsigned char Comptador=0;
+"46
+[; ;TAD_TIMER.c: 46:  unsigned char Comptador=0;
 [v _Comptador `uc ~T0 @X0 1 a ]
 [e = _Comptador -> -> 0 `i `uc ]
-"46
-[; ;TAD_TIMER.c: 46:  while (Timers[Comptador].Busy==1) {
+"47
+[; ;TAD_TIMER.c: 47:  while (Timers[Comptador].Busy==1) {
 [e $U 287  ]
 [e :U 288 ]
 {
-"47
-[; ;TAD_TIMER.c: 47:   if (++Comptador == 4) return (0);
+"48
+[; ;TAD_TIMER.c: 48:   if (++Comptador == 4) return (0);
 [e $ ! == -> =+ _Comptador -> -> 1 `i `uc `i -> 4 `i 290  ]
 [e ) -> -> 0 `i `uc ]
 [e $UE 286  ]
 [e :U 290 ]
-"48
-[; ;TAD_TIMER.c: 48:  }
+"49
+[; ;TAD_TIMER.c: 49:  }
 }
 [e :U 287 ]
-"46
-[; ;TAD_TIMER.c: 46:  while (Timers[Comptador].Busy==1) {
+"47
+[; ;TAD_TIMER.c: 47:  while (Timers[Comptador].Busy==1) {
 [e $ == -> . *U + &U _Timers * -> _Comptador `ux -> -> # *U &U _Timers `ui `ux 1 `i -> 1 `i 288  ]
 [e :U 289 ]
-"49
-[; ;TAD_TIMER.c: 49:  Timers[Comptador].Busy=1;
-[e = . *U + &U _Timers * -> _Comptador `ux -> -> # *U &U _Timers `ui `ux 1 -> -> 1 `i `uc ]
 "50
-[; ;TAD_TIMER.c: 50:  *TimerHandle=Comptador;
-[e = *U _TimerHandle _Comptador ]
+[; ;TAD_TIMER.c: 50:  Timers[Comptador].Busy=1;
+[e = . *U + &U _Timers * -> _Comptador `ux -> -> # *U &U _Timers `ui `ux 1 -> -> 1 `i `uc ]
 "51
-[; ;TAD_TIMER.c: 51:     return (1);
+[; ;TAD_TIMER.c: 51:  *TimerHandle=Comptador;
+[e = *U _TimerHandle _Comptador ]
+"52
+[; ;TAD_TIMER.c: 52:     return (1);
 [e ) -> -> 1 `i `uc ]
 [e $UE 286  ]
-"52
-[; ;TAD_TIMER.c: 52: }
+"53
+[; ;TAD_TIMER.c: 53: }
 [e :UE 286 ]
 }
-"54
-[; ;TAD_TIMER.c: 54: void TI_ResetTics (unsigned char TimerHandle) {
+"55
+[; ;TAD_TIMER.c: 55: void TI_ResetTics (unsigned char TimerHandle) {
 [v _TI_ResetTics `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _TI_ResetTics ]
 [v _TimerHandle `uc ~T0 @X0 1 r1 ]
 [f ]
-"55
-[; ;TAD_TIMER.c: 55:  (INTCONbits.GIE = 0); Timers[TimerHandle].TicsInicials=Tics; (INTCONbits.GIE = 1);
+"56
+[; ;TAD_TIMER.c: 56:  (INTCONbits.GIE = 0); Timers[TimerHandle].TicsInicials=Tics; (INTCONbits.GIE = 1);
 [e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
 [e = . *U + &U _Timers * -> _TimerHandle `ux -> -> # *U &U _Timers `ui `ux 0 _Tics ]
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-"56
-[; ;TAD_TIMER.c: 56: }
+"57
+[; ;TAD_TIMER.c: 57: }
 [e :UE 291 ]
 }
-"59
-[; ;TAD_TIMER.c: 59: unsigned long TI_GetTics (unsigned char TimerHandle) {
+"60
+[; ;TAD_TIMER.c: 60: unsigned long TI_GetTics (unsigned char TimerHandle) {
 [v _TI_GetTics `(ul ~T0 @X0 1 ef1`uc ]
 {
 [e :U _TI_GetTics ]
 [v _TimerHandle `uc ~T0 @X0 1 r1 ]
 [f ]
-"60
-[; ;TAD_TIMER.c: 60:     (INTCONbits.GIE = 0); unsigned long CopiaTicsActual=Tics; (INTCONbits.GIE = 1);
+"61
+[; ;TAD_TIMER.c: 61:     (INTCONbits.GIE = 0); unsigned long CopiaTicsActual=Tics; (INTCONbits.GIE = 1);
 [e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
 [v _CopiaTicsActual `ul ~T0 @X0 1 a ]
 [e = _CopiaTicsActual _Tics ]
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-"61
-[; ;TAD_TIMER.c: 61:  return (CopiaTicsActual-(Timers[TimerHandle].TicsInicials));
+"62
+[; ;TAD_TIMER.c: 62:  return (CopiaTicsActual-(Timers[TimerHandle].TicsInicials));
 [e ) - _CopiaTicsActual . *U + &U _Timers * -> _TimerHandle `ux -> -> # *U &U _Timers `ui `ux 0 ]
 [e $UE 292  ]
-"62
-[; ;TAD_TIMER.c: 62: }
+"63
+[; ;TAD_TIMER.c: 63: }
 [e :UE 292 ]
 }
-"64
-[; ;TAD_TIMER.c: 64: void TI_CloseTimer (unsigned char TimerHandle) {
+"65
+[; ;TAD_TIMER.c: 65: void TI_CloseTimer (unsigned char TimerHandle) {
 [v _TI_CloseTimer `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _TI_CloseTimer ]
 [v _TimerHandle `uc ~T0 @X0 1 r1 ]
 [f ]
-"65
-[; ;TAD_TIMER.c: 65:  Timers[TimerHandle].Busy=0;
-[e = . *U + &U _Timers * -> _TimerHandle `ux -> -> # *U &U _Timers `ui `ux 1 -> -> 0 `i `uc ]
 "66
-[; ;TAD_TIMER.c: 66: }
+[; ;TAD_TIMER.c: 66:  Timers[TimerHandle].Busy=0;
+[e = . *U + &U _Timers * -> _TimerHandle `ux -> -> # *U &U _Timers `ui `ux 1 -> -> 0 `i `uc ]
+"67
+[; ;TAD_TIMER.c: 67: }
 [e :UE 293 ]
 }
-"68
-[; ;TAD_TIMER.c: 68: void TI_End () {
+"69
+[; ;TAD_TIMER.c: 69: void TI_End () {
 [v _TI_End `(v ~T0 @X0 1 ef ]
 {
 [e :U _TI_End ]
 [f ]
-"69
-[; ;TAD_TIMER.c: 69: }
+"70
+[; ;TAD_TIMER.c: 70: }
 [e :UE 294 ]
 }

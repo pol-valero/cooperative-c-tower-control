@@ -4551,7 +4551,14 @@ void TI_CloseTimer (unsigned char TimerHandle);
 
 void TI_End (void);
 # 10 "TAD_TIMER.c" 2
-# 19 "TAD_TIMER.c"
+
+
+
+
+
+
+
+
 struct Timer {
  unsigned long TicsInicials;
  unsigned char Busy;
@@ -4561,17 +4568,19 @@ static volatile unsigned long Tics=0;
 
 void RSI_Timer0 () {
 
-    TMR0=64911;
+    TMR0=56;
     TMR0IF=0;
     Tics++;
 }
+
+
 
 void TI_Init () {
  for (unsigned char counter=0; counter<4; counter++) {
   Timers[counter].Busy=0;
  }
- T0CON=0x82;
-    TMR0=64911;
+ T0CON=0b11000001;
+    TMR0L=56;
  INTCONbits.TMR0IF = 0;
  INTCONbits.TMR0IE = 1;
 

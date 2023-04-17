@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "Keypad.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
+# 1 "Keypad.c" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\pic18f4321.h" 1 3
 # 44 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\pic18f4321.h" 3
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\__at.h" 1 3
@@ -4358,8 +4358,28 @@ extern volatile __bit nWR __attribute__((address(0x7C21)));
 
 
 extern volatile __bit nWRITE __attribute__((address(0x7E3A)));
-# 1 "main.c" 2
+# 1 "Keypad.c" 2
 
+# 1 "./Keypad.h" 1
+
+
+
+void initKeypad(void);
+void motorKeypad(void);
+
+char getKey(void);
+
+
+
+char getKeyNum(void);
+
+
+
+void resetIndexSMS(void);
+# 2 "Keypad.c" 2
+
+# 1 "./LcTLCD.h" 1
+# 45 "./LcTLCD.h"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -4514,38 +4534,7 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 32 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 2 "main.c" 2
-
-
-# 1 "./TAD_TIMER.h" 1
-# 13 "./TAD_TIMER.h"
-void RSI_Timer0(void);
-
-
-
-void TI_Init (void);
-
-
-unsigned char TI_NewTimer(unsigned char *TimerHandle) ;
-
-
-
-void TI_ResetTics (unsigned char TimerHandle);
-
-
-
-unsigned long TI_GetTics (unsigned char TimerHandle);
-
-
-
-void TI_CloseTimer (unsigned char TimerHandle);
-
-
-
-void TI_End (void);
-# 4 "main.c" 2
-
-# 1 "./LcTLCD.h" 1
+# 45 "./LcTLCD.h" 2
 # 65 "./LcTLCD.h"
 void LcInit(char rows, char columns);
 
@@ -4577,59 +4566,168 @@ void LcGotoXY(char Column, char Row);
 void LcPutChar(char c);
 # 103 "./LcTLCD.h"
 void LcPutString(char *s);
-# 5 "main.c" 2
+# 3 "Keypad.c" 2
 
-# 1 "./Keypad.h" 1
-
-
-
-void initKeypad(void);
-void motorKeypad(void);
-
-char getKey(void);
+# 1 "./TAD_TIMER.h" 1
+# 13 "./TAD_TIMER.h"
+void RSI_Timer0(void);
 
 
 
-char getKeyNum(void);
+void TI_Init (void);
+
+
+unsigned char TI_NewTimer(unsigned char *TimerHandle) ;
 
 
 
-void resetIndexSMS(void);
-# 6 "main.c" 2
+void TI_ResetTics (unsigned char TimerHandle);
 
 
-#pragma config OSC = INTIO2
-#pragma config PBADEN = DIG
-#pragma config WDT = OFF
+
+unsigned long TI_GetTics (unsigned char TimerHandle);
 
 
-void __attribute__((picinterrupt(("high_priority")))) High_RSI(void) {
-    RSI_Timer0();
+
+void TI_CloseTimer (unsigned char TimerHandle);
+
+
+
+void TI_End (void);
+# 4 "Keypad.c" 2
+
+
+
+
+const char sms[4][3][5] = {
+    {"1----", "ABC2-", "DEF3-"},
+    {"GHI4-", "JKL5-", "MNO6-"},
+    {"PQRS7", "TUV8-", "WXYZ9"},
+    {"*----", "0 ---", "#----" }
+};
+
+const char keyNumber[4][3] = {
+    {1, 2, 3},
+    {4, 5, 6},
+    {7, 8, 9},
+    {10, 11, 12}
+};
+
+unsigned char tmr_bounce;
+char key;
+char keyNum;
+char indexSMS;
+
+void initKeypad() {
+
+    LATCbits.LATC0 = 0;
+    LATCbits.LATC1 = 1;
+    LATCbits.LATC2 = 1;
+
+    TI_NewTimer(&tmr_bounce);
+
+    key = -1;
+    keyNum = -1;
+    indexSMS = 0;
 }
 
-void main(void) {
+void motorKeypad(void) {
+ static char state = 0;
+    static char colPressed;
+    static char rowPressed;
+    static char keyAux;
 
+ switch(state) {
+  case 0:
+   if ((PORTB & 0x0F) == 0x0F) {
+    LATCbits.LATC0 = 1;
+    LATCbits.LATC1 = 0;
+    LATCbits.LATC2 = 1;
+    state = 1;
+   }
+   else if ((PORTB & 0x0F) != 0x0F) {
+    TI_ResetTics(tmr_bounce);
+    state = 3;
+   }
+  break;
+  case 1:
+   if ((PORTB & 0x0F) == 0x0F) {
+    LATCbits.LATC0 = 1;
+    LATCbits.LATC1 = 1;
+    LATCbits.LATC2 = 0;
+    state = 2;
+   }
+   else if ((PORTB & 0x0F) != 0x0F) {
+    TI_ResetTics(tmr_bounce);
+    state = 3;
+   }
+  break;
+  case 2:
+   if ((PORTB & 0x0F) == 0x0F) {
+    LATCbits.LATC0 = 0;
+    LATCbits.LATC1 = 1;
+    LATCbits.LATC2 = 1;
+    state = 0;
+   }
+   else if ((PORTB & 0x0F) != 0x0F) {
+    TI_ResetTics(tmr_bounce);
+    state = 3;
+   }
+  break;
+  case 3:
+   if ((TI_GetTics(tmr_bounce) >= 100) && ((PORTB & 0x0F) != 0x0F) ) {
+    colPressed = ((~(PORTC & 0X07)) >> 1) & 0x7F;
+    rowPressed = ((~(PORTB & 0x0F)) >> 1) & 0x7F;
+    rowPressed = rowPressed == 3 ? 2 : rowPressed;
+    rowPressed = rowPressed > 3 ? 3 : rowPressed;
+    keyNum = keyNumber[rowPressed][colPressed];
 
-
-    OSCCON = 0b01100000;
-    OSCTUNEbits.PLLEN = 1;
-
-
-
-
-    RCONbits.IPEN = 0;
-    INTCONbits.PEIE = 1;
-    INTCONbits.GIE = 1;
-
-
-
-
-    TI_Init ();
-# 43 "main.c"
-    while(1) {
-        motorKeypad();
-
+    keyAux = sms[rowPressed][colPressed][indexSMS++];
+    if(keyAux == '-') {
+        indexSMS = 0;
+        key = sms[rowPressed][colPressed][indexSMS++];
+    } else {
+        key = keyAux;
     }
+    state = 4;
+   }
+   else if ((PORTB & 0x0F) == 0x0F) {
+    LATCbits.LATC0 = 0;
+    LATCbits.LATC1 = 1;
+    LATCbits.LATC2 = 1;
+    state = 0;
+   }
+  break;
+  case 4:
+   if ((PORTB & 0x0F) == 0x0F) {
+    TI_ResetTics(tmr_bounce);
+    state = 5;
+   }
+  break;
+  case 5:
+   if ((TI_GetTics(tmr_bounce) >= 100) && ((PORTB & 0x0F) == 0x0F) ) {
+    LATCbits.LATC0 = 0;
+    LATCbits.LATC1 = 1;
+    LATCbits.LATC2 = 1;
+    keyNum = -1;
+    key = -1;
+    state = 0;
+   }
+   else if ((PORTB & 0x0F) != 0x0F) {
+    state = 4;
+   }
+  break;
+ }
+}
 
-    return;
+char getKey(void) {
+    return key;
+}
+
+char getKeyNum(void) {
+    return keyNum;
+}
+
+void resetIndexSMS(void) {
+    indexSMS = 0;
 }

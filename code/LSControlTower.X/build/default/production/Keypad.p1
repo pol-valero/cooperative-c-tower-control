@@ -1,88 +1,34 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[t ~ __interrupt . k ]
-[t T41 __interrupt high_priority ]
-"13 ./TAD_TIMER.h
-[; ;./TAD_TIMER.h: 13: void RSI_Timer0(void);
-[v _RSI_Timer0 `(v ~T0 @X0 0 ef ]
-[p mainexit ]
-"6100 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 6100: extern volatile unsigned char OSCCON __attribute__((address(0xFD3)));
-[v _OSCCON `Vuc ~T0 @X0 0 e@4051 ]
-"2546
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 2546:     struct {
-[s S83 :5 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S83 . TUN . PLLEN INTSRC ]
-"2552
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 2552:     struct {
-[s S84 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S84 . TUN0 TUN1 TUN2 TUN3 TUN4 ]
-"2545
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 2545: typedef union {
-[u S82 `S83 1 `S84 1 ]
-[n S82 . . . ]
-"2560
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 2560: extern volatile OSCTUNEbits_t OSCTUNEbits __attribute__((address(0xF9B)));
-[v _OSCTUNEbits `VS82 ~T0 @X0 0 e@3995 ]
-"5686
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 5686:     struct {
-[s S232 :1 `uc 1 ]
-[n S232 . NOT_BOR ]
-"5689
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 5689:     struct {
-[s S233 :1 `uc 1 :1 `uc 1 ]
-[n S233 . . NOT_POR ]
-"5693
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 5693:     struct {
-[s S234 :2 `uc 1 :1 `uc 1 ]
-[n S234 . . NOT_PD ]
-"5697
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 5697:     struct {
-[s S235 :3 `uc 1 :1 `uc 1 ]
-[n S235 . . NOT_TO ]
-"5701
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 5701:     struct {
-[s S236 :4 `uc 1 :1 `uc 1 ]
-[n S236 . . NOT_RI ]
-"5705
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 5705:     struct {
-[s S237 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S237 . nBOR nPOR nPD nTO nRI . IPEN ]
-"5714
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 5714:     struct {
-[s S238 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S238 . BOR POR PD TO RI . SBOREN ]
-"5685
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 5685: typedef union {
-[u S231 `S232 1 `S233 1 `S234 1 `S235 1 `S236 1 `S237 1 `S238 1 ]
-[n S231 . . . . . . . . ]
-"5724
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 5724: extern volatile RCONbits_t RCONbits __attribute__((address(0xFD0)));
-[v _RCONbits `VS231 ~T0 @X0 0 e@4048 ]
-"6707
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 6707:     struct {
-[s S269 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S269 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
-"6717
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 6717:     struct {
-[s S270 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S270 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
-"6727
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 6727:     struct {
-[s S271 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S271 . . GIEL GIEH ]
-"6706
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 6706: typedef union {
-[u S268 `S269 1 `S270 1 `S271 1 ]
-[n S268 . . . . ]
-"6733
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 6733: extern volatile INTCONbits_t INTCONbits __attribute__((address(0xFF2)));
-[v _INTCONbits `VS268 ~T0 @X0 0 e@4082 ]
-"17 ./TAD_TIMER.h
-[; ;./TAD_TIMER.h: 17: void TI_Init (void);
-[v _TI_Init `(v ~T0 @X0 0 ef ]
-"5 ./Keypad.h
-[; ;./Keypad.h: 5: void motorKeypad(void);
-[v _motorKeypad `(v ~T0 @X0 0 ef ]
+"1218 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 1218:     struct {
+[s S44 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S44 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 LATC6 LATC7 ]
+"1228
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 1228:     struct {
+[s S45 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S45 . LC0 LC1 LC2 LC3 LC4 LC5 LC6 LC7 ]
+"1217
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 1217: typedef union {
+[u S43 `S44 1 `S45 1 ]
+[n S43 . . . ]
+"1239
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 1239: extern volatile LATCbits_t LATCbits __attribute__((address(0xF8B)));
+[v _LATCbits `VS43 ~T0 @X0 0 e@3979 ]
+"20 ./TAD_TIMER.h
+[; ;./TAD_TIMER.h: 20: unsigned char TI_NewTimer(unsigned char *TimerHandle) ;
+[v _TI_NewTimer `(uc ~T0 @X0 0 ef1`*uc ]
+"284 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 284: extern volatile unsigned char PORTB __attribute__((address(0xF81)));
+[v _PORTB `Vuc ~T0 @X0 0 e@3969 ]
+"24 ./TAD_TIMER.h
+[; ;./TAD_TIMER.h: 24: void TI_ResetTics (unsigned char TimerHandle);
+[v _TI_ResetTics `(v ~T0 @X0 0 ef1`uc ]
+"28
+[; ;./TAD_TIMER.h: 28: unsigned long TI_GetTics (unsigned char TimerHandle);
+[v _TI_GetTics `(ul ~T0 @X0 0 ef1`uc ]
+"463 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 463: extern volatile unsigned char PORTC __attribute__((address(0xF82)));
+[v _PORTC `Vuc ~T0 @X0 0 e@3970 ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -497,67 +443,529 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7010
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 7010: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"8 main.c
-[; ;main.c: 8: 
-[p x OSC = INTIO2 ]
-"9
-[; ;main.c: 9:     OSCCON = 0b01100000;
-[p x PBADEN = DIG ]
-"10
-[; ;main.c: 10:     OSCTUNEbits.PLLEN = 1;
-[p x WDT = OFF ]
-[v $root$_High_RSI `(v ~T0 @X0 0 e ]
-"13
-[; ;main.c: 13: 
-[v _High_RSI `(v ~T41 @X0 1 ef ]
-{
-[e :U _High_RSI ]
-[f ]
-"14
-[; ;main.c: 14: 
-[e ( _RSI_Timer0 ..  ]
+[v F2558 `Cuc ~T0 @X0 -> 5 `i t ]
+[v F2557 `F2558 ~T0 @X0 -> 3 `i t ]
+"8 Keypad.c
+[; ;Keypad.c: 8: const char sms[4][3][5] = {
+[v _sms `F2557 ~T0 @X0 -> 4 `i e ]
+[i _sms
+:U ..
+:U ..
+:U ..
+-> 49 `c
+-> 45 `c
+-> 45 `c
+-> 45 `c
+-> 45 `c
+..
+:U ..
+-> 65 `c
+-> 66 `c
+-> 67 `c
+-> 50 `c
+-> 45 `c
+..
+:U ..
+-> 68 `c
+-> 69 `c
+-> 70 `c
+-> 51 `c
+-> 45 `c
+..
+..
+:U ..
+:U ..
+-> 71 `c
+-> 72 `c
+-> 73 `c
+-> 52 `c
+-> 45 `c
+..
+:U ..
+-> 74 `c
+-> 75 `c
+-> 76 `c
+-> 53 `c
+-> 45 `c
+..
+:U ..
+-> 77 `c
+-> 78 `c
+-> 79 `c
+-> 54 `c
+-> 45 `c
+..
+..
+:U ..
+:U ..
+-> 80 `c
+-> 81 `c
+-> 82 `c
+-> 83 `c
+-> 55 `c
+..
+:U ..
+-> 84 `c
+-> 85 `c
+-> 86 `c
+-> 56 `c
+-> 45 `c
+..
+:U ..
+-> 87 `c
+-> 88 `c
+-> 89 `c
+-> 90 `c
+-> 57 `c
+..
+..
+:U ..
+:U ..
+-> 42 `c
+-> 45 `c
+-> 45 `c
+-> 45 `c
+-> 45 `c
+..
+:U ..
+-> 48 `c
+-> 32 `c
+-> 45 `c
+-> 45 `c
+-> 45 `c
+..
+:U ..
+-> 35 `c
+-> 45 `c
+-> 45 `c
+-> 45 `c
+-> 45 `c
+..
+..
+..
+]
+[v F2560 `Cuc ~T0 @X0 -> 3 `i t ]
 "15
-[; ;main.c: 15:     RCONbits.IPEN = 0;
+[; ;Keypad.c: 15: const char keyNumber[4][3] = {
+[v _keyNumber `F2560 ~T0 @X0 -> 4 `i e ]
+[i _keyNumber
+:U ..
+:U ..
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+..
+:U ..
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+..
+:U ..
+-> -> 7 `i `uc
+-> -> 8 `i `uc
+-> -> 9 `i `uc
+..
+:U ..
+-> -> 10 `i `uc
+-> -> 11 `i `uc
+-> -> 12 `i `uc
+..
+..
+]
+"22
+[; ;Keypad.c: 22: unsigned char tmr_bounce;
+[v _tmr_bounce `uc ~T0 @X0 1 e ]
+"23
+[; ;Keypad.c: 23: char key;
+[v _key `uc ~T0 @X0 1 e ]
+"24
+[; ;Keypad.c: 24: char keyNum;
+[v _keyNum `uc ~T0 @X0 1 e ]
+"25
+[; ;Keypad.c: 25: char indexSMS;
+[v _indexSMS `uc ~T0 @X0 1 e ]
+"27
+[; ;Keypad.c: 27: void initKeypad() {
+[v _initKeypad `(v ~T0 @X0 1 ef ]
+{
+[e :U _initKeypad ]
+[f ]
+"29
+[; ;Keypad.c: 29:     LATCbits.LATC0 = 0;
+[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
+"30
+[; ;Keypad.c: 30:     LATCbits.LATC1 = 1;
+[e = . . _LATCbits 0 1 -> -> 1 `i `uc ]
+"31
+[; ;Keypad.c: 31:     LATCbits.LATC2 = 1;
+[e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
+"33
+[; ;Keypad.c: 33:     TI_NewTimer(&tmr_bounce);
+[e ( _TI_NewTimer (1 &U _tmr_bounce ]
+"35
+[; ;Keypad.c: 35:     key = -1;
+[e = _key -> -U -> 1 `i `uc ]
+"36
+[; ;Keypad.c: 36:     keyNum = -1;
+[e = _keyNum -> -U -> 1 `i `uc ]
+"37
+[; ;Keypad.c: 37:     indexSMS = 0;
+[e = _indexSMS -> -> 0 `i `uc ]
+"38
+[; ;Keypad.c: 38: }
 [e :UE 280 ]
 }
-[v $root$_main `(v ~T0 @X0 0 e ]
-"17
-[; ;main.c: 17:     INTCONbits.GIE = 1;
-[v _main `(v ~T0 @X0 1 ef ]
+"40
+[; ;Keypad.c: 40: void motorKeypad(void) {
+[v _motorKeypad `(v ~T0 @X0 1 ef ]
 {
-[e :U _main ]
+[e :U _motorKeypad ]
 [f ]
-"21
-[; ;main.c: 21: 
-[e = _OSCCON -> -> 96 `i `uc ]
-"22
-[; ;main.c: 22:     TI_Init ();
-[e = . . _OSCTUNEbits 0 2 -> -> 1 `i `uc ]
-"27
-[e = . . _RCONbits 5 6 -> -> 0 `i `uc ]
-"28
-[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
-"29
-[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-"34
-[e ( _TI_Init ..  ]
+"41
+[; ;Keypad.c: 41:  static char state = 0;
+[v F2567 `uc ~T0 @X0 1 s state ]
+[i F2567
+-> -> 0 `i `uc
+]
+"42
+[; ;Keypad.c: 42:     static char colPressed;
+[v F2568 `uc ~T0 @X0 1 s colPressed ]
 "43
-[; ;main.c: 43:     while(1) {
-[e :U 283 ]
-{
+[; ;Keypad.c: 43:     static char rowPressed;
+[v F2569 `uc ~T0 @X0 1 s rowPressed ]
 "44
-[; ;main.c: 44:         motorKeypad();
-[e ( _motorKeypad ..  ]
+[; ;Keypad.c: 44:     static char keyAux;
+[v F2570 `uc ~T0 @X0 1 s keyAux ]
 "46
-[; ;main.c: 46:     }
-}
-[e :U 282 ]
+[; ;Keypad.c: 46:  switch(state) {
 [e $U 283  ]
+{
+"47
+[; ;Keypad.c: 47:   case 0:
 [e :U 284 ]
 "48
-[; ;main.c: 48:     return;
-[e $UE 281  ]
+[; ;Keypad.c: 48:    if ((PORTB & 0x0F) == 0x0F) {
+[e $ ! == & -> _PORTB `i -> 15 `i -> 15 `i 285  ]
+{
 "49
-[; ;main.c: 49: }
+[; ;Keypad.c: 49:     LATCbits.LATC0 = 1;
+[e = . . _LATCbits 0 0 -> -> 1 `i `uc ]
+"50
+[; ;Keypad.c: 50:     LATCbits.LATC1 = 0;
+[e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
+"51
+[; ;Keypad.c: 51:     LATCbits.LATC2 = 1;
+[e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
+"52
+[; ;Keypad.c: 52:     state = 1;
+[e = F2567 -> -> 1 `i `uc ]
+"53
+[; ;Keypad.c: 53:    }
+}
+[e $U 286  ]
+"54
+[; ;Keypad.c: 54:    else if ((PORTB & 0x0F) != 0x0F) {
+[e :U 285 ]
+[e $ ! != & -> _PORTB `i -> 15 `i -> 15 `i 287  ]
+{
+"55
+[; ;Keypad.c: 55:     TI_ResetTics(tmr_bounce);
+[e ( _TI_ResetTics (1 _tmr_bounce ]
+"56
+[; ;Keypad.c: 56:     state = 3;
+[e = F2567 -> -> 3 `i `uc ]
+"57
+[; ;Keypad.c: 57:    }
+}
+[e :U 287 ]
+[e :U 286 ]
+"58
+[; ;Keypad.c: 58:   break;
+[e $U 282  ]
+"59
+[; ;Keypad.c: 59:   case 1:
+[e :U 288 ]
+"60
+[; ;Keypad.c: 60:    if ((PORTB & 0x0F) == 0x0F) {
+[e $ ! == & -> _PORTB `i -> 15 `i -> 15 `i 289  ]
+{
+"61
+[; ;Keypad.c: 61:     LATCbits.LATC0 = 1;
+[e = . . _LATCbits 0 0 -> -> 1 `i `uc ]
+"62
+[; ;Keypad.c: 62:     LATCbits.LATC1 = 1;
+[e = . . _LATCbits 0 1 -> -> 1 `i `uc ]
+"63
+[; ;Keypad.c: 63:     LATCbits.LATC2 = 0;
+[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
+"64
+[; ;Keypad.c: 64:     state = 2;
+[e = F2567 -> -> 2 `i `uc ]
+"65
+[; ;Keypad.c: 65:    }
+}
+[e $U 290  ]
+"66
+[; ;Keypad.c: 66:    else if ((PORTB & 0x0F) != 0x0F) {
+[e :U 289 ]
+[e $ ! != & -> _PORTB `i -> 15 `i -> 15 `i 291  ]
+{
+"67
+[; ;Keypad.c: 67:     TI_ResetTics(tmr_bounce);
+[e ( _TI_ResetTics (1 _tmr_bounce ]
+"68
+[; ;Keypad.c: 68:     state = 3;
+[e = F2567 -> -> 3 `i `uc ]
+"69
+[; ;Keypad.c: 69:    }
+}
+[e :U 291 ]
+[e :U 290 ]
+"70
+[; ;Keypad.c: 70:   break;
+[e $U 282  ]
+"71
+[; ;Keypad.c: 71:   case 2:
+[e :U 292 ]
+"72
+[; ;Keypad.c: 72:    if ((PORTB & 0x0F) == 0x0F) {
+[e $ ! == & -> _PORTB `i -> 15 `i -> 15 `i 293  ]
+{
+"73
+[; ;Keypad.c: 73:     LATCbits.LATC0 = 0;
+[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
+"74
+[; ;Keypad.c: 74:     LATCbits.LATC1 = 1;
+[e = . . _LATCbits 0 1 -> -> 1 `i `uc ]
+"75
+[; ;Keypad.c: 75:     LATCbits.LATC2 = 1;
+[e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
+"76
+[; ;Keypad.c: 76:     state = 0;
+[e = F2567 -> -> 0 `i `uc ]
+"77
+[; ;Keypad.c: 77:    }
+}
+[e $U 294  ]
+"78
+[; ;Keypad.c: 78:    else if ((PORTB & 0x0F) != 0x0F) {
+[e :U 293 ]
+[e $ ! != & -> _PORTB `i -> 15 `i -> 15 `i 295  ]
+{
+"79
+[; ;Keypad.c: 79:     TI_ResetTics(tmr_bounce);
+[e ( _TI_ResetTics (1 _tmr_bounce ]
+"80
+[; ;Keypad.c: 80:     state = 3;
+[e = F2567 -> -> 3 `i `uc ]
+"81
+[; ;Keypad.c: 81:    }
+}
+[e :U 295 ]
+[e :U 294 ]
+"82
+[; ;Keypad.c: 82:   break;
+[e $U 282  ]
+"83
+[; ;Keypad.c: 83:   case 3:
+[e :U 296 ]
+"84
+[; ;Keypad.c: 84:    if ((TI_GetTics(tmr_bounce) >= 100) && ((PORTB & 0x0F) != 0x0F) ) {
+[e $ ! && >= ( _TI_GetTics (1 _tmr_bounce -> -> -> 100 `i `l `ul != & -> _PORTB `i -> 15 `i -> 15 `i 297  ]
+{
+"85
+[; ;Keypad.c: 85:     colPressed = ((~(PORTC & 0X07)) >> 1) & 0x7F;
+[e = F2568 -> & >> ~ & -> _PORTC `i -> 7 `i -> 1 `i -> 127 `i `uc ]
+"86
+[; ;Keypad.c: 86:     rowPressed = ((~(PORTB & 0x0F)) >> 1) & 0x7F;
+[e = F2569 -> & >> ~ & -> _PORTB `i -> 15 `i -> 1 `i -> 127 `i `uc ]
+"87
+[; ;Keypad.c: 87:     rowPressed = rowPressed == 3 ? 2 : rowPressed;
+[e = F2569 -> ? == -> F2569 `i -> 3 `i : -> 2 `i -> F2569 `i `uc ]
+"88
+[; ;Keypad.c: 88:     rowPressed = rowPressed > 3 ? 3 : rowPressed;
+[e = F2569 -> ? > -> F2569 `i -> 3 `i : -> 3 `i -> F2569 `i `uc ]
+"89
+[; ;Keypad.c: 89:     keyNum = keyNumber[rowPressed][colPressed];
+[e = _keyNum *U + &U *U + &U _keyNumber * -> F2569 `ux -> * -> # *U &U *U &U _keyNumber `ui -> -> 3 `i `ui `ux * -> F2568 `ux -> -> # *U &U *U + &U _keyNumber * -> F2569 `ux -> * -> # *U &U *U &U _keyNumber `ui -> -> 3 `i `ui `ux `ui `ux ]
+"91
+[; ;Keypad.c: 91:     keyAux = sms[rowPressed][colPressed][indexSMS++];
+[e = F2570 *U + &U *U + &U *U + &U _sms * -> F2569 `ux -> * * -> # *U &U *U &U _sms `ui -> -> 3 `i `ui -> -> 5 `i `ui `ux * -> F2568 `ux -> * -> # *U &U *U &U *U + &U _sms * -> F2569 `ux -> * * -> # *U &U *U &U _sms `ui -> -> 3 `i `ui -> -> 5 `i `ui `ux `ui -> -> 5 `i `ui `ux * -> ++ _indexSMS -> -> 1 `i `uc `ux -> -> # *U &U *U + &U *U + &U _sms * -> F2569 `ux -> * * -> # *U &U *U &U _sms `ui -> -> 3 `i `ui -> -> 5 `i `ui `ux * -> F2568 `ux -> * -> # *U &U *U &U *U + &U _sms * -> F2569 `ux -> * * -> # *U &U *U &U _sms `ui -> -> 3 `i `ui -> -> 5 `i `ui `ux `ui -> -> 5 `i `ui `ux `ui `ux ]
+"92
+[; ;Keypad.c: 92:     if(keyAux == '-') {
+[e $ ! == -> F2570 `ui -> 45 `ui 298  ]
+{
+"93
+[; ;Keypad.c: 93:         indexSMS = 0;
+[e = _indexSMS -> -> 0 `i `uc ]
+"94
+[; ;Keypad.c: 94:         key = sms[rowPressed][colPressed][indexSMS++];
+[e = _key *U + &U *U + &U *U + &U _sms * -> F2569 `ux -> * * -> # *U &U *U &U _sms `ui -> -> 3 `i `ui -> -> 5 `i `ui `ux * -> F2568 `ux -> * -> # *U &U *U &U *U + &U _sms * -> F2569 `ux -> * * -> # *U &U *U &U _sms `ui -> -> 3 `i `ui -> -> 5 `i `ui `ux `ui -> -> 5 `i `ui `ux * -> ++ _indexSMS -> -> 1 `i `uc `ux -> -> # *U &U *U + &U *U + &U _sms * -> F2569 `ux -> * * -> # *U &U *U &U _sms `ui -> -> 3 `i `ui -> -> 5 `i `ui `ux * -> F2568 `ux -> * -> # *U &U *U &U *U + &U _sms * -> F2569 `ux -> * * -> # *U &U *U &U _sms `ui -> -> 3 `i `ui -> -> 5 `i `ui `ux `ui -> -> 5 `i `ui `ux `ui `ux ]
+"95
+[; ;Keypad.c: 95:     } else {
+}
+[e $U 299  ]
+[e :U 298 ]
+{
+"96
+[; ;Keypad.c: 96:         key = keyAux;
+[e = _key F2570 ]
+"97
+[; ;Keypad.c: 97:     }
+}
+[e :U 299 ]
+"98
+[; ;Keypad.c: 98:     state = 4;
+[e = F2567 -> -> 4 `i `uc ]
+"99
+[; ;Keypad.c: 99:    }
+}
+[e $U 300  ]
+"100
+[; ;Keypad.c: 100:    else if ((PORTB & 0x0F) == 0x0F) {
+[e :U 297 ]
+[e $ ! == & -> _PORTB `i -> 15 `i -> 15 `i 301  ]
+{
+"101
+[; ;Keypad.c: 101:     LATCbits.LATC0 = 0;
+[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
+"102
+[; ;Keypad.c: 102:     LATCbits.LATC1 = 1;
+[e = . . _LATCbits 0 1 -> -> 1 `i `uc ]
+"103
+[; ;Keypad.c: 103:     LATCbits.LATC2 = 1;
+[e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
+"104
+[; ;Keypad.c: 104:     state = 0;
+[e = F2567 -> -> 0 `i `uc ]
+"105
+[; ;Keypad.c: 105:    }
+}
+[e :U 301 ]
+[e :U 300 ]
+"106
+[; ;Keypad.c: 106:   break;
+[e $U 282  ]
+"107
+[; ;Keypad.c: 107:   case 4:
+[e :U 302 ]
+"108
+[; ;Keypad.c: 108:    if ((PORTB & 0x0F) == 0x0F) {
+[e $ ! == & -> _PORTB `i -> 15 `i -> 15 `i 303  ]
+{
+"109
+[; ;Keypad.c: 109:     TI_ResetTics(tmr_bounce);
+[e ( _TI_ResetTics (1 _tmr_bounce ]
+"110
+[; ;Keypad.c: 110:     state = 5;
+[e = F2567 -> -> 5 `i `uc ]
+"111
+[; ;Keypad.c: 111:    }
+}
+[e :U 303 ]
+"112
+[; ;Keypad.c: 112:   break;
+[e $U 282  ]
+"113
+[; ;Keypad.c: 113:   case 5:
+[e :U 304 ]
+"114
+[; ;Keypad.c: 114:    if ((TI_GetTics(tmr_bounce) >= 100) && ((PORTB & 0x0F) == 0x0F) ) {
+[e $ ! && >= ( _TI_GetTics (1 _tmr_bounce -> -> -> 100 `i `l `ul == & -> _PORTB `i -> 15 `i -> 15 `i 305  ]
+{
+"115
+[; ;Keypad.c: 115:     LATCbits.LATC0 = 0;
+[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
+"116
+[; ;Keypad.c: 116:     LATCbits.LATC1 = 1;
+[e = . . _LATCbits 0 1 -> -> 1 `i `uc ]
+"117
+[; ;Keypad.c: 117:     LATCbits.LATC2 = 1;
+[e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
+"118
+[; ;Keypad.c: 118:     keyNum = -1;
+[e = _keyNum -> -U -> 1 `i `uc ]
+"119
+[; ;Keypad.c: 119:     key = -1;
+[e = _key -> -U -> 1 `i `uc ]
+"120
+[; ;Keypad.c: 120:     state = 0;
+[e = F2567 -> -> 0 `i `uc ]
+"121
+[; ;Keypad.c: 121:    }
+}
+[e $U 306  ]
+"122
+[; ;Keypad.c: 122:    else if ((PORTB & 0x0F) != 0x0F) {
+[e :U 305 ]
+[e $ ! != & -> _PORTB `i -> 15 `i -> 15 `i 307  ]
+{
+"123
+[; ;Keypad.c: 123:     state = 4;
+[e = F2567 -> -> 4 `i `uc ]
+"124
+[; ;Keypad.c: 124:    }
+}
+[e :U 307 ]
+[e :U 306 ]
+"125
+[; ;Keypad.c: 125:   break;
+[e $U 282  ]
+"126
+[; ;Keypad.c: 126:  }
+}
+[e $U 282  ]
+[e :U 283 ]
+[e [\ -> F2567 `i , $ -> 0 `i 284
+ , $ -> 1 `i 288
+ , $ -> 2 `i 292
+ , $ -> 3 `i 296
+ , $ -> 4 `i 302
+ , $ -> 5 `i 304
+ 282 ]
+[e :U 282 ]
+"127
+[; ;Keypad.c: 127: }
 [e :UE 281 ]
+}
+"129
+[; ;Keypad.c: 129: char getKey(void) {
+[v _getKey `(uc ~T0 @X0 1 ef ]
+{
+[e :U _getKey ]
+[f ]
+"130
+[; ;Keypad.c: 130:     return key;
+[e ) _key ]
+[e $UE 308  ]
+"131
+[; ;Keypad.c: 131: }
+[e :UE 308 ]
+}
+"133
+[; ;Keypad.c: 133: char getKeyNum(void) {
+[v _getKeyNum `(uc ~T0 @X0 1 ef ]
+{
+[e :U _getKeyNum ]
+[f ]
+"134
+[; ;Keypad.c: 134:     return keyNum;
+[e ) _keyNum ]
+[e $UE 309  ]
+"135
+[; ;Keypad.c: 135: }
+[e :UE 309 ]
+}
+"137
+[; ;Keypad.c: 137: void resetIndexSMS(void) {
+[v _resetIndexSMS `(v ~T0 @X0 1 ef ]
+{
+[e :U _resetIndexSMS ]
+[f ]
+"138
+[; ;Keypad.c: 138:     indexSMS = 0;
+[e = _indexSMS -> -> 0 `i `uc ]
+"139
+[; ;Keypad.c: 139: }
+[e :UE 310 ]
 }

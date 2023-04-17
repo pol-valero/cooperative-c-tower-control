@@ -9,9 +9,8 @@
 #include "pic18f4321.h"
 #include "TAD_TIMER.h"
 
-// Definicions, per interrupcio cada 2ms.
-#define T0CON_CONFIG 0x82
-#define RECARREGA_TMR0 64911        // 2 ms, suposant FOsc a 10MHz.
+#define T0CON_CONFIG 0b11000001
+#define RECARREGA_TMR0 56        
 
 #define TI_NUMTIMERS 4              // Nombre de timers virtuals gestionats per aquest TAD. Si cal, s'incrementa o es disminueix...
 
@@ -30,12 +29,14 @@ void RSI_Timer0 () {
     Tics++;    
 }
 
+// Tinst = 250ns | Ttarget = 200us | PS = 1:4 --> Ttics = 200
+// Utilitzant 8bits de timer --> TMR0L = 2^8-200 = 56
 void TI_Init () {
 	for (unsigned char counter=0; counter<TI_NUMTIMERS; counter++) {
 		Timers[counter].Busy=TI_FALS;
 	}
 	T0CON=T0CON_CONFIG;
-    TMR0=RECARREGA_TMR0;
+    TMR0L=RECARREGA_TMR0;
 	INTCONbits.TMR0IF = 0;
 	INTCONbits.TMR0IE = 1;
     // Caldr? que des del main o des d'on sigui s'activin les interrupcions globals!
