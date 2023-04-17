@@ -45,20 +45,20 @@
 #include <xc.h>
 
 
-#define SetD4_D7Sortida()		(TRISBbits.TRISB6 = TRISBbits.TRISB7 = TRISBbits.TRISB8 = TRISBbits.TRISB9 = 0)
-#define SetD4_D7Entrada()		(TRISBbits.TRISB6 = TRISBbits.TRISB7 = TRISBbits.TRISB8 = TRISBbits.TRISB9 = 1)
-#define SetControlsSortida()            (TRISBbits.TRISB3 = TRISBbits.TRISB15 = TRISBbits.TRISB5 = 0)
-#define SetD4(On)				(LATBbits.LATB6 = (On))
-#define SetD5(On)				(LATBbits.LATB7 = (On))
-#define SetD6(On)				(LATBbits.LATB8 = (On))
-#define SetD7(On)				(LATBbits.LATB9 = (On))
-#define GetBusyFlag()                           (PORTBbits.RB9)
-#define RSUp()					(LATBbits.LATB3 = 1)
-#define RSDown()				(LATBbits.LATB3 = 0)
-#define RWUp()					(LATBbits.LATB15 = 1)
-#define RWDown()				(LATBbits.LATB15 = 0)
-#define EnableUp()				(LATBbits.LATB5 = 1)
-#define EnableDown()                            (LATBbits.LATB5 = 0)
+#define SetD4_D7Sortida()		(TRISDbits.TRISD0 = TRISDbits.TRISD1 = TRISDbits.TRISD2 = TRISDbits.TRISD3 = 0)
+#define SetD4_D7Entrada()		(TRISDbits.TRISD0 = TRISDbits.TRISD1 = TRISDbits.TRISD2 = TRISDbits.TRISD3 = 1)
+#define SetControlsSortida()            (TRISDbits.TRISD4 = TRISDbits.TRISD5 = TRISDbits.TRISD6 = 0)
+#define SetD4(On)				(LATDbits.LATD0 = (On))
+#define SetD5(On)				(LATDbits.LATD1 = (On))
+#define SetD6(On)				(LATDbits.LATD2 = (On))
+#define SetD7(On)				(LATDbits.LATD3 = (On))
+#define GetBusyFlag()                           (PORTDbits.RD3)
+#define RSUp()					(LATDbits.LATD4 = 1)
+#define RSDown()				(LATDbits.LATD4 = 0)
+#define RWUp()					(LATDbits.LATD5 = 1)
+#define RWDown()				(LATDbits.LATD5 = 0)
+#define EnableUp()				(LATDbits.LATD6 = 1)
+#define EnableDown()                            (LATDbits.LATD6 = 0)
 // -------------------------------END--HARDWARE---AREA--------------------
 
 

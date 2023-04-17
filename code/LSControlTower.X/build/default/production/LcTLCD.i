@@ -4605,7 +4605,7 @@ void LcInit(char rows, char columns) {
  TI_NewTimer(&Timer);
  Rows = rows; Columns = columns;
  RowAct = ColumnAct = 0;
- (TRISBbits.TRISB3 = TRISBbits.TRISB15 = TRISBbits.TRISB5 = 0);
+ (TRISDbits.TRISD4 = TRISDbits.TRISD5 = TRISDbits.TRISD6 = 0);
  for (i = 0; i < 2; i++) {
   Espera(Timer, 100);
 
@@ -4727,76 +4727,76 @@ void Espera(unsigned char Timer, int ms) {
 }
 
 void CantaPartAlta(char c) {
-  (LATBbits.LATB9 = (c & 0x80 ? 1 : 0));
-  (LATBbits.LATB8 = (c & 0x40 ? 1 : 0));
-  (LATBbits.LATB7 = (c & 0x20 ? 1 : 0));
-  (LATBbits.LATB6 = (c & 0x10 ? 1 : 0));
+  (LATDbits.LATD3 = (c & 0x80 ? 1 : 0));
+  (LATDbits.LATD2 = (c & 0x40 ? 1 : 0));
+  (LATDbits.LATD1 = (c & 0x20 ? 1 : 0));
+  (LATDbits.LATD0 = (c & 0x10 ? 1 : 0));
 }
 
 void CantaPartBaixa(char c) {
-  (LATBbits.LATB9 = (c & 0x08 ? 1 : 0));
-  (LATBbits.LATB8 = (c & 0x04 ? 1 : 0));
-  (LATBbits.LATB7 = (c & 0x02 ? 1 : 0));
-  (LATBbits.LATB6 = (c & 0x01 ? 1 : 0));
+  (LATDbits.LATD3 = (c & 0x08 ? 1 : 0));
+  (LATDbits.LATD2 = (c & 0x04 ? 1 : 0));
+  (LATDbits.LATD1 = (c & 0x02 ? 1 : 0));
+  (LATDbits.LATD0 = (c & 0x01 ? 1 : 0));
 }
 
 void CantaIR(char IR) {
- (TRISBbits.TRISB6 = TRISBbits.TRISB7 = TRISBbits.TRISB8 = TRISBbits.TRISB9 = 0);
- (LATBbits.LATB3 = 0);
- (LATBbits.LATB15 = 0);
- (LATBbits.LATB5 = 1);
+ (TRISDbits.TRISD0 = TRISDbits.TRISD1 = TRISDbits.TRISD2 = TRISDbits.TRISD3 = 0);
+ (LATDbits.LATD4 = 0);
+ (LATDbits.LATD5 = 0);
+ (LATDbits.LATD6 = 1);
  CantaPartAlta(IR);
- (LATBbits.LATB5 = 1);
- (LATBbits.LATB5 = 0);
- (LATBbits.LATB5 = 0);
- (LATBbits.LATB5 = 1);
+ (LATDbits.LATD6 = 1);
+ (LATDbits.LATD6 = 0);
+ (LATDbits.LATD6 = 0);
+ (LATDbits.LATD6 = 1);
  CantaPartBaixa(IR);
- (LATBbits.LATB5 = 1);
- (LATBbits.LATB5 = 0);
- (TRISBbits.TRISB6 = TRISBbits.TRISB7 = TRISBbits.TRISB8 = TRISBbits.TRISB9 = 1);
+ (LATDbits.LATD6 = 1);
+ (LATDbits.LATD6 = 0);
+ (TRISDbits.TRISD0 = TRISDbits.TRISD1 = TRISDbits.TRISD2 = TRISDbits.TRISD3 = 1);
 }
 
 void CantaData(char Data) {
- (TRISBbits.TRISB6 = TRISBbits.TRISB7 = TRISBbits.TRISB8 = TRISBbits.TRISB9 = 0);
- (LATBbits.LATB3 = 1);
- (LATBbits.LATB15 = 0);
- (LATBbits.LATB5 = 1);
+ (TRISDbits.TRISD0 = TRISDbits.TRISD1 = TRISDbits.TRISD2 = TRISDbits.TRISD3 = 0);
+ (LATDbits.LATD4 = 1);
+ (LATDbits.LATD5 = 0);
+ (LATDbits.LATD6 = 1);
  CantaPartAlta(Data);
- (LATBbits.LATB5 = 1);
- (LATBbits.LATB5 = 0);
- (LATBbits.LATB5 = 0);
- (LATBbits.LATB5 = 1);
+ (LATDbits.LATD6 = 1);
+ (LATDbits.LATD6 = 0);
+ (LATDbits.LATD6 = 0);
+ (LATDbits.LATD6 = 1);
  CantaPartBaixa(Data);
- (LATBbits.LATB5 = 1);
- (LATBbits.LATB5 = 0);
- (TRISBbits.TRISB6 = TRISBbits.TRISB7 = TRISBbits.TRISB8 = TRISBbits.TRISB9 = 1);
+ (LATDbits.LATD6 = 1);
+ (LATDbits.LATD6 = 0);
+ (TRISDbits.TRISD0 = TRISDbits.TRISD1 = TRISDbits.TRISD2 = TRISDbits.TRISD3 = 1);
 }
 
 void WaitForBusy(void) { char Busy;
- (TRISBbits.TRISB6 = TRISBbits.TRISB7 = TRISBbits.TRISB8 = TRISBbits.TRISB9 = 1);
- (LATBbits.LATB3 = 0);
- (LATBbits.LATB15 = 1);
+ (TRISDbits.TRISD0 = TRISDbits.TRISD1 = TRISDbits.TRISD2 = TRISDbits.TRISD3 = 1);
+ (LATDbits.LATD4 = 0);
+ (LATDbits.LATD5 = 1);
  TI_ResetTics(Timer);
  do {
-  (LATBbits.LATB5 = 1);(LATBbits.LATB5 = 1);
-  Busy = (PORTBbits.RB9);
-  (LATBbits.LATB5 = 0);
-  (LATBbits.LATB5 = 0);
-  (LATBbits.LATB5 = 1);(LATBbits.LATB5 = 1);
+  (LATDbits.LATD6 = 1);(LATDbits.LATD6 = 1);
+  Busy = (PORTDbits.RD3);
+  (LATDbits.LATD6 = 0);
+  (LATDbits.LATD6 = 0);
+  (LATDbits.LATD6 = 1);(LATDbits.LATD6 = 1);
 
-  (LATBbits.LATB5 = 0);
-  (LATBbits.LATB5 = 0);
+  (LATDbits.LATD6 = 0);
+  (LATDbits.LATD6 = 0);
   if (TI_GetTics(Timer)) break;
  } while(Busy);
 }
 
 void EscriuPrimeraOrdre(char ordre) {
 
- (TRISBbits.TRISB6 = TRISBbits.TRISB7 = TRISBbits.TRISB8 = TRISBbits.TRISB9 = 0); (LATBbits.LATB3 = 0); (LATBbits.LATB15 = 0);
- (LATBbits.LATB5 = 1); (LATBbits.LATB5 = 1);
-  (LATBbits.LATB9 = (ordre & 0x08 ? 1 : 0));
-  (LATBbits.LATB8 = (ordre & 0x04 ? 1 : 0));
-  (LATBbits.LATB7 = (ordre & 0x02 ? 1 : 0));
-  (LATBbits.LATB6 = (ordre & 0x01 ? 1 : 0));
- (LATBbits.LATB5 = 0);
+ (TRISDbits.TRISD0 = TRISDbits.TRISD1 = TRISDbits.TRISD2 = TRISDbits.TRISD3 = 0); (LATDbits.LATD4 = 0); (LATDbits.LATD5 = 0);
+ (LATDbits.LATD6 = 1); (LATDbits.LATD6 = 1);
+  (LATDbits.LATD3 = (ordre & 0x08 ? 1 : 0));
+  (LATDbits.LATD2 = (ordre & 0x04 ? 1 : 0));
+  (LATDbits.LATD1 = (ordre & 0x02 ? 1 : 0));
+  (LATDbits.LATD0 = (ordre & 0x01 ? 1 : 0));
+ (LATDbits.LATD6 = 0);
 }

@@ -433,12 +433,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 7010: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
 "7 main.c
-[; ;main.c: 7:     return;
+[; ;main.c: 7:     OSCTUNEbits.PLLEN = 1;
 [p x OSC = INTIO2 ]
 "8
-[; ;main.c: 8: }
+[; ;main.c: 8:     return;
 [p x PBADEN = DIG ]
 "9
+[; ;main.c: 9: }
 [p x WDT = OFF ]
 [v $root$_main `(v ~T0 @X0 0 e ]
 "12
@@ -446,12 +447,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _main ]
 [f ]
-"16
-[e = _OSCCON -> -> 96 `i `uc ]
 "17
-[e = . . _OSCTUNEbits 0 2 -> -> 1 `i `uc ]
+[e = _OSCCON -> -> 96 `i `uc ]
 "18
-[e $UE 280  ]
+[e = . . _OSCTUNEbits 0 2 -> -> 1 `i `uc ]
 "19
+[e $UE 280  ]
+"20
 [e :UE 280 ]
 }
