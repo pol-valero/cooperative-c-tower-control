@@ -4,6 +4,7 @@
 #include "TAD_TIMER.h"
 #include "LcTLCD.h"
 #include "Keypad.h"
+#include "SIO.h"
 
 #pragma config OSC = INTIO2
 #pragma config PBADEN = DIG
@@ -29,9 +30,10 @@ void main(void) {
     INTCONbits.GIE = 1; 
     
     /************************
-     * INIT TMR
+     * INIT TMR & SIO
      ***********************/
     TI_Init ();
+    initSIO();
     
     /************************
      * INIT TADs
@@ -42,7 +44,6 @@ void main(void) {
      ***********************/
     while(1) {
         motorKeypad();
-
     }
     
     return;

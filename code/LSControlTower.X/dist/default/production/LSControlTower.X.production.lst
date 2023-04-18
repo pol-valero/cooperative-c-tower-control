@@ -1,9 +1,9 @@
 
 
 Microchip MPLAB XC8 Assembler V2.10 build 88905656 
-                                                                                               Mon Apr 17 21:24:02 2023
+                                                                                               Tue Apr 18 10:25:13 2023
 
-Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1 
+Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og9 
      1                           	processor	18F4321
      2                           	fnconf	rparam,??,?,0
      3                           	opt	pw 120
@@ -17,1241 +17,1174 @@ Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1
     11                           	psect	text2,global,reloc=2,class=CODE,delta=1
     12                           	psect	text3,global,reloc=2,class=CODE,delta=1
     13                           	psect	text4,global,reloc=2,class=CODE,delta=1
-    14                           	psect	intcode,global,reloc=2,class=CODE,delta=1
-    15                           	psect	text6,global,reloc=2,class=CODE,delta=1
-    16                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
-    17                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
-    18                           	psect	temp,global,ovrld,common,class=COMRAM,space=1,delta=1
-    19  0000                     
-    20                           ; Version 2.10
-    21                           ; Generated 31/07/2019 GMT
-    22                           ; 
-    23                           ; Copyright © 2019, Microchip Technology Inc. and its subsidiaries ("Microchip")
-    24                           ; All rights reserved.
-    25                           ; 
-    26                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+    14                           	psect	text5,global,reloc=2,class=CODE,delta=1
+    15                           	psect	intcode,global,reloc=2,class=CODE,delta=1
+    16                           	psect	text7,global,reloc=2,class=CODE,delta=1
+    17                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
+    18                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
+    19                           	psect	temp,global,ovrld,common,class=COMRAM,space=1,delta=1
+    20  0000                     
+    21                           ; Version 2.10
+    22                           ; Generated 31/07/2019 GMT
+    23                           ; 
+    24                           ; Copyright © 2019, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    25                           ; All rights reserved.
+    26                           ; 
+    27                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
       +                          ip").
-    27                           ; 
-    28                           ; Redistribution and use in source and binary forms, with or without modification, are
-    29                           ; permitted provided that the following conditions are met:
-    30                           ; 
-    31                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+    28                           ; 
+    29                           ; Redistribution and use in source and binary forms, with or without modification, are
+    30                           ; permitted provided that the following conditions are met:
+    31                           ; 
+    32                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
       +                          t of
-    32                           ;        conditions and the following disclaimer.
-    33                           ; 
-    34                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+    33                           ;        conditions and the following disclaimer.
+    34                           ; 
+    35                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
       +                          list
-    35                           ;        of conditions and the following disclaimer in the documentation and/or other
-    36                           ;        materials provided with the distribution.
-    37                           ; 
-    38                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+    36                           ;        of conditions and the following disclaimer in the documentation and/or other
+    37                           ;        materials provided with the distribution.
+    38                           ; 
+    39                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
       +                          is
-    39                           ;        software without specific prior written permission.
-    40                           ; 
-    41                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
-    42                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+    40                           ;        software without specific prior written permission.
+    41                           ; 
+    42                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    43                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
       +                          OR
-    43                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+    44                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
       +                          T,
-    44                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
-    45                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
-    46                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+    45                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    46                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    47                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
       +                          RICT
-    47                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+    48                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
       +                          SE OF
-    48                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    49                           ; 
+    49                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     50                           ; 
-    51                           ; Code-generator required, PIC18F4321 Definitions
-    52                           ; 
-    53                           ; SFR Addresses
-    54  0000                     
-    55                           	psect	smallconst
-    56  000200                     __psmallconst:
-    57                           	opt callstack 0
-    58  000200  00                 	db	0
-    59  000201                     _sms:
-    60                           	opt callstack 0
-    61  000201  31                 	db	49
-    62  000202  2D                 	db	45
-    63  000203  2D                 	db	45
-    64  000204  2D                 	db	45
-    65  000205  2D                 	db	45
-    66  000206  41                 	db	65
-    67  000207  42                 	db	66
-    68  000208  43                 	db	67
-    69  000209  32                 	db	50
-    70  00020A  2D                 	db	45
-    71  00020B  44                 	db	68
-    72  00020C  45                 	db	69
-    73  00020D  46                 	db	70
-    74  00020E  33                 	db	51
-    75  00020F  2D                 	db	45
-    76  000210  47                 	db	71
-    77  000211  48                 	db	72
-    78  000212  49                 	db	73
-    79  000213  34                 	db	52
-    80  000214  2D                 	db	45
-    81  000215  4A                 	db	74
-    82  000216  4B                 	db	75
-    83  000217  4C                 	db	76
-    84  000218  35                 	db	53
-    85  000219  2D                 	db	45
-    86  00021A  4D                 	db	77
-    87  00021B  4E                 	db	78
-    88  00021C  4F                 	db	79
-    89  00021D  36                 	db	54
-    90  00021E  2D                 	db	45
-    91  00021F  50                 	db	80
-    92  000220  51                 	db	81
-    93  000221  52                 	db	82
-    94  000222  53                 	db	83
-    95  000223  37                 	db	55
-    96  000224  54                 	db	84
-    97  000225  55                 	db	85
-    98  000226  56                 	db	86
-    99  000227  38                 	db	56
-   100  000228  2D                 	db	45
-   101  000229  57                 	db	87
-   102  00022A  58                 	db	88
-   103  00022B  59                 	db	89
-   104  00022C  5A                 	db	90
-   105  00022D  39                 	db	57
-   106  00022E  2A                 	db	42
-   107  00022F  2D                 	db	45
-   108  000230  2D                 	db	45
-   109  000231  2D                 	db	45
-   110  000232  2D                 	db	45
-   111  000233  30                 	db	48
-   112  000234  20                 	db	32
-   113  000235  2D                 	db	45
-   114  000236  2D                 	db	45
-   115  000237  2D                 	db	45
-   116  000238  23                 	db	35
-   117  000239  2D                 	db	45
-   118  00023A  2D                 	db	45
-   119  00023B  2D                 	db	45
-   120  00023C  2D                 	db	45
-   121  00023D                     __end_of_sms:
-   122                           	opt callstack 0
-   123  00023D                     _keyNumber:
-   124                           	opt callstack 0
-   125  00023D  01                 	db	1
-   126  00023E  02                 	db	2
-   127  00023F  03                 	db	3
-   128  000240  04                 	db	4
-   129  000241  05                 	db	5
-   130  000242  06                 	db	6
-   131  000243  07                 	db	7
-   132  000244  08                 	db	8
-   133  000245  09                 	db	9
-   134  000246  0A                 	db	10
-   135  000247  0B                 	db	11
-   136  000248  0C                 	db	12
-   137  000249                     __end_of_keyNumber:
-   138                           	opt callstack 0
-   139  0000                     _TMR0	set	4054
-   140  0000                     _PORTC	set	3970
-   141  0000                     _PORTB	set	3969
-   142  0000                     _LATCbits	set	3979
-   143  0000                     _TMR0L	set	4054
-   144  0000                     _T0CON	set	4053
-   145  0000                     _PORTDbits	set	3971
-   146  0000                     _LATDbits	set	3980
-   147  0000                     _TRISDbits	set	3989
-   148  0000                     _INTCONbits	set	4082
-   149  0000                     _RCONbits	set	4048
-   150  0000                     _OSCTUNEbits	set	3995
-   151  0000                     _OSCCON	set	4051
-   152  0000                     _TMR0IF	set	32658
-   153                           
-   154                           ; #config settings
-   155  000249  00                 	db	0	; dummy byte at the end
-   156  0000                     
-   157                           	psect	cinit
-   158  000646                     __pcinit:
-   159                           	opt callstack 0
-   160  000646                     start_initialization:
-   161                           	opt callstack 0
-   162  000646                     __initialization:
-   163                           	opt callstack 0
-   164                           
-   165                           ; Clear objects allocated to COMRAM (37 bytes)
-   166  000646  EE00  F001         	lfsr	0,__pbssCOMRAM
-   167  00064A  0E25               	movlw	37
-   168  00064C                     clear_0:
-   169  00064C  6AEE               	clrf	postinc0,c
-   170  00064E  06E8               	decf	wreg,f,c
-   171  000650  E1FD               	bnz	clear_0
-   172  000652                     end_of_initialization:
-   173                           	opt callstack 0
-   174  000652                     __end_of__initialization:
-   175                           	opt callstack 0
-   176  000652  903D               	bcf	int$flags,0,c	;clear compiler interrupt flag (level 1)
-   177  000654  923D               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
-   178  000656  0E00               	movlw	low (__Lmediumconst shr (0+16))
-   179  000658  6EF8               	movwf	tblptru,c
-   180  00065A  0100               	movlb	0
-   181  00065C  EF15  F003         	goto	_main	;jump to C main() function
-   182                           
-   183                           	psect	bssCOMRAM
-   184  000001                     __pbssCOMRAM:
-   185                           	opt callstack 0
-   186  000001                     _Timers:
-   187                           	opt callstack 0
-   188  000001                     	ds	20
-   189  000015                     _Tics:
-   190                           	opt callstack 0
-   191  000015                     	ds	4
-   192  000019                     motorKeypad@keyAux:
-   193                           	opt callstack 0
-   194  000019                     	ds	1
-   195  00001A                     motorKeypad@rowPressed:
-   196                           	opt callstack 0
-   197  00001A                     	ds	1
-   198  00001B                     motorKeypad@colPressed:
-   199                           	opt callstack 0
-   200  00001B                     	ds	1
-   201  00001C                     motorKeypad@state:
-   202                           	opt callstack 0
-   203  00001C                     	ds	1
-   204  00001D                     _indexSMS:
-   205                           	opt callstack 0
-   206  00001D                     	ds	1
-   207  00001E                     _keyNum:
-   208                           	opt callstack 0
-   209  00001E                     	ds	1
-   210  00001F                     _key:
-   211                           	opt callstack 0
-   212  00001F                     	ds	1
-   213  000020                     _ColumnAct:
-   214                           	opt callstack 0
-   215  000020                     	ds	1
-   216  000021                     _RowAct:
-   217                           	opt callstack 0
-   218  000021                     	ds	1
-   219  000022                     _Columns:
-   220                           	opt callstack 0
-   221  000022                     	ds	1
-   222  000023                     _Rows:
-   223                           	opt callstack 0
-   224  000023                     	ds	1
-   225  000024                     _tmr_bounce:
-   226                           	opt callstack 0
-   227  000024                     	ds	1
-   228  000025                     _Timer:
+    51                           ; 
+    52                           ; Code-generator required, PIC18F4321 Definitions
+    53                           ; 
+    54                           ; SFR Addresses
+    55  0000                     
+    56                           	psect	smallconst
+    57  000200                     __psmallconst:
+    58                           	opt callstack 0
+    59  000200  00                 	db	0
+    60  000201                     _sms:
+    61                           	opt callstack 0
+    62  000201  31                 	db	49
+    63  000202  2D                 	db	45
+    64  000203  2D                 	db	45
+    65  000204  2D                 	db	45
+    66  000205  2D                 	db	45
+    67  000206  41                 	db	65
+    68  000207  42                 	db	66
+    69  000208  43                 	db	67
+    70  000209  32                 	db	50
+    71  00020A  2D                 	db	45
+    72  00020B  44                 	db	68
+    73  00020C  45                 	db	69
+    74  00020D  46                 	db	70
+    75  00020E  33                 	db	51
+    76  00020F  2D                 	db	45
+    77  000210  47                 	db	71
+    78  000211  48                 	db	72
+    79  000212  49                 	db	73
+    80  000213  34                 	db	52
+    81  000214  2D                 	db	45
+    82  000215  4A                 	db	74
+    83  000216  4B                 	db	75
+    84  000217  4C                 	db	76
+    85  000218  35                 	db	53
+    86  000219  2D                 	db	45
+    87  00021A  4D                 	db	77
+    88  00021B  4E                 	db	78
+    89  00021C  4F                 	db	79
+    90  00021D  36                 	db	54
+    91  00021E  2D                 	db	45
+    92  00021F  50                 	db	80
+    93  000220  51                 	db	81
+    94  000221  52                 	db	82
+    95  000222  53                 	db	83
+    96  000223  37                 	db	55
+    97  000224  54                 	db	84
+    98  000225  55                 	db	85
+    99  000226  56                 	db	86
+   100  000227  38                 	db	56
+   101  000228  2D                 	db	45
+   102  000229  57                 	db	87
+   103  00022A  58                 	db	88
+   104  00022B  59                 	db	89
+   105  00022C  5A                 	db	90
+   106  00022D  39                 	db	57
+   107  00022E  2A                 	db	42
+   108  00022F  2D                 	db	45
+   109  000230  2D                 	db	45
+   110  000231  2D                 	db	45
+   111  000232  2D                 	db	45
+   112  000233  30                 	db	48
+   113  000234  20                 	db	32
+   114  000235  2D                 	db	45
+   115  000236  2D                 	db	45
+   116  000237  2D                 	db	45
+   117  000238  23                 	db	35
+   118  000239  2D                 	db	45
+   119  00023A  2D                 	db	45
+   120  00023B  2D                 	db	45
+   121  00023C  2D                 	db	45
+   122  00023D                     __end_of_sms:
+   123                           	opt callstack 0
+   124  00023D                     _keyNumber:
+   125                           	opt callstack 0
+   126  00023D  01                 	db	1
+   127  00023E  02                 	db	2
+   128  00023F  03                 	db	3
+   129  000240  04                 	db	4
+   130  000241  05                 	db	5
+   131  000242  06                 	db	6
+   132  000243  07                 	db	7
+   133  000244  08                 	db	8
+   134  000245  09                 	db	9
+   135  000246  0A                 	db	10
+   136  000247  0B                 	db	11
+   137  000248  0C                 	db	12
+   138  000249                     __end_of_keyNumber:
+   139                           	opt callstack 0
+   140  0000                     _TMR0	set	4054
+   141  0000                     _TXSTAbits	set	4012
+   142  0000                     _SPBRG	set	4015
+   143  0000                     _RCSTAbits	set	4011
+   144  0000                     _PORTC	set	3970
+   145  0000                     _PORTB	set	3969
+   146  0000                     _LATCbits	set	3979
+   147  0000                     _TMR0L	set	4054
+   148  0000                     _T0CON	set	4053
+   149  0000                     _INTCONbits	set	4082
+   150  0000                     _RCONbits	set	4048
+   151  0000                     _OSCTUNEbits	set	3995
+   152  0000                     _OSCCON	set	4051
+   153  0000                     _TMR0IF	set	32658
+   154                           
+   155                           ; #config settings
+   156  000249  00                 	db	0	; dummy byte at the end
+   157  0000                     
+   158                           	psect	cinit
+   159  0004E4                     __pcinit:
+   160                           	opt callstack 0
+   161  0004E4                     start_initialization:
+   162                           	opt callstack 0
+   163  0004E4                     __initialization:
+   164                           	opt callstack 0
+   165                           
+   166                           ; Clear objects allocated to COMRAM (37 bytes)
+   167  0004E4  EE00  F001         	lfsr	0,__pbssCOMRAM
+   168  0004E8  0E25               	movlw	37
+   169  0004EA                     clear_0:
+   170  0004EA  6AEE               	clrf	postinc0,c
+   171  0004EC  06E8               	decf	wreg,f,c
+   172  0004EE  E1FD               	bnz	clear_0
+   173  0004F0                     end_of_initialization:
+   174                           	opt callstack 0
+   175  0004F0                     __end_of__initialization:
+   176                           	opt callstack 0
+   177  0004F0  9039               	bcf	int$flags,0,c	;clear compiler interrupt flag (level 1)
+   178  0004F2  9239               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
+   179  0004F4  0E00               	movlw	low (__Lmediumconst shr (0+16))
+   180  0004F6  6EF8               	movwf	tblptru,c
+   181  0004F8  0100               	movlb	0
+   182  0004FA  EF7F  F002         	goto	_main	;jump to C main() function
+   183                           
+   184                           	psect	bssCOMRAM
+   185  000001                     __pbssCOMRAM:
+   186                           	opt callstack 0
+   187  000001                     _Timers:
+   188                           	opt callstack 0
+   189  000001                     	ds	20
+   190  000015                     _Tics:
+   191                           	opt callstack 0
+   192  000015                     	ds	4
+   193  000019                     motorKeypad@keyAux:
+   194                           	opt callstack 0
+   195  000019                     	ds	1
+   196  00001A                     motorKeypad@rowPressed:
+   197                           	opt callstack 0
+   198  00001A                     	ds	1
+   199  00001B                     motorKeypad@colPressed:
+   200                           	opt callstack 0
+   201  00001B                     	ds	1
+   202  00001C                     motorKeypad@state:
+   203                           	opt callstack 0
+   204  00001C                     	ds	1
+   205  00001D                     _indexSMS:
+   206                           	opt callstack 0
+   207  00001D                     	ds	1
+   208  00001E                     _keyNum:
+   209                           	opt callstack 0
+   210  00001E                     	ds	1
+   211  00001F                     _key:
+   212                           	opt callstack 0
+   213  00001F                     	ds	1
+   214  000020                     	ds	1
+   215  000021                     	ds	1
+   216  000022                     	ds	1
+   217  000023                     	ds	1
+   218  000024                     _tmr_bounce:
+   219                           	opt callstack 0
+   220  000024                     	ds	1
+   221  000025                     	ds	1
+   222                           
+   223                           	psect	cstackCOMRAM
+   224  000026                     __pcstackCOMRAM:
+   225                           	opt callstack 0
+   226  000026                     ?_TI_GetTics:
+   227                           	opt callstack 0
+   228  000026                     TI_Init@counter:
    229                           	opt callstack 0
-   230  000025                     	ds	1
-   231                           
-   232                           	psect	cstackCOMRAM
-   233  000026                     __pcstackCOMRAM:
-   234                           	opt callstack 0
-   235  000026                     ?_TI_GetTics:
-   236                           	opt callstack 0
-   237  000026                     TI_Init@counter:
-   238                           	opt callstack 0
-   239  000026                     TI_ResetTics@TimerHandle:
+   230  000026                     TI_ResetTics@TimerHandle:
+   231                           	opt callstack 0
+   232                           
+   233                           ; 1 bytes @ 0x0
+   234  000026                     	ds	4
+   235  00002A                     ??_TI_GetTics:
+   236                           
+   237                           ; 1 bytes @ 0x4
+   238  00002A                     	ds	4
+   239  00002E                     TI_GetTics@CopiaTicsActual:
    240                           	opt callstack 0
    241                           
-   242                           ; 1 bytes @ 0x0
-   243  000026                     	ds	4
-   244  00002A                     ??_TI_GetTics:
-   245                           
-   246                           ; 1 bytes @ 0x4
-   247  00002A                     	ds	4
-   248  00002E                     TI_GetTics@CopiaTicsActual:
-   249                           	opt callstack 0
+   242                           ; 4 bytes @ 0x8
+   243  00002E                     	ds	4
+   244  000032                     TI_GetTics@TimerHandle:
+   245                           	opt callstack 0
+   246                           
+   247                           ; 1 bytes @ 0xC
+   248  000032                     	ds	1
+   249  000033                     ??_motorKeypad:
    250                           
-   251                           ; 4 bytes @ 0x8
-   252  00002E                     	ds	4
-   253  000032                     TI_GetTics@TimerHandle:
+   251                           ; 1 bytes @ 0xD
+   252  000033                     	ds	2
+   253  000035                     _motorKeypad$590:
    254                           	opt callstack 0
    255                           
-   256                           ; 1 bytes @ 0xC
-   257  000032                     	ds	1
-   258  000033                     ??_motorKeypad:
-   259                           
-   260                           ; 1 bytes @ 0xD
-   261  000033                     	ds	6
-   262  000039                     _motorKeypad$586:
-   263                           	opt callstack 0
-   264                           
-   265                           ; 2 bytes @ 0x13
-   266  000039                     	ds	2
-   267  00003B                     _motorKeypad$587:
-   268                           	opt callstack 0
-   269                           
-   270                           ; 2 bytes @ 0x15
-   271  00003B                     	ds	2
-   272  00003D                     
-   273                           ; 1 bytes @ 0x17
-   274 ;;
-   275 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
-   276 ;;
-   277 ;; *************** function _main *****************
-   278 ;; Defined at:
-   279 ;;		line 17 in file "main.c"
-   280 ;; Parameters:    Size  Location     Type
-   281 ;;		None
-   282 ;; Auto vars:     Size  Location     Type
-   283 ;;		None
-   284 ;; Return value:  Size  Location     Type
-   285 ;;                  1    wreg      void 
-   286 ;; Registers used:
-   287 ;;		wreg, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
-   288 ;; Tracked objects:
-   289 ;;		On entry : 0/0
-   290 ;;		On exit  : 0/0
-   291 ;;		Unchanged: 0/0
-   292 ;; Data sizes:     COMRAM   BANK0   BANK1
-   293 ;;      Params:         0       0       0
-   294 ;;      Locals:         0       0       0
-   295 ;;      Temps:          0       0       0
-   296 ;;      Totals:         0       0       0
-   297 ;;Total ram usage:        0 bytes
-   298 ;; Hardware stack levels required when called:    4
-   299 ;; This function calls:
-   300 ;;		_TI_Init
-   301 ;;		_motorKeypad
-   302 ;; This function is called by:
-   303 ;;		Startup code after reset
-   304 ;; This function uses a non-reentrant model
-   305 ;;
+   256                           ; 2 bytes @ 0xF
+   257  000035                     	ds	2
+   258  000037                     _motorKeypad$591:
+   259                           	opt callstack 0
+   260                           
+   261                           ; 2 bytes @ 0x11
+   262  000037                     	ds	2
+   263  000039                     
+   264                           ; 1 bytes @ 0x13
+   265 ;;
+   266 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   267 ;;
+   268 ;; *************** function _main *****************
+   269 ;; Defined at:
+   270 ;;		line 18 in file "main.c"
+   271 ;; Parameters:    Size  Location     Type
+   272 ;;		None
+   273 ;; Auto vars:     Size  Location     Type
+   274 ;;		None
+   275 ;; Return value:  Size  Location     Type
+   276 ;;                  1    wreg      void 
+   277 ;; Registers used:
+   278 ;;		wreg, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
+   279 ;; Tracked objects:
+   280 ;;		On entry : 0/0
+   281 ;;		On exit  : 0/0
+   282 ;;		Unchanged: 0/0
+   283 ;; Data sizes:     COMRAM   BANK0   BANK1
+   284 ;;      Params:         0       0       0
+   285 ;;      Locals:         0       0       0
+   286 ;;      Temps:          0       0       0
+   287 ;;      Totals:         0       0       0
+   288 ;;Total ram usage:        0 bytes
+   289 ;; Hardware stack levels required when called:    4
+   290 ;; This function calls:
+   291 ;;		_TI_Init
+   292 ;;		_initSIO
+   293 ;;		_motorKeypad
+   294 ;; This function is called by:
+   295 ;;		Startup code after reset
+   296 ;; This function uses a non-reentrant model
+   297 ;;
+   298                           
+   299                           	psect	text0
+   300  0004FE                     __ptext0:
+   301                           	opt callstack 0
+   302  0004FE                     _main:
+   303                           	opt callstack 27
+   304                           
+   305                           ;main.c: 22:     TI_Init ();
    306                           
-   307                           	psect	text0
-   308  00062A                     __ptext0:
-   309                           	opt callstack 0
-   310  00062A                     _main:
-   311                           	opt callstack 27
-   312  00062A                     
-   313                           ;main.c: 21: 
-   314  00062A  0E60               	movlw	96
-   315  00062C  6ED3               	movwf	211,c	;volatile
-   316  00062E                     
-   317                           ;main.c: 22:     TI_Init ();
-   318  00062E  8C9B               	bsf	155,6,c	;volatile
-   319  000630  9ED0               	bcf	208,7,c	;volatile
-   320  000632  8CF2               	bsf	242,6,c	;volatile
-   321  000634  8EF2               	bsf	242,7,c	;volatile
-   322  000636  ECE5  F002         	call	_TI_Init	;wreg free
-   323  00063A                     l1532:
-   324                           
-   325                           ;main.c: 44:         motorKeypad();
-   326  00063A  EC25  F001         	call	_motorKeypad	;wreg free
-   327  00063E  EF1D  F003         	goto	l1532
-   328  000642  EF09  F000         	goto	start
-   329  000646                     __end_of_main:
-   330                           	opt callstack 0
-   331                           
-   332 ;; *************** function _motorKeypad *****************
-   333 ;; Defined at:
-   334 ;;		line 40 in file "Keypad.c"
-   335 ;; Parameters:    Size  Location     Type
-   336 ;;		None
-   337 ;; Auto vars:     Size  Location     Type
-   338 ;;		None
-   339 ;; Return value:  Size  Location     Type
-   340 ;;                  1    wreg      void 
-   341 ;; Registers used:
-   342 ;;		wreg, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
-   343 ;; Tracked objects:
-   344 ;;		On entry : 0/0
-   345 ;;		On exit  : 0/0
-   346 ;;		Unchanged: 0/0
-   347 ;; Data sizes:     COMRAM   BANK0   BANK1
-   348 ;;      Params:         0       0       0
-   349 ;;      Locals:         4       0       0
-   350 ;;      Temps:          6       0       0
-   351 ;;      Totals:        10       0       0
-   352 ;;Total ram usage:       10 bytes
-   353 ;; Hardware stack levels used:    1
-   354 ;; Hardware stack levels required when called:    3
-   355 ;; This function calls:
-   356 ;;		_TI_GetTics
-   357 ;;		_TI_ResetTics
-   358 ;; This function is called by:
-   359 ;;		_main
-   360 ;; This function uses a non-reentrant model
-   361 ;;
+   307                           ;incstack = 0
+   308  0004FE  0E60               	movlw	96
+   309  000500  6ED3               	movwf	211,c	;volatile
+   310                           
+   311                           ;main.c: 23:     initSIO();
+   312  000502  8C9B               	bsf	155,6,c	;volatile
+   313  000504  9ED0               	bcf	208,7,c	;volatile
+   314  000506  8CF2               	bsf	242,6,c	;volatile
+   315  000508  8EF2               	bsf	242,7,c	;volatile
+   316  00050A  EC4B  F002         	call	_TI_Init	;wreg free
+   317  00050E  EC98  F002         	call	_initSIO	;wreg free
+   318  000512                     l1273:
+   319                           
+   320                           ;main.c: 46:         motorKeypad();
+   321  000512  EC25  F001         	call	_motorKeypad	;wreg free
+   322  000516  D7FD               	goto	l1273
+   323  000518                     __end_of_main:
+   324                           	opt callstack 0
+   325                           
+   326 ;; *************** function _motorKeypad *****************
+   327 ;; Defined at:
+   328 ;;		line 40 in file "Keypad.c"
+   329 ;; Parameters:    Size  Location     Type
+   330 ;;		None
+   331 ;; Auto vars:     Size  Location     Type
+   332 ;;		None
+   333 ;; Return value:  Size  Location     Type
+   334 ;;                  1    wreg      void 
+   335 ;; Registers used:
+   336 ;;		wreg, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
+   337 ;; Tracked objects:
+   338 ;;		On entry : 0/0
+   339 ;;		On exit  : 0/0
+   340 ;;		Unchanged: 0/0
+   341 ;; Data sizes:     COMRAM   BANK0   BANK1
+   342 ;;      Params:         0       0       0
+   343 ;;      Locals:         4       0       0
+   344 ;;      Temps:          2       0       0
+   345 ;;      Totals:         6       0       0
+   346 ;;Total ram usage:        6 bytes
+   347 ;; Hardware stack levels used:    1
+   348 ;; Hardware stack levels required when called:    3
+   349 ;; This function calls:
+   350 ;;		_TI_GetTics
+   351 ;;		_TI_ResetTics
+   352 ;; This function is called by:
+   353 ;;		_main
+   354 ;; This function uses a non-reentrant model
+   355 ;;
+   356                           
+   357                           	psect	text1
+   358  00024A                     __ptext1:
+   359                           	opt callstack 0
+   360  00024A                     _motorKeypad:
+   361                           	opt callstack 27
    362                           
-   363                           	psect	text1
-   364  00024A                     __ptext1:
-   365                           	opt callstack 0
-   366  00024A                     _motorKeypad:
-   367                           	opt callstack 27
-   368  00024A                     
-   369                           ;Keypad.c: 41:  static char state = 0;;Keypad.c: 42:     static char colPressed;;Keypad.
+   363                           ;Keypad.c: 41:  static char state = 0;;Keypad.c: 42:     static char colPressed;;Keypad.
       +                          c: 43:     static char rowPressed;;Keypad.c: 44:     static char keyAux;;Keypad.c: 46:  
       +                          switch(state) {
-   370  00024A  EF97  F002         	goto	l1476
-   371  00024E                     l1378:
-   372                           
-   373                           ;Keypad.c: 48:    if ((PORTB & 0x0F) == 0x0F) {
-   374  00024E  5081               	movf	129,w,c	;volatile
-   375  000250  0B0F               	andlw	15
-   376  000252  0A0F               	xorlw	15
-   377  000254  A4D8               	btfss	status,2,c
-   378  000256  EF2F  F001         	goto	u651
-   379  00025A  EF31  F001         	goto	u650
-   380  00025E                     u651:
-   381  00025E  EF38  F001         	goto	l1384
-   382  000262                     u650:
-   383  000262                     
-   384                           ;Keypad.c: 49:     LATCbits.LATC0 = 1;
-   385  000262  808B               	bsf	139,0,c	;volatile
-   386                           
-   387                           ;Keypad.c: 50:     LATCbits.LATC1 = 0;
-   388  000264  928B               	bcf	139,1,c	;volatile
-   389                           
-   390                           ;Keypad.c: 51:     LATCbits.LATC2 = 1;
-   391  000266  848B               	bsf	139,2,c	;volatile
-   392  000268                     
-   393                           ;Keypad.c: 52:     state = 1;
-   394  000268  0E01               	movlw	1
-   395  00026A  6E1C               	movwf	motorKeypad@state^0,c
-   396                           
-   397                           ;Keypad.c: 53:    }
-   398  00026C  EFBC  F002         	goto	l255
-   399  000270                     l1384:
-   400  000270  5081               	movf	129,w,c	;volatile
-   401  000272  0B0F               	andlw	15
-   402  000274  0A0F               	xorlw	15
-   403  000276  B4D8               	btfsc	status,2,c
-   404  000278  EF40  F001         	goto	u661
-   405  00027C  EF42  F001         	goto	u660
-   406  000280                     u661:
-   407  000280  EFBC  F002         	goto	l255
-   408  000284                     u660:
-   409  000284                     
-   410                           ;Keypad.c: 55:     TI_ResetTics(tmr_bounce);
-   411  000284  5024               	movf	_tmr_bounce^0,w,c
-   412  000286  EC01  F003         	call	_TI_ResetTics
-   413  00028A                     l1388:
-   414                           
-   415                           ;Keypad.c: 56:     state = 3;
-   416  00028A  0E03               	movlw	3
-   417  00028C  6E1C               	movwf	motorKeypad@state^0,c
-   418  00028E  EFBC  F002         	goto	l255
-   419  000292                     l1390:
-   420                           
-   421                           ;Keypad.c: 60:    if ((PORTB & 0x0F) == 0x0F) {
-   422  000292  5081               	movf	129,w,c	;volatile
-   423  000294  0B0F               	andlw	15
-   424  000296  0A0F               	xorlw	15
-   425  000298  A4D8               	btfss	status,2,c
-   426  00029A  EF51  F001         	goto	u671
-   427  00029E  EF53  F001         	goto	u670
-   428  0002A2                     u671:
-   429  0002A2  EF5A  F001         	goto	l1396
-   430  0002A6                     u670:
-   431  0002A6                     
-   432                           ;Keypad.c: 61:     LATCbits.LATC0 = 1;
-   433  0002A6  808B               	bsf	139,0,c	;volatile
-   434                           
-   435                           ;Keypad.c: 62:     LATCbits.LATC1 = 1;
-   436  0002A8  828B               	bsf	139,1,c	;volatile
+   364                           
+   365                           ;incstack = 0
+   366  00024A  D0E4               	goto	l1253
+   367  00024C                     l1155:
+   368                           
+   369                           ;Keypad.c: 48:    if ((PORTB & 0x0F) == 0x0F) {
+   370  00024C  5081               	movf	129,w,c	;volatile
+   371  00024E  0B0F               	andlw	15
+   372  000250  0A0F               	xorlw	15
+   373  000252  A4D8               	btfss	status,2,c
+   374  000254  D006               	goto	l1161
+   375                           
+   376                           ;Keypad.c: 49:     LATCbits.LATC0 = 1;
+   377  000256  808B               	bsf	139,0,c	;volatile
+   378                           
+   379                           ;Keypad.c: 50:     LATCbits.LATC1 = 0;
+   380  000258  928B               	bcf	139,1,c	;volatile
+   381                           
+   382                           ;Keypad.c: 51:     LATCbits.LATC2 = 1;
+   383  00025A  848B               	bsf	139,2,c	;volatile
+   384                           
+   385                           ;Keypad.c: 52:     state = 1;
+   386  00025C  0E01               	movlw	1
+   387  00025E  6E1C               	movwf	motorKeypad@state^0,c
+   388                           
+   389                           ;Keypad.c: 53:    }
+   390  000260  0012               	return	
+   391  000262                     l1161:
+   392  000262  5081               	movf	129,w,c	;volatile
+   393  000264  0B0F               	andlw	15
+   394  000266  0A0F               	xorlw	15
+   395  000268  B4D8               	btfsc	status,2,c
+   396  00026A  0012               	return	
+   397                           
+   398                           ;Keypad.c: 55:     TI_ResetTics(tmr_bounce);
+   399  00026C  5024               	movf	_tmr_bounce^0,w,c
+   400  00026E  EC60  F002         	call	_TI_ResetTics
+   401  000272                     l1165:
+   402                           
+   403                           ;Keypad.c: 56:     state = 3;
+   404  000272  0E03               	movlw	3
+   405  000274  6E1C               	movwf	motorKeypad@state^0,c
+   406  000276  0012               	return	
+   407  000278                     l1167:
+   408                           
+   409                           ;Keypad.c: 60:    if ((PORTB & 0x0F) == 0x0F) {
+   410  000278  5081               	movf	129,w,c	;volatile
+   411  00027A  0B0F               	andlw	15
+   412  00027C  0A0F               	xorlw	15
+   413  00027E  A4D8               	btfss	status,2,c
+   414  000280  D006               	goto	l1173
+   415                           
+   416                           ;Keypad.c: 61:     LATCbits.LATC0 = 1;
+   417  000282  808B               	bsf	139,0,c	;volatile
+   418                           
+   419                           ;Keypad.c: 62:     LATCbits.LATC1 = 1;
+   420  000284  828B               	bsf	139,1,c	;volatile
+   421                           
+   422                           ;Keypad.c: 63:     LATCbits.LATC2 = 0;
+   423  000286  948B               	bcf	139,2,c	;volatile
+   424                           
+   425                           ;Keypad.c: 64:     state = 2;
+   426  000288  0E02               	movlw	2
+   427  00028A  6E1C               	movwf	motorKeypad@state^0,c
+   428                           
+   429                           ;Keypad.c: 65:    }
+   430  00028C  0012               	return	
+   431  00028E                     l1173:
+   432  00028E  5081               	movf	129,w,c	;volatile
+   433  000290  0B0F               	andlw	15
+   434  000292  0A0F               	xorlw	15
+   435  000294  B4D8               	btfsc	status,2,c
+   436  000296  0012               	return	
    437                           
-   438                           ;Keypad.c: 63:     LATCbits.LATC2 = 0;
-   439  0002AA  948B               	bcf	139,2,c	;volatile
-   440  0002AC                     
-   441                           ;Keypad.c: 64:     state = 2;
-   442  0002AC  0E02               	movlw	2
-   443  0002AE  6E1C               	movwf	motorKeypad@state^0,c
-   444                           
-   445                           ;Keypad.c: 65:    }
-   446  0002B0  EFBC  F002         	goto	l255
-   447  0002B4                     l1396:
-   448  0002B4  5081               	movf	129,w,c	;volatile
-   449  0002B6  0B0F               	andlw	15
-   450  0002B8  0A0F               	xorlw	15
-   451  0002BA  B4D8               	btfsc	status,2,c
-   452  0002BC  EF62  F001         	goto	u681
-   453  0002C0  EF64  F001         	goto	u680
-   454  0002C4                     u681:
-   455  0002C4  EFBC  F002         	goto	l255
-   456  0002C8                     u680:
-   457  0002C8                     
-   458                           ;Keypad.c: 67:     TI_ResetTics(tmr_bounce);
-   459  0002C8  5024               	movf	_tmr_bounce^0,w,c
-   460  0002CA  EC01  F003         	call	_TI_ResetTics
-   461  0002CE  EF45  F001         	goto	l1388
-   462  0002D2                     l1402:
-   463                           
-   464                           ;Keypad.c: 72:    if ((PORTB & 0x0F) == 0x0F) {
-   465  0002D2  5081               	movf	129,w,c	;volatile
-   466  0002D4  0B0F               	andlw	15
-   467  0002D6  0A0F               	xorlw	15
-   468  0002D8  A4D8               	btfss	status,2,c
-   469  0002DA  EF71  F001         	goto	u691
-   470  0002DE  EF73  F001         	goto	u690
-   471  0002E2                     u691:
-   472  0002E2  EF7A  F001         	goto	l1408
-   473  0002E6                     u690:
-   474  0002E6                     
-   475                           ;Keypad.c: 73:     LATCbits.LATC0 = 0;
-   476  0002E6  908B               	bcf	139,0,c	;volatile
-   477                           
-   478                           ;Keypad.c: 74:     LATCbits.LATC1 = 1;
-   479  0002E8  828B               	bsf	139,1,c	;volatile
+   438                           ;Keypad.c: 67:     TI_ResetTics(tmr_bounce);
+   439  000298  5024               	movf	_tmr_bounce^0,w,c
+   440  00029A  EC60  F002         	call	_TI_ResetTics
+   441  00029E  D7E9               	goto	l1165
+   442  0002A0                     l1179:
+   443                           
+   444                           ;Keypad.c: 72:    if ((PORTB & 0x0F) == 0x0F) {
+   445  0002A0  5081               	movf	129,w,c	;volatile
+   446  0002A2  0B0F               	andlw	15
+   447  0002A4  0A0F               	xorlw	15
+   448  0002A6  A4D8               	btfss	status,2,c
+   449  0002A8  D006               	goto	l1185
+   450  0002AA                     u220:
+   451                           
+   452                           ;Keypad.c: 73:     LATCbits.LATC0 = 0;
+   453  0002AA  908B               	bcf	139,0,c	;volatile
+   454                           
+   455                           ;Keypad.c: 74:     LATCbits.LATC1 = 1;
+   456  0002AC  828B               	bsf	139,1,c	;volatile
+   457                           
+   458                           ;Keypad.c: 75:     LATCbits.LATC2 = 1;
+   459  0002AE  848B               	bsf	139,2,c	;volatile
+   460  0002B0                     l1183:
+   461                           
+   462                           ;Keypad.c: 76:     state = 0;
+   463  0002B0  0E00               	movlw	0
+   464  0002B2  6E1C               	movwf	motorKeypad@state^0,c
+   465                           
+   466                           ;Keypad.c: 77:    }
+   467  0002B4  0012               	return	
+   468  0002B6                     l1185:
+   469  0002B6  5081               	movf	129,w,c	;volatile
+   470  0002B8  0B0F               	andlw	15
+   471  0002BA  0A0F               	xorlw	15
+   472  0002BC  B4D8               	btfsc	status,2,c
+   473  0002BE  0012               	return	
+   474                           
+   475                           ;Keypad.c: 79:     TI_ResetTics(tmr_bounce);
+   476  0002C0  5024               	movf	_tmr_bounce^0,w,c
+   477  0002C2  EC60  F002         	call	_TI_ResetTics
+   478  0002C6  D7D5               	goto	l1165
+   479  0002C8                     l1191:
    480                           
-   481                           ;Keypad.c: 75:     LATCbits.LATC2 = 1;
-   482  0002EA  848B               	bsf	139,2,c	;volatile
-   483  0002EC                     l1406:
-   484                           
-   485                           ;Keypad.c: 76:     state = 0;
-   486  0002EC  0E00               	movlw	0
-   487  0002EE  6E1C               	movwf	motorKeypad@state^0,c
-   488                           
-   489                           ;Keypad.c: 77:    }
-   490  0002F0  EFBC  F002         	goto	l255
-   491  0002F4                     l1408:
-   492  0002F4  5081               	movf	129,w,c	;volatile
-   493  0002F6  0B0F               	andlw	15
-   494  0002F8  0A0F               	xorlw	15
-   495  0002FA  B4D8               	btfsc	status,2,c
-   496  0002FC  EF82  F001         	goto	u701
-   497  000300  EF84  F001         	goto	u700
-   498  000304                     u701:
-   499  000304  EFBC  F002         	goto	l255
-   500  000308                     u700:
-   501  000308                     
-   502                           ;Keypad.c: 79:     TI_ResetTics(tmr_bounce);
-   503  000308  5024               	movf	_tmr_bounce^0,w,c
-   504  00030A  EC01  F003         	call	_TI_ResetTics
-   505  00030E  EF45  F001         	goto	l1388
-   506  000312                     l1414:
-   507                           
-   508                           ;Keypad.c: 84:    if ((TI_GetTics(tmr_bounce) >= 100) && ((PORTB & 0x0F) != 0x0F) ) {
-   509  000312  5024               	movf	_tmr_bounce^0,w,c
-   510  000314  ECBD  F002         	call	_TI_GetTics
-   511  000318  5029               	movf	(?_TI_GetTics+3)^0,w,c
-   512  00031A  1028               	iorwf	(?_TI_GetTics+2)^0,w,c
-   513  00031C  1027               	iorwf	(?_TI_GetTics+1)^0,w,c
-   514  00031E  E109               	bnz	u710
-   515  000320  0E64               	movlw	100
-   516  000322  5C26               	subwf	?_TI_GetTics^0,w,c
-   517  000324  A0D8               	btfss	status,0,c
-   518  000326  EF97  F001         	goto	u711
-   519  00032A  EF99  F001         	goto	u710
-   520  00032E                     u711:
-   521  00032E  EF4A  F002         	goto	l1450
-   522  000332                     u710:
-   523  000332  5081               	movf	129,w,c	;volatile
-   524  000334  0B0F               	andlw	15
-   525  000336  0A0F               	xorlw	15
-   526  000338  B4D8               	btfsc	status,2,c
-   527  00033A  EFA1  F001         	goto	u721
-   528  00033E  EFA3  F001         	goto	u720
-   529  000342                     u721:
-   530  000342  EF4A  F002         	goto	l1450
-   531  000346                     u720:
-   532  000346                     
-   533                           ;Keypad.c: 85:     colPressed = ((~(PORTC & 0X07)) >> 1) & 0x7F;
-   534  000346  5082               	movf	130,w,c	;volatile
-   535  000348  0B07               	andlw	7
-   536  00034A  6E33               	movwf	??_motorKeypad^0,c
-   537  00034C  6A34               	clrf	(??_motorKeypad+1)^0,c
-   538  00034E  1C33               	comf	??_motorKeypad^0,w,c
-   539  000350  6E35               	movwf	(??_motorKeypad+2)^0,c
-   540  000352  1C34               	comf	(??_motorKeypad+1)^0,w,c
-   541  000354  6E36               	movwf	(??_motorKeypad+3)^0,c
-   542  000356  3436               	rlcf	(??_motorKeypad+3)^0,w,c
-   543  000358  3036               	rrcf	(??_motorKeypad+3)^0,w,c
-   544  00035A  6E38               	movwf	(??_motorKeypad+5)^0,c
-   545  00035C  3035               	rrcf	(??_motorKeypad+2)^0,w,c
-   546  00035E  6E37               	movwf	(??_motorKeypad+4)^0,c
-   547  000360  5037               	movf	(??_motorKeypad+4)^0,w,c
-   548  000362  0B7F               	andlw	127
-   549  000364  6E1B               	movwf	motorKeypad@colPressed^0,c
-   550                           
-   551                           ;Keypad.c: 86:     rowPressed = ((~(PORTB & 0x0F)) >> 1) & 0x7F;
-   552  000366  5081               	movf	129,w,c	;volatile
-   553  000368  0B0F               	andlw	15
-   554  00036A  6E33               	movwf	??_motorKeypad^0,c
-   555  00036C  6A34               	clrf	(??_motorKeypad+1)^0,c
-   556  00036E  1C33               	comf	??_motorKeypad^0,w,c
-   557  000370  6E35               	movwf	(??_motorKeypad+2)^0,c
-   558  000372  1C34               	comf	(??_motorKeypad+1)^0,w,c
-   559  000374  6E36               	movwf	(??_motorKeypad+3)^0,c
-   560  000376  3436               	rlcf	(??_motorKeypad+3)^0,w,c
-   561  000378  3036               	rrcf	(??_motorKeypad+3)^0,w,c
-   562  00037A  6E38               	movwf	(??_motorKeypad+5)^0,c
-   563  00037C  3035               	rrcf	(??_motorKeypad+2)^0,w,c
-   564  00037E  6E37               	movwf	(??_motorKeypad+4)^0,c
-   565  000380  5037               	movf	(??_motorKeypad+4)^0,w,c
-   566  000382  0B7F               	andlw	127
-   567  000384  6E1A               	movwf	motorKeypad@rowPressed^0,c
+   481                           ;Keypad.c: 84:    if ((TI_GetTics(tmr_bounce) >= 100) && ((PORTB & 0x0F) != 0x0F) ) {
+   482  0002C8  5024               	movf	_tmr_bounce^0,w,c
+   483  0002CA  EC25  F002         	call	_TI_GetTics
+   484  0002CE  5029               	movf	(?_TI_GetTics+3)^0,w,c
+   485  0002D0  1028               	iorwf	(?_TI_GetTics+2)^0,w,c
+   486  0002D2  1027               	iorwf	(?_TI_GetTics+1)^0,w,c
+   487  0002D4  E104               	bnz	u240
+   488  0002D6  0E64               	movlw	100
+   489  0002D8  5C26               	subwf	?_TI_GetTics^0,w,c
+   490  0002DA  A0D8               	btfss	status,0,c
+   491  0002DC  D06E               	goto	l1227
+   492  0002DE                     u240:
+   493  0002DE  5081               	movf	129,w,c	;volatile
+   494  0002E0  0B0F               	andlw	15
+   495  0002E2  0A0F               	xorlw	15
+   496  0002E4  B4D8               	btfsc	status,2,c
+   497  0002E6  D069               	goto	l1227
+   498                           
+   499                           ;Keypad.c: 85:     colPressed = ((~(PORTC & 0X07)) >> 1) & 0x7F;
+   500  0002E8  5082               	movf	130,w,c	;volatile
+   501  0002EA  0B07               	andlw	7
+   502  0002EC  0AFF               	xorlw	255
+   503  0002EE  6E33               	movwf	??_motorKeypad^0,c
+   504  0002F0  90D8               	bcf	status,0,c
+   505  0002F2  3033               	rrcf	??_motorKeypad^0,w,c
+   506  0002F4  0B7F               	andlw	127
+   507  0002F6  6E1B               	movwf	motorKeypad@colPressed^0,c
+   508                           
+   509                           ;Keypad.c: 86:     rowPressed = ((~(PORTB & 0x0F)) >> 1) & 0x7F;
+   510  0002F8  5081               	movf	129,w,c	;volatile
+   511  0002FA  0B0F               	andlw	15
+   512  0002FC  0AFF               	xorlw	255
+   513  0002FE  6E33               	movwf	??_motorKeypad^0,c
+   514  000300  90D8               	bcf	status,0,c
+   515  000302  3033               	rrcf	??_motorKeypad^0,w,c
+   516  000304  0B7F               	andlw	127
+   517  000306  6E1A               	movwf	motorKeypad@rowPressed^0,c
+   518                           
+   519                           ;Keypad.c: 87:     rowPressed = rowPressed == 3 ? 2 : rowPressed;
+   520  000308  0E03               	movlw	3
+   521  00030A  181A               	xorwf	motorKeypad@rowPressed^0,w,c
+   522  00030C  B4D8               	btfsc	status,2,c
+   523  00030E  D004               	goto	l1199
+   524  000310  C01A  F035         	movff	motorKeypad@rowPressed,_motorKeypad$590
+   525  000314  6A36               	clrf	(_motorKeypad$590+1)^0,c
+   526  000316  D004               	goto	l1201
+   527  000318                     l1199:
+   528  000318  0E00               	movlw	0
+   529  00031A  6E36               	movwf	(_motorKeypad$590+1)^0,c
+   530  00031C  0E02               	movlw	2
+   531  00031E  6E35               	movwf	_motorKeypad$590^0,c
+   532  000320                     l1201:
+   533  000320  C035  F01A         	movff	_motorKeypad$590,motorKeypad@rowPressed
+   534                           
+   535                           ;Keypad.c: 88:     rowPressed = rowPressed > 3 ? 3 : rowPressed;
+   536  000324  0E04               	movlw	4
+   537  000326  601A               	cpfslt	motorKeypad@rowPressed^0,c
+   538  000328  D004               	goto	l1207
+   539  00032A  C01A  F037         	movff	motorKeypad@rowPressed,_motorKeypad$591
+   540  00032E  6A38               	clrf	(_motorKeypad$591+1)^0,c
+   541  000330  D004               	goto	l1209
+   542  000332                     l1207:
+   543  000332  0E00               	movlw	0
+   544  000334  6E38               	movwf	(_motorKeypad$591+1)^0,c
+   545  000336  0E03               	movlw	3
+   546  000338  6E37               	movwf	_motorKeypad$591^0,c
+   547  00033A                     l1209:
+   548  00033A  C037  F01A         	movff	_motorKeypad$591,motorKeypad@rowPressed
+   549                           
+   550                           ;Keypad.c: 89:     keyNum = keyNumber[rowPressed][colPressed];
+   551  00033E  501A               	movf	motorKeypad@rowPressed^0,w,c
+   552  000340  0D03               	mullw	3
+   553  000342  50F3               	movf	243,w,c
+   554  000344  0F3D               	addlw	low _keyNumber
+   555  000346  241B               	addwf	motorKeypad@colPressed^0,w,c
+   556  000348  6E33               	movwf	??_motorKeypad^0,c
+   557  00034A  C033  FFF6         	movff	??_motorKeypad,tblptrl
+   558  00034E                     	if	1	;There is more than 1 active tblptr byte
+   559  00034E  0E02               	movlw	high __smallconst
+   560  000350  6EF7               	movwf	tblptrh,c
+   561  000352                     	endif
+   562  000352                     	if	0	;tblptru may be non-zero
+   563  000352                     	endif
+   564  000352                     	if	0	;tblptru may be non-zero
+   565  000352                     	endif
+   566  000352  0008               	tblrd		*
+   567  000354  CFF5 F01E          	movff	tablat,_keyNum
    568                           
-   569                           ;Keypad.c: 87:     rowPressed = rowPressed == 3 ? 2 : rowPressed;
-   570  000386  0E03               	movlw	3
-   571  000388  181A               	xorwf	motorKeypad@rowPressed^0,w,c
-   572  00038A  B4D8               	btfsc	status,2,c
-   573  00038C  EFCA  F001         	goto	u731
-   574  000390  EFCC  F001         	goto	u730
-   575  000394                     u731:
-   576  000394  EFD1  F001         	goto	l1422
-   577  000398                     u730:
-   578  000398  C01A  F039         	movff	motorKeypad@rowPressed,_motorKeypad$586
-   579  00039C  6A3A               	clrf	(_motorKeypad$586+1)^0,c
-   580  00039E  EFD5  F001         	goto	l1424
-   581  0003A2                     l1422:
-   582  0003A2  0E00               	movlw	0
-   583  0003A4  6E3A               	movwf	(_motorKeypad$586+1)^0,c
-   584  0003A6  0E02               	movlw	2
-   585  0003A8  6E39               	movwf	_motorKeypad$586^0,c
-   586  0003AA                     l1424:
-   587  0003AA  C039  F01A         	movff	_motorKeypad$586,motorKeypad@rowPressed
-   588  0003AE                     
-   589                           ;Keypad.c: 88:     rowPressed = rowPressed > 3 ? 3 : rowPressed;
-   590  0003AE  0E04               	movlw	4
-   591  0003B0  601A               	cpfslt	motorKeypad@rowPressed^0,c
-   592  0003B2  EFDD  F001         	goto	u741
-   593  0003B6  EFDF  F001         	goto	u740
-   594  0003BA                     u741:
-   595  0003BA  EFE4  F001         	goto	l1430
-   596  0003BE                     u740:
-   597  0003BE  C01A  F03B         	movff	motorKeypad@rowPressed,_motorKeypad$587
-   598  0003C2  6A3C               	clrf	(_motorKeypad$587+1)^0,c
-   599  0003C4  EFE8  F001         	goto	l1432
-   600  0003C8                     l1430:
-   601  0003C8  0E00               	movlw	0
-   602  0003CA  6E3C               	movwf	(_motorKeypad$587+1)^0,c
-   603  0003CC  0E03               	movlw	3
-   604  0003CE  6E3B               	movwf	_motorKeypad$587^0,c
-   605  0003D0                     l1432:
-   606  0003D0  C03B  F01A         	movff	_motorKeypad$587,motorKeypad@rowPressed
-   607  0003D4                     
-   608                           ;Keypad.c: 89:     keyNum = keyNumber[rowPressed][colPressed];
-   609  0003D4  501A               	movf	motorKeypad@rowPressed^0,w,c
-   610  0003D6  0D03               	mullw	3
-   611  0003D8  0E3D               	movlw	low _keyNumber
-   612  0003DA  6E33               	movwf	??_motorKeypad^0,c
-   613  0003DC  0E02               	movlw	high _keyNumber
-   614  0003DE  6E34               	movwf	(??_motorKeypad+1)^0,c
-   615  0003E0  50F3               	movf	243,w,c
-   616  0003E2  2633               	addwf	??_motorKeypad^0,f,c
-   617  0003E4  50F4               	movf	244,w,c
-   618  0003E6  2234               	addwfc	(??_motorKeypad+1)^0,f,c
-   619  0003E8  501B               	movf	motorKeypad@colPressed^0,w,c
-   620  0003EA  2633               	addwf	??_motorKeypad^0,f,c
-   621  0003EC  0E00               	movlw	0
-   622  0003EE  2234               	addwfc	(??_motorKeypad+1)^0,f,c
-   623  0003F0  C033  FFF6         	movff	??_motorKeypad,tblptrl
-   624  0003F4  C034  FFF7         	movff	??_motorKeypad+1,tblptrh
-   625  0003F8                     	if	0	;tblptru may be non-zero
-   626  0003F8                     	endif
-   627  0003F8                     	if	0	;tblptru may be non-zero
-   628  0003F8                     	endif
-   629  0003F8  0008               	tblrd		*
-   630  0003FA  CFF5 F01E          	movff	tablat,_keyNum
-   631  0003FE                     
-   632                           ;Keypad.c: 91:     keyAux = sms[rowPressed][colPressed][indexSMS++];
-   633  0003FE  501A               	movf	motorKeypad@rowPressed^0,w,c
-   634  000400  0D0F               	mullw	15
-   635  000402  0E01               	movlw	low _sms
-   636  000404  6E33               	movwf	??_motorKeypad^0,c
-   637  000406  0E02               	movlw	high _sms
-   638  000408  6E34               	movwf	(??_motorKeypad+1)^0,c
-   639  00040A  50F3               	movf	243,w,c
-   640  00040C  2633               	addwf	??_motorKeypad^0,f,c
-   641  00040E  50F4               	movf	244,w,c
-   642  000410  2234               	addwfc	(??_motorKeypad+1)^0,f,c
-   643  000412  501B               	movf	motorKeypad@colPressed^0,w,c
-   644  000414  0D05               	mullw	5
-   645  000416  50F3               	movf	243,w,c
-   646  000418  2633               	addwf	??_motorKeypad^0,f,c
-   647  00041A  50F4               	movf	244,w,c
-   648  00041C  2234               	addwfc	(??_motorKeypad+1)^0,f,c
-   649  00041E  501D               	movf	_indexSMS^0,w,c
-   650  000420  2633               	addwf	??_motorKeypad^0,f,c
-   651  000422  0E00               	movlw	0
-   652  000424  2234               	addwfc	(??_motorKeypad+1)^0,f,c
-   653  000426  C033  FFF6         	movff	??_motorKeypad,tblptrl
-   654  00042A  C034  FFF7         	movff	??_motorKeypad+1,tblptrh
-   655  00042E                     	if	0	;tblptru may be non-zero
-   656  00042E                     	endif
-   657  00042E                     	if	0	;tblptru may be non-zero
-   658  00042E                     	endif
-   659  00042E  0008               	tblrd		*
-   660  000430  CFF5 F019          	movff	tablat,motorKeypad@keyAux
-   661  000434  2A1D               	incf	_indexSMS^0,f,c
-   662  000436                     
-   663                           ;Keypad.c: 92:     if(keyAux == '-') {
-   664  000436  0E2D               	movlw	45
-   665  000438  1819               	xorwf	motorKeypad@keyAux^0,w,c
-   666  00043A  A4D8               	btfss	status,2,c
-   667  00043C  EF22  F002         	goto	u751
-   668  000440  EF24  F002         	goto	u750
-   669  000444                     u751:
-   670  000444  EF44  F002         	goto	l245
-   671  000448                     u750:
-   672  000448                     
-   673                           ;Keypad.c: 93:         indexSMS = 0;
-   674  000448  0E00               	movlw	0
-   675  00044A  6E1D               	movwf	_indexSMS^0,c
-   676  00044C                     
-   677                           ;Keypad.c: 94:         key = sms[rowPressed][colPressed][indexSMS++];
-   678  00044C  501A               	movf	motorKeypad@rowPressed^0,w,c
-   679  00044E  0D0F               	mullw	15
-   680  000450  0E01               	movlw	low _sms
-   681  000452  6E33               	movwf	??_motorKeypad^0,c
-   682  000454  0E02               	movlw	high _sms
-   683  000456  6E34               	movwf	(??_motorKeypad+1)^0,c
-   684  000458  50F3               	movf	243,w,c
-   685  00045A  2633               	addwf	??_motorKeypad^0,f,c
-   686  00045C  50F4               	movf	244,w,c
-   687  00045E  2234               	addwfc	(??_motorKeypad+1)^0,f,c
-   688  000460  501B               	movf	motorKeypad@colPressed^0,w,c
-   689  000462  0D05               	mullw	5
-   690  000464  50F3               	movf	243,w,c
-   691  000466  2633               	addwf	??_motorKeypad^0,f,c
-   692  000468  50F4               	movf	244,w,c
-   693  00046A  2234               	addwfc	(??_motorKeypad+1)^0,f,c
-   694  00046C  501D               	movf	_indexSMS^0,w,c
-   695  00046E  2633               	addwf	??_motorKeypad^0,f,c
-   696  000470  0E00               	movlw	0
-   697  000472  2234               	addwfc	(??_motorKeypad+1)^0,f,c
-   698  000474  C033  FFF6         	movff	??_motorKeypad,tblptrl
-   699  000478  C034  FFF7         	movff	??_motorKeypad+1,tblptrh
-   700  00047C                     	if	0	;tblptru may be non-zero
-   701  00047C                     	endif
-   702  00047C                     	if	0	;tblptru may be non-zero
-   703  00047C                     	endif
-   704  00047C  0008               	tblrd		*
-   705  00047E  CFF5 F01F          	movff	tablat,_key
-   706  000482  2A1D               	incf	_indexSMS^0,f,c
-   707                           
-   708                           ;Keypad.c: 95:     } else {
-   709  000484  EF46  F002         	goto	l1448
-   710  000488                     l245:
-   711                           
-   712                           ;Keypad.c: 96:         key = keyAux;
-   713  000488  C019  F01F         	movff	motorKeypad@keyAux,_key
-   714  00048C                     l1448:
-   715                           
-   716                           ;Keypad.c: 98:     state = 4;
-   717  00048C  0E04               	movlw	4
-   718  00048E  6E1C               	movwf	motorKeypad@state^0,c
-   719                           
-   720                           ;Keypad.c: 99:    }
-   721  000490  EFBC  F002         	goto	l255
-   722  000494                     l1450:
-   723  000494  5081               	movf	129,w,c	;volatile
-   724  000496  0B0F               	andlw	15
-   725  000498  0A0F               	xorlw	15
-   726  00049A  A4D8               	btfss	status,2,c
-   727  00049C  EF52  F002         	goto	u761
-   728  0004A0  EF54  F002         	goto	u760
-   729  0004A4                     u761:
-   730  0004A4  EFBC  F002         	goto	l255
-   731  0004A8                     u760:
-   732  0004A8                     
-   733                           ;Keypad.c: 101:     LATCbits.LATC0 = 0;
-   734  0004A8  908B               	bcf	139,0,c	;volatile
-   735                           
-   736                           ;Keypad.c: 102:     LATCbits.LATC1 = 1;
-   737  0004AA  828B               	bsf	139,1,c	;volatile
-   738                           
-   739                           ;Keypad.c: 103:     LATCbits.LATC2 = 1;
-   740  0004AC  848B               	bsf	139,2,c	;volatile
-   741  0004AE  EF76  F001         	goto	l1406
-   742  0004B2                     l1456:
-   743                           
-   744                           ;Keypad.c: 108:    if ((PORTB & 0x0F) == 0x0F) {
-   745  0004B2  5081               	movf	129,w,c	;volatile
-   746  0004B4  0B0F               	andlw	15
-   747  0004B6  0A0F               	xorlw	15
-   748  0004B8  A4D8               	btfss	status,2,c
-   749  0004BA  EF61  F002         	goto	u771
-   750  0004BE  EF63  F002         	goto	u770
-   751  0004C2                     u771:
-   752  0004C2  EFBC  F002         	goto	l255
-   753  0004C6                     u770:
-   754  0004C6                     
-   755                           ;Keypad.c: 109:     TI_ResetTics(tmr_bounce);
-   756  0004C6  5024               	movf	_tmr_bounce^0,w,c
-   757  0004C8  EC01  F003         	call	_TI_ResetTics
-   758  0004CC                     
-   759                           ;Keypad.c: 110:     state = 5;
-   760  0004CC  0E05               	movlw	5
-   761  0004CE  6E1C               	movwf	motorKeypad@state^0,c
-   762  0004D0  EFBC  F002         	goto	l255
-   763  0004D4                     l1462:
-   764                           
-   765                           ;Keypad.c: 114:    if ((TI_GetTics(tmr_bounce) >= 100) && ((PORTB & 0x0F) == 0x0F) ) {
-   766  0004D4  5024               	movf	_tmr_bounce^0,w,c
-   767  0004D6  ECBD  F002         	call	_TI_GetTics
-   768  0004DA  5029               	movf	(?_TI_GetTics+3)^0,w,c
-   769  0004DC  1028               	iorwf	(?_TI_GetTics+2)^0,w,c
-   770  0004DE  1027               	iorwf	(?_TI_GetTics+1)^0,w,c
-   771  0004E0  E109               	bnz	u780
-   772  0004E2  0E64               	movlw	100
-   773  0004E4  5C26               	subwf	?_TI_GetTics^0,w,c
-   774  0004E6  A0D8               	btfss	status,0,c
-   775  0004E8  EF78  F002         	goto	u781
-   776  0004EC  EF7A  F002         	goto	u780
-   777  0004F0                     u781:
-   778  0004F0  EF8B  F002         	goto	l1470
-   779  0004F4                     u780:
-   780  0004F4  5081               	movf	129,w,c	;volatile
-   781  0004F6  0B0F               	andlw	15
-   782  0004F8  0A0F               	xorlw	15
-   783  0004FA  A4D8               	btfss	status,2,c
-   784  0004FC  EF82  F002         	goto	u791
-   785  000500  EF84  F002         	goto	u790
-   786  000504                     u791:
-   787  000504  EF8B  F002         	goto	l1470
-   788  000508                     u790:
-   789  000508                     
-   790                           ;Keypad.c: 115:     LATCbits.LATC0 = 0;
-   791  000508  908B               	bcf	139,0,c	;volatile
-   792                           
-   793                           ;Keypad.c: 116:     LATCbits.LATC1 = 1;
-   794  00050A  828B               	bsf	139,1,c	;volatile
-   795                           
-   796                           ;Keypad.c: 117:     LATCbits.LATC2 = 1;
-   797  00050C  848B               	bsf	139,2,c	;volatile
-   798                           
-   799                           ;Keypad.c: 118:     keyNum = -1;
-   800  00050E  681E               	setf	_keyNum^0,c
-   801                           
-   802                           ;Keypad.c: 119:     key = -1;
-   803  000510  681F               	setf	_key^0,c
-   804  000512  EF76  F001         	goto	l1406
-   805  000516                     l1470:
-   806  000516  5081               	movf	129,w,c	;volatile
-   807  000518  0B0F               	andlw	15
-   808  00051A  0A0F               	xorlw	15
-   809  00051C  B4D8               	btfsc	status,2,c
-   810  00051E  EF93  F002         	goto	u801
-   811  000522  EF95  F002         	goto	u800
-   812  000526                     u801:
-   813  000526  EFBC  F002         	goto	l255
-   814  00052A                     u800:
-   815  00052A  EF46  F002         	goto	l1448
-   816  00052E                     l1476:
-   817  00052E  501C               	movf	motorKeypad@state^0,w,c
-   818  000530  6E33               	movwf	??_motorKeypad^0,c
-   819  000532  6A34               	clrf	(??_motorKeypad+1)^0,c
-   820                           
-   821                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
+   569                           ;Keypad.c: 91:     keyAux = sms[rowPressed][colPressed][indexSMS++];
+   570  000358  501B               	movf	motorKeypad@colPressed^0,w,c
+   571  00035A  0D05               	mullw	5
+   572  00035C  CFF3 F033          	movff	prodl,??_motorKeypad
+   573  000360  501A               	movf	motorKeypad@rowPressed^0,w,c
+   574  000362  0D0F               	mullw	15
+   575  000364  50F3               	movf	243,w,c
+   576  000366  0F01               	addlw	low _sms
+   577  000368  2433               	addwf	??_motorKeypad^0,w,c
+   578  00036A  241D               	addwf	_indexSMS^0,w,c
+   579  00036C  6E34               	movwf	(??_motorKeypad+1)^0,c
+   580  00036E  C034  FFF6         	movff	??_motorKeypad+1,tblptrl
+   581  000372                     	if	1	;There is more than 1 active tblptr byte
+   582  000372  0E02               	movlw	high __smallconst
+   583  000374  6EF7               	movwf	tblptrh,c
+   584  000376                     	endif
+   585  000376                     	if	0	;tblptru may be non-zero
+   586  000376                     	endif
+   587  000376                     	if	0	;tblptru may be non-zero
+   588  000376                     	endif
+   589  000376  0008               	tblrd		*
+   590  000378  CFF5 F019          	movff	tablat,motorKeypad@keyAux
+   591  00037C  2A1D               	incf	_indexSMS^0,f,c
+   592                           
+   593                           ;Keypad.c: 92:     if(keyAux == '-') {
+   594  00037E  0E2D               	movlw	45
+   595  000380  1819               	xorwf	motorKeypad@keyAux^0,w,c
+   596  000382  A4D8               	btfss	status,2,c
+   597  000384  D015               	goto	l247
+   598                           
+   599                           ;Keypad.c: 93:         indexSMS = 0;
+   600  000386  0E00               	movlw	0
+   601  000388  6E1D               	movwf	_indexSMS^0,c
+   602                           
+   603                           ;Keypad.c: 94:         key = sms[rowPressed][colPressed][indexSMS++];
+   604  00038A  501B               	movf	motorKeypad@colPressed^0,w,c
+   605  00038C  0D05               	mullw	5
+   606  00038E  CFF3 F033          	movff	prodl,??_motorKeypad
+   607  000392  501A               	movf	motorKeypad@rowPressed^0,w,c
+   608  000394  0D0F               	mullw	15
+   609  000396  50F3               	movf	243,w,c
+   610  000398  0F01               	addlw	low _sms
+   611  00039A  2433               	addwf	??_motorKeypad^0,w,c
+   612  00039C  6E34               	movwf	(??_motorKeypad+1)^0,c
+   613  00039E  C034  FFF6         	movff	??_motorKeypad+1,tblptrl
+   614  0003A2                     	if	1	;There is more than 1 active tblptr byte
+   615  0003A2  0E02               	movlw	high __smallconst
+   616  0003A4  6EF7               	movwf	tblptrh,c
+   617  0003A6                     	endif
+   618  0003A6                     	if	0	;tblptru may be non-zero
+   619  0003A6                     	endif
+   620  0003A6                     	if	0	;tblptru may be non-zero
+   621  0003A6                     	endif
+   622  0003A6  0008               	tblrd		*
+   623  0003A8  CFF5 F01F          	movff	tablat,_key
+   624  0003AC  2A1D               	incf	_indexSMS^0,f,c
+   625                           
+   626                           ;Keypad.c: 95:     } else {
+   627  0003AE  D002               	goto	l1225
+   628  0003B0                     l247:
+   629                           
+   630                           ;Keypad.c: 96:         key = keyAux;
+   631  0003B0  C019  F01F         	movff	motorKeypad@keyAux,_key
+   632  0003B4                     l1225:
+   633                           
+   634                           ;Keypad.c: 98:     state = 4;
+   635  0003B4  0E04               	movlw	4
+   636  0003B6  6E1C               	movwf	motorKeypad@state^0,c
+   637                           
+   638                           ;Keypad.c: 99:    }
+   639  0003B8  0012               	return	
+   640  0003BA                     l1227:
+   641  0003BA  5081               	movf	129,w,c	;volatile
+   642  0003BC  0B0F               	andlw	15
+   643  0003BE  0A0F               	xorlw	15
+   644  0003C0  A4D8               	btfss	status,2,c
+   645  0003C2  0012               	return	
+   646  0003C4  D772               	goto	u220
+   647  0003C6                     l1233:
+   648                           
+   649                           ;Keypad.c: 108:    if ((PORTB & 0x0F) == 0x0F) {
+   650  0003C6  5081               	movf	129,w,c	;volatile
+   651  0003C8  0B0F               	andlw	15
+   652  0003CA  0A0F               	xorlw	15
+   653  0003CC  A4D8               	btfss	status,2,c
+   654  0003CE  0012               	return	
+   655                           
+   656                           ;Keypad.c: 109:     TI_ResetTics(tmr_bounce);
+   657  0003D0  5024               	movf	_tmr_bounce^0,w,c
+   658  0003D2  EC60  F002         	call	_TI_ResetTics
+   659                           
+   660                           ;Keypad.c: 110:     state = 5;
+   661  0003D6  0E05               	movlw	5
+   662  0003D8  6E1C               	movwf	motorKeypad@state^0,c
+   663  0003DA  0012               	return	
+   664  0003DC                     l1239:
+   665                           
+   666                           ;Keypad.c: 114:    if ((TI_GetTics(tmr_bounce) >= 100) && ((PORTB & 0x0F) == 0x0F) ) {
+   667  0003DC  5024               	movf	_tmr_bounce^0,w,c
+   668  0003DE  EC25  F002         	call	_TI_GetTics
+   669  0003E2  5029               	movf	(?_TI_GetTics+3)^0,w,c
+   670  0003E4  1028               	iorwf	(?_TI_GetTics+2)^0,w,c
+   671  0003E6  1027               	iorwf	(?_TI_GetTics+1)^0,w,c
+   672  0003E8  E104               	bnz	u310
+   673  0003EA  0E64               	movlw	100
+   674  0003EC  5C26               	subwf	?_TI_GetTics^0,w,c
+   675  0003EE  A0D8               	btfss	status,0,c
+   676  0003F0  D00B               	goto	l1247
+   677  0003F2                     u310:
+   678  0003F2  5081               	movf	129,w,c	;volatile
+   679  0003F4  0B0F               	andlw	15
+   680  0003F6  0A0F               	xorlw	15
+   681  0003F8  A4D8               	btfss	status,2,c
+   682  0003FA  D006               	goto	l1247
+   683                           
+   684                           ;Keypad.c: 115:     LATCbits.LATC0 = 0;
+   685  0003FC  908B               	bcf	139,0,c	;volatile
+   686                           
+   687                           ;Keypad.c: 116:     LATCbits.LATC1 = 1;
+   688  0003FE  828B               	bsf	139,1,c	;volatile
+   689                           
+   690                           ;Keypad.c: 117:     LATCbits.LATC2 = 1;
+   691  000400  848B               	bsf	139,2,c	;volatile
+   692                           
+   693                           ;Keypad.c: 118:     keyNum = -1;
+   694  000402  681E               	setf	_keyNum^0,c
+   695                           
+   696                           ;Keypad.c: 119:     key = -1;
+   697  000404  681F               	setf	_key^0,c
+   698  000406  D754               	goto	l1183
+   699  000408                     l1247:
+   700  000408  5081               	movf	129,w,c	;volatile
+   701  00040A  0B0F               	andlw	15
+   702  00040C  0A0F               	xorlw	15
+   703  00040E  B4D8               	btfsc	status,2,c
+   704  000410  0012               	return	
+   705  000412  D7D0               	goto	l1225
+   706  000414                     l1253:
+   707  000414  501C               	movf	motorKeypad@state^0,w,c
+   708  000416  6E33               	movwf	??_motorKeypad^0,c
+   709  000418  6A34               	clrf	(??_motorKeypad+1)^0,c
+   710                           
+   711                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
       +                          itches
-   822                           ; Switch size 1, requested type "simple"
-   823                           ; Number of cases is 1, Range of values is 0 to 0
-   824                           ; switch strategies available:
-   825                           ; Name         Instructions Cycles
-   826                           ; simple_byte            4     3 (average)
-   827                           ;	Chosen strategy is simple_byte
-   828  000534  5034               	movf	(??_motorKeypad+1)^0,w,c
-   829  000536  0A00               	xorlw	0	; case 0
-   830  000538  B4D8               	btfsc	status,2,c
-   831  00053A  EFA1  F002         	goto	l1640
-   832  00053E  EFBC  F002         	goto	l255
-   833  000542                     l1640:
-   834                           
-   835                           ; Switch size 1, requested type "simple"
-   836                           ; Number of cases is 6, Range of values is 0 to 5
-   837                           ; switch strategies available:
-   838                           ; Name         Instructions Cycles
-   839                           ; simple_byte           19    10 (average)
-   840                           ;	Chosen strategy is simple_byte
-   841  000542  5033               	movf	??_motorKeypad^0,w,c
-   842  000544  0A00               	xorlw	0	; case 0
-   843  000546  B4D8               	btfsc	status,2,c
-   844  000548  EF27  F001         	goto	l1378
-   845  00054C  0A01               	xorlw	1	; case 1
-   846  00054E  B4D8               	btfsc	status,2,c
-   847  000550  EF49  F001         	goto	l1390
-   848  000554  0A03               	xorlw	3	; case 2
-   849  000556  B4D8               	btfsc	status,2,c
-   850  000558  EF69  F001         	goto	l1402
-   851  00055C  0A01               	xorlw	1	; case 3
-   852  00055E  B4D8               	btfsc	status,2,c
-   853  000560  EF89  F001         	goto	l1414
-   854  000564  0A07               	xorlw	7	; case 4
-   855  000566  B4D8               	btfsc	status,2,c
-   856  000568  EF59  F002         	goto	l1456
-   857  00056C  0A01               	xorlw	1	; case 5
-   858  00056E  B4D8               	btfsc	status,2,c
-   859  000570  EF6A  F002         	goto	l1462
-   860  000574  EFBC  F002         	goto	l255
-   861  000578                     l255:
-   862  000578  0012               	return		;funcret
-   863  00057A                     __end_of_motorKeypad:
-   864                           	opt callstack 0
-   865                           
-   866 ;; *************** function _TI_ResetTics *****************
-   867 ;; Defined at:
-   868 ;;		line 55 in file "TAD_TIMER.c"
-   869 ;; Parameters:    Size  Location     Type
-   870 ;;  TimerHandle     1    wreg     unsigned char 
-   871 ;; Auto vars:     Size  Location     Type
-   872 ;;  TimerHandle     1    0[COMRAM] unsigned char 
-   873 ;; Return value:  Size  Location     Type
-   874 ;;                  1    wreg      void 
-   875 ;; Registers used:
-   876 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh
-   877 ;; Tracked objects:
-   878 ;;		On entry : 0/0
-   879 ;;		On exit  : 0/0
-   880 ;;		Unchanged: 0/0
-   881 ;; Data sizes:     COMRAM   BANK0   BANK1
-   882 ;;      Params:         0       0       0
-   883 ;;      Locals:         1       0       0
-   884 ;;      Temps:          0       0       0
-   885 ;;      Totals:         1       0       0
-   886 ;;Total ram usage:        1 bytes
-   887 ;; Hardware stack levels used:    1
-   888 ;; Hardware stack levels required when called:    2
-   889 ;; This function calls:
-   890 ;;		Nothing
-   891 ;; This function is called by:
-   892 ;;		_motorKeypad
-   893 ;;		_Espera
-   894 ;;		_WaitForBusy
-   895 ;; This function uses a non-reentrant model
-   896 ;;
-   897                           
-   898                           	psect	text2
-   899  000602                     __ptext2:
-   900                           	opt callstack 0
-   901  000602                     _TI_ResetTics:
-   902                           	opt callstack 27
-   903                           
-   904                           ;incstack = 0
-   905                           ;TI_ResetTics@TimerHandle stored from wreg
-   906  000602  6E26               	movwf	TI_ResetTics@TimerHandle^0,c
-   907  000604                     
-   908                           ;TAD_TIMER.c: 56:  (INTCONbits.GIE = 0); Timers[TimerHandle].TicsInicials=Tics; (INTCONb
+   712                           ; Switch size 1, requested type "simple"
+   713                           ; Number of cases is 1, Range of values is 0 to 0
+   714                           ; switch strategies available:
+   715                           ; Name         Instructions Cycles
+   716                           ; simple_byte            4     3 (average)
+   717                           ;	Chosen strategy is simple_byte
+   718  00041A  5034               	movf	(??_motorKeypad+1)^0,w,c
+   719  00041C  0A00               	xorlw	0	; case 0
+   720  00041E  A4D8               	btfss	status,2,c
+   721  000420  0012               	return	
+   722                           
+   723                           ; Switch size 1, requested type "simple"
+   724                           ; Number of cases is 6, Range of values is 0 to 5
+   725                           ; switch strategies available:
+   726                           ; Name         Instructions Cycles
+   727                           ; simple_byte           19    10 (average)
+   728                           ;	Chosen strategy is simple_byte
+   729  000422  5033               	movf	??_motorKeypad^0,w,c
+   730  000424  0A00               	xorlw	0	; case 0
+   731  000426  B4D8               	btfsc	status,2,c
+   732  000428  D711               	goto	l1155
+   733  00042A  0A01               	xorlw	1	; case 1
+   734  00042C  B4D8               	btfsc	status,2,c
+   735  00042E  D724               	goto	l1167
+   736  000430  0A03               	xorlw	3	; case 2
+   737  000432  B4D8               	btfsc	status,2,c
+   738  000434  D735               	goto	l1179
+   739  000436  0A01               	xorlw	1	; case 3
+   740  000438  B4D8               	btfsc	status,2,c
+   741  00043A  D746               	goto	l1191
+   742  00043C  0A07               	xorlw	7	; case 4
+   743  00043E  B4D8               	btfsc	status,2,c
+   744  000440  D7C2               	goto	l1233
+   745  000442  0A01               	xorlw	1	; case 5
+   746  000444  A4D8               	btfss	status,2,c
+   747  000446  0012               	return	
+   748  000448  D7C9               	goto	l1239
+   749  00044A                     __end_of_motorKeypad:
+   750                           	opt callstack 0
+   751                           
+   752 ;; *************** function _TI_ResetTics *****************
+   753 ;; Defined at:
+   754 ;;		line 55 in file "TAD_TIMER.c"
+   755 ;; Parameters:    Size  Location     Type
+   756 ;;  TimerHandle     1    wreg     unsigned char 
+   757 ;; Auto vars:     Size  Location     Type
+   758 ;;  TimerHandle     1    0[COMRAM] unsigned char 
+   759 ;; Return value:  Size  Location     Type
+   760 ;;                  1    wreg      void 
+   761 ;; Registers used:
+   762 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh
+   763 ;; Tracked objects:
+   764 ;;		On entry : 0/0
+   765 ;;		On exit  : 0/0
+   766 ;;		Unchanged: 0/0
+   767 ;; Data sizes:     COMRAM   BANK0   BANK1
+   768 ;;      Params:         0       0       0
+   769 ;;      Locals:         1       0       0
+   770 ;;      Temps:          0       0       0
+   771 ;;      Totals:         1       0       0
+   772 ;;Total ram usage:        1 bytes
+   773 ;; Hardware stack levels used:    1
+   774 ;; Hardware stack levels required when called:    2
+   775 ;; This function calls:
+   776 ;;		Nothing
+   777 ;; This function is called by:
+   778 ;;		_motorKeypad
+   779 ;; This function uses a non-reentrant model
+   780 ;;
+   781                           
+   782                           	psect	text2
+   783  0004C0                     __ptext2:
+   784                           	opt callstack 0
+   785  0004C0                     _TI_ResetTics:
+   786                           	opt callstack 27
+   787                           
+   788                           ;incstack = 0
+   789                           ;TI_ResetTics@TimerHandle stored from wreg
+   790  0004C0  6E26               	movwf	TI_ResetTics@TimerHandle^0,c
+   791                           
+   792                           ;TAD_TIMER.c: 56:  (INTCONbits.GIE = 0); Timers[TimerHandle].TicsInicials=Tics; (INTCONb
       +                          its.GIE = 1);
-   909  000604  9EF2               	bcf	242,7,c	;volatile
-   910  000606  5026               	movf	TI_ResetTics@TimerHandle^0,w,c
-   911  000608  0D05               	mullw	5
-   912  00060A  0E01               	movlw	low _Timers
-   913  00060C  24F3               	addwf	243,w,c
-   914  00060E  6ED9               	movwf	fsr2l,c
-   915  000610  0E00               	movlw	high _Timers
-   916  000612  20F4               	addwfc	prodh,w,c
-   917  000614  6EDA               	movwf	fsr2h,c
-   918  000616  C015  FFDE         	movff	_Tics,postinc2	;volatile
-   919  00061A  C016  FFDE         	movff	_Tics+1,postinc2	;volatile
-   920  00061E  C017  FFDE         	movff	_Tics+2,postinc2	;volatile
-   921  000622  C018  FFDE         	movff	_Tics+3,postinc2	;volatile
-   922  000626  8EF2               	bsf	242,7,c	;volatile
-   923  000628  0012               	return		;funcret
-   924  00062A                     __end_of_TI_ResetTics:
-   925                           	opt callstack 0
-   926                           
-   927 ;; *************** function _TI_GetTics *****************
-   928 ;; Defined at:
-   929 ;;		line 60 in file "TAD_TIMER.c"
-   930 ;; Parameters:    Size  Location     Type
-   931 ;;  TimerHandle     1    wreg     unsigned char 
-   932 ;; Auto vars:     Size  Location     Type
-   933 ;;  TimerHandle     1   12[COMRAM] unsigned char 
-   934 ;;  CopiaTicsAct    4    8[COMRAM] unsigned long 
-   935 ;; Return value:  Size  Location     Type
-   936 ;;                  4    0[COMRAM] unsigned long 
-   937 ;; Registers used:
-   938 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh
-   939 ;; Tracked objects:
-   940 ;;		On entry : 0/0
-   941 ;;		On exit  : 0/0
-   942 ;;		Unchanged: 0/0
-   943 ;; Data sizes:     COMRAM   BANK0   BANK1
-   944 ;;      Params:         4       0       0
-   945 ;;      Locals:         5       0       0
-   946 ;;      Temps:          4       0       0
-   947 ;;      Totals:        13       0       0
-   948 ;;Total ram usage:       13 bytes
-   949 ;; Hardware stack levels used:    1
-   950 ;; Hardware stack levels required when called:    2
-   951 ;; This function calls:
-   952 ;;		Nothing
-   953 ;; This function is called by:
-   954 ;;		_motorKeypad
-   955 ;;		_Espera
-   956 ;;		_WaitForBusy
-   957 ;; This function uses a non-reentrant model
-   958 ;;
-   959                           
-   960                           	psect	text3
-   961  00057A                     __ptext3:
-   962                           	opt callstack 0
-   963  00057A                     _TI_GetTics:
-   964                           	opt callstack 27
-   965                           
-   966                           ;incstack = 0
-   967                           ;TI_GetTics@TimerHandle stored from wreg
-   968  00057A  6E32               	movwf	TI_GetTics@TimerHandle^0,c
-   969  00057C                     
-   970                           ;TAD_TIMER.c: 61:     (INTCONbits.GIE = 0); unsigned long CopiaTicsActual=Tics; (INTCONb
+   793  0004C2  9EF2               	bcf	242,7,c	;volatile
+   794  0004C4  5026               	movf	TI_ResetTics@TimerHandle^0,w,c
+   795  0004C6  0D05               	mullw	5
+   796  0004C8  50F3               	movf	243,w,c
+   797  0004CA  0F01               	addlw	low _Timers
+   798  0004CC  6ED9               	movwf	fsr2l,c
+   799  0004CE  6ADA               	clrf	fsr2h,c
+   800  0004D0  C015  FFDE         	movff	_Tics,postinc2	;volatile
+   801  0004D4  C016  FFDE         	movff	_Tics+1,postinc2	;volatile
+   802  0004D8  C017  FFDE         	movff	_Tics+2,postinc2	;volatile
+   803  0004DC  C018  FFDE         	movff	_Tics+3,postinc2	;volatile
+   804  0004E0  8EF2               	bsf	242,7,c	;volatile
+   805  0004E2  0012               	return		;funcret
+   806  0004E4                     __end_of_TI_ResetTics:
+   807                           	opt callstack 0
+   808                           
+   809 ;; *************** function _TI_GetTics *****************
+   810 ;; Defined at:
+   811 ;;		line 60 in file "TAD_TIMER.c"
+   812 ;; Parameters:    Size  Location     Type
+   813 ;;  TimerHandle     1    wreg     unsigned char 
+   814 ;; Auto vars:     Size  Location     Type
+   815 ;;  TimerHandle     1   12[COMRAM] unsigned char 
+   816 ;;  CopiaTicsAct    4    8[COMRAM] unsigned long 
+   817 ;; Return value:  Size  Location     Type
+   818 ;;                  4    0[COMRAM] unsigned long 
+   819 ;; Registers used:
+   820 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh
+   821 ;; Tracked objects:
+   822 ;;		On entry : 0/0
+   823 ;;		On exit  : 0/0
+   824 ;;		Unchanged: 0/0
+   825 ;; Data sizes:     COMRAM   BANK0   BANK1
+   826 ;;      Params:         4       0       0
+   827 ;;      Locals:         5       0       0
+   828 ;;      Temps:          4       0       0
+   829 ;;      Totals:        13       0       0
+   830 ;;Total ram usage:       13 bytes
+   831 ;; Hardware stack levels used:    1
+   832 ;; Hardware stack levels required when called:    2
+   833 ;; This function calls:
+   834 ;;		Nothing
+   835 ;; This function is called by:
+   836 ;;		_motorKeypad
+   837 ;; This function uses a non-reentrant model
+   838 ;;
+   839                           
+   840                           	psect	text3
+   841  00044A                     __ptext3:
+   842                           	opt callstack 0
+   843  00044A                     _TI_GetTics:
+   844                           	opt callstack 27
+   845                           
+   846                           ;incstack = 0
+   847                           ;TI_GetTics@TimerHandle stored from wreg
+   848  00044A  6E32               	movwf	TI_GetTics@TimerHandle^0,c
+   849                           
+   850                           ;TAD_TIMER.c: 61:     (INTCONbits.GIE = 0); unsigned long CopiaTicsActual=Tics; (INTCONb
       +                          its.GIE = 1);
-   971  00057C  9EF2               	bcf	242,7,c	;volatile
-   972  00057E  C015  F02E         	movff	_Tics,TI_GetTics@CopiaTicsActual	;volatile
-   973  000582  C016  F02F         	movff	_Tics+1,TI_GetTics@CopiaTicsActual+1	;volatile
-   974  000586  C017  F030         	movff	_Tics+2,TI_GetTics@CopiaTicsActual+2	;volatile
-   975  00058A  C018  F031         	movff	_Tics+3,TI_GetTics@CopiaTicsActual+3	;volatile
-   976  00058E  8EF2               	bsf	242,7,c	;volatile
-   977  000590                     
-   978                           ;TAD_TIMER.c: 62:  return (CopiaTicsActual-(Timers[TimerHandle].TicsInicials));
-   979  000590  5032               	movf	TI_GetTics@TimerHandle^0,w,c
-   980  000592  0D05               	mullw	5
-   981  000594  0E01               	movlw	low _Timers
-   982  000596  24F3               	addwf	243,w,c
-   983  000598  6ED9               	movwf	fsr2l,c
-   984  00059A  0E00               	movlw	high _Timers
-   985  00059C  20F4               	addwfc	prodh,w,c
-   986  00059E  6EDA               	movwf	fsr2h,c
-   987  0005A0  CFDE F02A          	movff	postinc2,??_TI_GetTics
-   988  0005A4  CFDE F02B          	movff	postinc2,??_TI_GetTics+1
-   989  0005A8  CFDE F02C          	movff	postinc2,??_TI_GetTics+2
-   990  0005AC  CFDE F02D          	movff	postinc2,??_TI_GetTics+3
-   991  0005B0  502A               	movf	??_TI_GetTics^0,w,c
-   992  0005B2  5C2E               	subwf	TI_GetTics@CopiaTicsActual^0,w,c
-   993  0005B4  6E26               	movwf	?_TI_GetTics^0,c
-   994  0005B6  502B               	movf	(??_TI_GetTics+1)^0,w,c
-   995  0005B8  582F               	subwfb	(TI_GetTics@CopiaTicsActual+1)^0,w,c
-   996  0005BA  6E27               	movwf	(?_TI_GetTics+1)^0,c
-   997  0005BC  502C               	movf	(??_TI_GetTics+2)^0,w,c
-   998  0005BE  5830               	subwfb	(TI_GetTics@CopiaTicsActual+2)^0,w,c
-   999  0005C0  6E28               	movwf	(?_TI_GetTics+2)^0,c
-  1000  0005C2  502D               	movf	(??_TI_GetTics+3)^0,w,c
-  1001  0005C4  5831               	subwfb	(TI_GetTics@CopiaTicsActual+3)^0,w,c
-  1002  0005C6  6E29               	movwf	(?_TI_GetTics+3)^0,c
-  1003  0005C8  0012               	return		;funcret
-  1004  0005CA                     __end_of_TI_GetTics:
-  1005                           	opt callstack 0
-  1006                           
-  1007 ;; *************** function _TI_Init *****************
-  1008 ;; Defined at:
-  1009 ;;		line 34 in file "TAD_TIMER.c"
-  1010 ;; Parameters:    Size  Location     Type
-  1011 ;;		None
-  1012 ;; Auto vars:     Size  Location     Type
-  1013 ;;  counter         1    0[COMRAM] unsigned char 
-  1014 ;; Return value:  Size  Location     Type
-  1015 ;;                  1    wreg      void 
-  1016 ;; Registers used:
-  1017 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh
-  1018 ;; Tracked objects:
-  1019 ;;		On entry : 0/0
-  1020 ;;		On exit  : 0/0
-  1021 ;;		Unchanged: 0/0
-  1022 ;; Data sizes:     COMRAM   BANK0   BANK1
-  1023 ;;      Params:         0       0       0
-  1024 ;;      Locals:         1       0       0
-  1025 ;;      Temps:          0       0       0
-  1026 ;;      Totals:         1       0       0
-  1027 ;;Total ram usage:        1 bytes
-  1028 ;; Hardware stack levels used:    1
-  1029 ;; Hardware stack levels required when called:    2
-  1030 ;; This function calls:
-  1031 ;;		Nothing
-  1032 ;; This function is called by:
-  1033 ;;		_main
-  1034 ;; This function uses a non-reentrant model
-  1035 ;;
-  1036                           
-  1037                           	psect	text4
-  1038  0005CA                     __ptext4:
-  1039                           	opt callstack 0
-  1040  0005CA                     _TI_Init:
-  1041                           	opt callstack 28
-  1042  0005CA                     
-  1043                           ;TAD_TIMER.c: 35:  for (unsigned char counter=0; counter<4; counter++) {
-  1044  0005CA  0E00               	movlw	0
-  1045  0005CC  6E26               	movwf	TI_Init@counter^0,c
-  1046  0005CE                     l998:
+   851  00044C  9EF2               	bcf	242,7,c	;volatile
+   852  00044E  C015  F02E         	movff	_Tics,TI_GetTics@CopiaTicsActual	;volatile
+   853  000452  C016  F02F         	movff	_Tics+1,TI_GetTics@CopiaTicsActual+1	;volatile
+   854  000456  C017  F030         	movff	_Tics+2,TI_GetTics@CopiaTicsActual+2	;volatile
+   855  00045A  C018  F031         	movff	_Tics+3,TI_GetTics@CopiaTicsActual+3	;volatile
+   856  00045E  8EF2               	bsf	242,7,c	;volatile
+   857                           
+   858                           ;TAD_TIMER.c: 62:  return (CopiaTicsActual-(Timers[TimerHandle].TicsInicials));
+   859  000460  5032               	movf	TI_GetTics@TimerHandle^0,w,c
+   860  000462  0D05               	mullw	5
+   861  000464  50F3               	movf	243,w,c
+   862  000466  0F01               	addlw	low _Timers
+   863  000468  6ED9               	movwf	fsr2l,c
+   864  00046A  6ADA               	clrf	fsr2h,c
+   865  00046C  CFDE F02A          	movff	postinc2,??_TI_GetTics
+   866  000470  CFDE F02B          	movff	postinc2,??_TI_GetTics+1
+   867  000474  CFDE F02C          	movff	postinc2,??_TI_GetTics+2
+   868  000478  CFDE F02D          	movff	postinc2,??_TI_GetTics+3
+   869  00047C  502A               	movf	??_TI_GetTics^0,w,c
+   870  00047E  5C2E               	subwf	TI_GetTics@CopiaTicsActual^0,w,c
+   871  000480  6E26               	movwf	?_TI_GetTics^0,c
+   872  000482  502B               	movf	(??_TI_GetTics+1)^0,w,c
+   873  000484  582F               	subwfb	(TI_GetTics@CopiaTicsActual+1)^0,w,c
+   874  000486  6E27               	movwf	(?_TI_GetTics+1)^0,c
+   875  000488  502C               	movf	(??_TI_GetTics+2)^0,w,c
+   876  00048A  5830               	subwfb	(TI_GetTics@CopiaTicsActual+2)^0,w,c
+   877  00048C  6E28               	movwf	(?_TI_GetTics+2)^0,c
+   878  00048E  502D               	movf	(??_TI_GetTics+3)^0,w,c
+   879  000490  5831               	subwfb	(TI_GetTics@CopiaTicsActual+3)^0,w,c
+   880  000492  6E29               	movwf	(?_TI_GetTics+3)^0,c
+   881  000494  0012               	return		;funcret
+   882  000496                     __end_of_TI_GetTics:
+   883                           	opt callstack 0
+   884                           
+   885 ;; *************** function _initSIO *****************
+   886 ;; Defined at:
+   887 ;;		line 5 in file "SIO.c"
+   888 ;; Parameters:    Size  Location     Type
+   889 ;;		None
+   890 ;; Auto vars:     Size  Location     Type
+   891 ;;		None
+   892 ;; Return value:  Size  Location     Type
+   893 ;;                  1    wreg      void 
+   894 ;; Registers used:
+   895 ;;		wreg, status,2
+   896 ;; Tracked objects:
+   897 ;;		On entry : 0/0
+   898 ;;		On exit  : 0/0
+   899 ;;		Unchanged: 0/0
+   900 ;; Data sizes:     COMRAM   BANK0   BANK1
+   901 ;;      Params:         0       0       0
+   902 ;;      Locals:         0       0       0
+   903 ;;      Temps:          0       0       0
+   904 ;;      Totals:         0       0       0
+   905 ;;Total ram usage:        0 bytes
+   906 ;; Hardware stack levels used:    1
+   907 ;; Hardware stack levels required when called:    2
+   908 ;; This function calls:
+   909 ;;		Nothing
+   910 ;; This function is called by:
+   911 ;;		_main
+   912 ;; This function uses a non-reentrant model
+   913 ;;
+   914                           
+   915                           	psect	text4
+   916  000530                     __ptext4:
+   917                           	opt callstack 0
+   918  000530                     _initSIO:
+   919                           	opt callstack 28
+   920                           
+   921                           ;SIO.c: 7:     RCSTAbits.SPEN = 1;
+   922                           
+   923                           ;incstack = 0
+   924  000530  8EAB               	bsf	171,7,c	;volatile
+   925                           
+   926                           ;SIO.c: 8:  RCSTAbits.RX9 = 0;
+   927  000532  9CAB               	bcf	171,6,c	;volatile
+   928                           
+   929                           ;SIO.c: 10:  SPBRG = 64;
+   930  000534  0E40               	movlw	64
+   931  000536  6EAF               	movwf	175,c	;volatile
+   932                           
+   933                           ;SIO.c: 11:     TXSTAbits.TXEN = 1;
+   934  000538  8AAC               	bsf	172,5,c	;volatile
+   935                           
+   936                           ;SIO.c: 12:  RCSTAbits.CREN = 1;
+   937  00053A  88AB               	bsf	171,4,c	;volatile
+   938  00053C  0012               	return		;funcret
+   939  00053E                     __end_of_initSIO:
+   940                           	opt callstack 0
+   941                           
+   942 ;; *************** function _TI_Init *****************
+   943 ;; Defined at:
+   944 ;;		line 34 in file "TAD_TIMER.c"
+   945 ;; Parameters:    Size  Location     Type
+   946 ;;		None
+   947 ;; Auto vars:     Size  Location     Type
+   948 ;;  counter         1    0[COMRAM] unsigned char 
+   949 ;; Return value:  Size  Location     Type
+   950 ;;                  1    wreg      void 
+   951 ;; Registers used:
+   952 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh
+   953 ;; Tracked objects:
+   954 ;;		On entry : 0/0
+   955 ;;		On exit  : 0/0
+   956 ;;		Unchanged: 0/0
+   957 ;; Data sizes:     COMRAM   BANK0   BANK1
+   958 ;;      Params:         0       0       0
+   959 ;;      Locals:         1       0       0
+   960 ;;      Temps:          0       0       0
+   961 ;;      Totals:         1       0       0
+   962 ;;Total ram usage:        1 bytes
+   963 ;; Hardware stack levels used:    1
+   964 ;; Hardware stack levels required when called:    2
+   965 ;; This function calls:
+   966 ;;		Nothing
+   967 ;; This function is called by:
+   968 ;;		_main
+   969 ;; This function uses a non-reentrant model
+   970 ;;
+   971                           
+   972                           	psect	text5
+   973  000496                     __ptext5:
+   974                           	opt callstack 0
+   975  000496                     _TI_Init:
+   976                           	opt callstack 28
+   977                           
+   978                           ;TAD_TIMER.c: 35:  for (unsigned char counter=0; counter<4; counter++) {
+   979                           
+   980                           ;incstack = 0
+   981  000496  0E00               	movlw	0
+   982  000498  6E26               	movwf	TI_Init@counter^0,c
+   983  00049A                     l993:
+   984                           
+   985                           ;TAD_TIMER.c: 36:   Timers[counter].Busy=0;
+   986  00049A  5026               	movf	TI_Init@counter^0,w,c
+   987  00049C  0D05               	mullw	5
+   988  00049E  50F3               	movf	243,w,c
+   989  0004A0  0F05               	addlw	low (_Timers+4)
+   990  0004A2  6ED9               	movwf	fsr2l,c
+   991  0004A4  6ADA               	clrf	fsr2h,c
+   992  0004A6  0E00               	movlw	0
+   993  0004A8  6EDF               	movwf	indf2,c
+   994                           
+   995                           ;TAD_TIMER.c: 37:  }
+   996  0004AA  2A26               	incf	TI_Init@counter^0,f,c
+   997  0004AC  0E03               	movlw	3
+   998  0004AE  6426               	cpfsgt	TI_Init@counter^0,c
+   999  0004B0  D7F4               	goto	l993
+  1000                           
+  1001                           ;TAD_TIMER.c: 38:  T0CON=0b11000001;
+  1002  0004B2  0EC1               	movlw	193
+  1003  0004B4  6ED5               	movwf	213,c	;volatile
+  1004                           
+  1005                           ;TAD_TIMER.c: 39:     TMR0L=56;
+  1006  0004B6  0E38               	movlw	56
+  1007  0004B8  6ED6               	movwf	214,c	;volatile
+  1008                           
+  1009                           ;TAD_TIMER.c: 40:  INTCONbits.TMR0IF = 0;
+  1010  0004BA  94F2               	bcf	242,2,c	;volatile
+  1011                           
+  1012                           ;TAD_TIMER.c: 41:  INTCONbits.TMR0IE = 1;
+  1013  0004BC  8AF2               	bsf	242,5,c	;volatile
+  1014  0004BE  0012               	return		;funcret
+  1015  0004C0                     __end_of_TI_Init:
+  1016                           	opt callstack 0
+  1017                           
+  1018 ;; *************** function _High_RSI *****************
+  1019 ;; Defined at:
+  1020 ;;		line 14 in file "main.c"
+  1021 ;; Parameters:    Size  Location     Type
+  1022 ;;		None
+  1023 ;; Auto vars:     Size  Location     Type
+  1024 ;;		None
+  1025 ;; Return value:  Size  Location     Type
+  1026 ;;                  1    wreg      void 
+  1027 ;; Registers used:
+  1028 ;;		wreg, status,2, status,0, cstack
+  1029 ;; Tracked objects:
+  1030 ;;		On entry : 0/0
+  1031 ;;		On exit  : 0/0
+  1032 ;;		Unchanged: 0/0
+  1033 ;; Data sizes:     COMRAM   BANK0   BANK1
+  1034 ;;      Params:         0       0       0
+  1035 ;;      Locals:         0       0       0
+  1036 ;;      Temps:          0       0       0
+  1037 ;;      Totals:         0       0       0
+  1038 ;;Total ram usage:        0 bytes
+  1039 ;; Hardware stack levels used:    1
+  1040 ;; Hardware stack levels required when called:    1
+  1041 ;; This function calls:
+  1042 ;;		_RSI_Timer0
+  1043 ;; This function is called by:
+  1044 ;;		Interrupt level 2
+  1045 ;; This function uses a non-reentrant model
+  1046 ;;
   1047                           
-  1048                           ;TAD_TIMER.c: 36:   Timers[counter].Busy=0;
-  1049  0005CE  5026               	movf	TI_Init@counter^0,w,c
-  1050  0005D0  0D05               	mullw	5
-  1051  0005D2  0E05               	movlw	low (_Timers+4)
-  1052  0005D4  24F3               	addwf	243,w,c
-  1053  0005D6  6ED9               	movwf	fsr2l,c
-  1054  0005D8  0E00               	movlw	high (_Timers+4)
-  1055  0005DA  20F4               	addwfc	prodh,w,c
-  1056  0005DC  6EDA               	movwf	fsr2h,c
-  1057  0005DE  0E00               	movlw	0
-  1058  0005E0  6EDF               	movwf	indf2,c
-  1059  0005E2                     
-  1060                           ;TAD_TIMER.c: 37:  }
-  1061  0005E2  2A26               	incf	TI_Init@counter^0,f,c
-  1062  0005E4  0E03               	movlw	3
-  1063  0005E6  6426               	cpfsgt	TI_Init@counter^0,c
-  1064  0005E8  EFF8  F002         	goto	u51
-  1065  0005EC  EFFA  F002         	goto	u50
-  1066  0005F0                     u51:
-  1067  0005F0  EFE7  F002         	goto	l998
-  1068  0005F4                     u50:
-  1069  0005F4                     
-  1070                           ;TAD_TIMER.c: 38:  T0CON=0b11000001;
-  1071  0005F4  0EC1               	movlw	193
-  1072  0005F6  6ED5               	movwf	213,c	;volatile
-  1073                           
-  1074                           ;TAD_TIMER.c: 39:     TMR0L=56;
-  1075  0005F8  0E38               	movlw	56
-  1076  0005FA  6ED6               	movwf	214,c	;volatile
-  1077  0005FC                     
-  1078                           ;TAD_TIMER.c: 40:  INTCONbits.TMR0IF = 0;
-  1079  0005FC  94F2               	bcf	242,2,c	;volatile
-  1080  0005FE                     
-  1081                           ;TAD_TIMER.c: 41:  INTCONbits.TMR0IE = 1;
-  1082  0005FE  8AF2               	bsf	242,5,c	;volatile
-  1083  000600  0012               	return		;funcret
-  1084  000602                     __end_of_TI_Init:
-  1085                           	opt callstack 0
-  1086                           
-  1087 ;; *************** function _High_RSI *****************
-  1088 ;; Defined at:
-  1089 ;;		line 13 in file "main.c"
-  1090 ;; Parameters:    Size  Location     Type
-  1091 ;;		None
-  1092 ;; Auto vars:     Size  Location     Type
-  1093 ;;		None
-  1094 ;; Return value:  Size  Location     Type
-  1095 ;;                  1    wreg      void 
-  1096 ;; Registers used:
-  1097 ;;		wreg, status,2, status,0, cstack
-  1098 ;; Tracked objects:
-  1099 ;;		On entry : 0/0
-  1100 ;;		On exit  : 0/0
-  1101 ;;		Unchanged: 0/0
-  1102 ;; Data sizes:     COMRAM   BANK0   BANK1
-  1103 ;;      Params:         0       0       0
-  1104 ;;      Locals:         0       0       0
-  1105 ;;      Temps:          0       0       0
-  1106 ;;      Totals:         0       0       0
-  1107 ;;Total ram usage:        0 bytes
-  1108 ;; Hardware stack levels used:    1
-  1109 ;; Hardware stack levels required when called:    1
-  1110 ;; This function calls:
-  1111 ;;		_RSI_Timer0
-  1112 ;; This function is called by:
-  1113 ;;		Interrupt level 2
-  1114 ;; This function uses a non-reentrant model
-  1115 ;;
-  1116                           
-  1117                           	psect	intcode
-  1118  000008                     __pintcode:
+  1048                           	psect	intcode
+  1049  000008                     __pintcode:
+  1050                           	opt callstack 0
+  1051  000008                     _High_RSI:
+  1052                           	opt callstack 27
+  1053                           
+  1054                           ;incstack = 0
+  1055  000008  8239               	bsf	btemp,1,c	;set compiler interrupt flag (level 2)
+  1056                           
+  1057                           ;main.c: 15:     RCONbits.IPEN = 0;
+  1058  00000A  EC8C  F002         	call	_RSI_Timer0	;wreg free
+  1059  00000E  9239               	bcf	btemp,1,c	;clear compiler interrupt flag (level 2)
+  1060  000010  0011               	retfie		f
+  1061  000012                     __end_of_High_RSI:
+  1062                           	opt callstack 0
+  1063                           
+  1064 ;; *************** function _RSI_Timer0 *****************
+  1065 ;; Defined at:
+  1066 ;;		line 25 in file "TAD_TIMER.c"
+  1067 ;; Parameters:    Size  Location     Type
+  1068 ;;		None
+  1069 ;; Auto vars:     Size  Location     Type
+  1070 ;;		None
+  1071 ;; Return value:  Size  Location     Type
+  1072 ;;                  1    wreg      void 
+  1073 ;; Registers used:
+  1074 ;;		wreg, status,2, status,0
+  1075 ;; Tracked objects:
+  1076 ;;		On entry : 0/0
+  1077 ;;		On exit  : 0/0
+  1078 ;;		Unchanged: 0/0
+  1079 ;; Data sizes:     COMRAM   BANK0   BANK1
+  1080 ;;      Params:         0       0       0
+  1081 ;;      Locals:         0       0       0
+  1082 ;;      Temps:          0       0       0
+  1083 ;;      Totals:         0       0       0
+  1084 ;;Total ram usage:        0 bytes
+  1085 ;; Hardware stack levels used:    1
+  1086 ;; This function calls:
+  1087 ;;		Nothing
+  1088 ;; This function is called by:
+  1089 ;;		_High_RSI
+  1090 ;; This function uses a non-reentrant model
+  1091 ;;
+  1092                           
+  1093                           	psect	text7
+  1094  000518                     __ptext7:
+  1095                           	opt callstack 0
+  1096  000518                     _RSI_Timer0:
+  1097                           	opt callstack 27
+  1098                           
+  1099                           ;TAD_TIMER.c: 27:     TMR0=56;
+  1100                           
+  1101                           ;incstack = 0
+  1102  000518  0E00               	movlw	0
+  1103  00051A  6ED7               	movwf	215,c	;volatile
+  1104  00051C  0E38               	movlw	56
+  1105  00051E  6ED6               	movwf	214,c	;volatile
+  1106                           
+  1107                           ;TAD_TIMER.c: 28:     TMR0IF=0;
+  1108  000520  94F2               	bcf	4082,2,c	;volatile
+  1109                           
+  1110                           ;TAD_TIMER.c: 29:     Tics++;
+  1111  000522  0E01               	movlw	1
+  1112  000524  2615               	addwf	_Tics^0,f,c	;volatile
+  1113  000526  0E00               	movlw	0
+  1114  000528  2216               	addwfc	(_Tics+1)^0,f,c	;volatile
+  1115  00052A  2217               	addwfc	(_Tics+2)^0,f,c	;volatile
+  1116  00052C  2218               	addwfc	(_Tics+3)^0,f,c	;volatile
+  1117  00052E  0012               	return		;funcret
+  1118  000530                     __end_of_RSI_Timer0:
   1119                           	opt callstack 0
-  1120  000008                     _High_RSI:
-  1121                           	opt callstack 27
-  1122                           
-  1123                           ;incstack = 0
-  1124  000008  823D               	bsf	int$flags,1,c	;set compiler interrupt flag (level 2)
-  1125  00000A                     
-  1126                           ;main.c: 14: 
-  1127  00000A  EC30  F003         	call	_RSI_Timer0	;wreg free
-  1128  00000E  923D               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
-  1129  000010  0011               	retfie		f
-  1130  000012                     __end_of_High_RSI:
-  1131                           	opt callstack 0
-  1132                           
-  1133 ;; *************** function _RSI_Timer0 *****************
-  1134 ;; Defined at:
-  1135 ;;		line 25 in file "TAD_TIMER.c"
-  1136 ;; Parameters:    Size  Location     Type
-  1137 ;;		None
-  1138 ;; Auto vars:     Size  Location     Type
-  1139 ;;		None
-  1140 ;; Return value:  Size  Location     Type
-  1141 ;;                  1    wreg      void 
-  1142 ;; Registers used:
-  1143 ;;		wreg, status,2, status,0
-  1144 ;; Tracked objects:
-  1145 ;;		On entry : 0/0
-  1146 ;;		On exit  : 0/0
-  1147 ;;		Unchanged: 0/0
-  1148 ;; Data sizes:     COMRAM   BANK0   BANK1
-  1149 ;;      Params:         0       0       0
-  1150 ;;      Locals:         0       0       0
-  1151 ;;      Temps:          0       0       0
-  1152 ;;      Totals:         0       0       0
-  1153 ;;Total ram usage:        0 bytes
-  1154 ;; Hardware stack levels used:    1
-  1155 ;; This function calls:
-  1156 ;;		Nothing
-  1157 ;; This function is called by:
-  1158 ;;		_High_RSI
-  1159 ;; This function uses a non-reentrant model
-  1160 ;;
-  1161                           
-  1162                           	psect	text6
-  1163  000660                     __ptext6:
-  1164                           	opt callstack 0
-  1165  000660                     _RSI_Timer0:
-  1166                           	opt callstack 27
-  1167  000660                     
-  1168                           ;TAD_TIMER.c: 27:     TMR0=56;
-  1169  000660  0E00               	movlw	0
-  1170  000662  6ED7               	movwf	215,c	;volatile
-  1171  000664  0E38               	movlw	56
-  1172  000666  6ED6               	movwf	214,c	;volatile
-  1173  000668                     
-  1174                           ;TAD_TIMER.c: 28:     TMR0IF=0;
-  1175  000668  94F2               	bcf	4082,2,c	;volatile
-  1176  00066A                     
-  1177                           ;TAD_TIMER.c: 29:     Tics++;
-  1178  00066A  0E01               	movlw	1
-  1179  00066C  2615               	addwf	_Tics^0,f,c	;volatile
-  1180  00066E  0E00               	movlw	0
-  1181  000670  2216               	addwfc	(_Tics+1)^0,f,c	;volatile
-  1182  000672  2217               	addwfc	(_Tics+2)^0,f,c	;volatile
-  1183  000674  2218               	addwfc	(_Tics+3)^0,f,c	;volatile
-  1184  000676  0012               	return		;funcret
-  1185  000678                     __end_of_RSI_Timer0:
-  1186                           	opt callstack 0
-  1187                           
-  1188                           	psect	rparam
-  1189  0000                     
-  1190                           	psect	temp
-  1191  00003D                     btemp:
-  1192                           	opt callstack 0
-  1193  00003D                     	ds	1
-  1194  0000                     int$flags	set	btemp
-  1195  0000                     wtemp8	set	btemp+1
-  1196  0000                     ttemp5	set	btemp+1
-  1197  0000                     ttemp6	set	btemp+4
-  1198  0000                     ttemp7	set	btemp+8
-  1199                           tosu	equ	0xFFF
-  1200                           tosh	equ	0xFFE
-  1201                           tosl	equ	0xFFD
-  1202                           stkptr	equ	0xFFC
-  1203                           pclatu	equ	0xFFB
-  1204                           pclath	equ	0xFFA
-  1205                           pcl	equ	0xFF9
-  1206                           tblptru	equ	0xFF8
-  1207                           tblptrh	equ	0xFF7
-  1208                           tblptrl	equ	0xFF6
-  1209                           tablat	equ	0xFF5
-  1210                           prodh	equ	0xFF4
-  1211                           prodl	equ	0xFF3
-  1212                           indf0	equ	0xFEF
-  1213                           postinc0	equ	0xFEE
-  1214                           postdec0	equ	0xFED
-  1215                           preinc0	equ	0xFEC
-  1216                           plusw0	equ	0xFEB
-  1217                           fsr0h	equ	0xFEA
-  1218                           fsr0l	equ	0xFE9
-  1219                           wreg	equ	0xFE8
-  1220                           indf1	equ	0xFE7
-  1221                           postinc1	equ	0xFE6
-  1222                           postdec1	equ	0xFE5
-  1223                           preinc1	equ	0xFE4
-  1224                           plusw1	equ	0xFE3
-  1225                           fsr1h	equ	0xFE2
-  1226                           fsr1l	equ	0xFE1
-  1227                           bsr	equ	0xFE0
-  1228                           indf2	equ	0xFDF
-  1229                           postinc2	equ	0xFDE
-  1230                           postdec2	equ	0xFDD
-  1231                           preinc2	equ	0xFDC
-  1232                           plusw2	equ	0xFDB
-  1233                           fsr2h	equ	0xFDA
-  1234                           fsr2l	equ	0xFD9
-  1235                           status	equ	0xFD8
+  1120                           
+  1121                           	psect	rparam
+  1122  0000                     
+  1123                           	psect	temp
+  1124  000039                     btemp:
+  1125                           	opt callstack 0
+  1126  000039                     	ds	1
+  1127  0000                     int$flags	set	btemp
+  1128  0000                     wtemp8	set	btemp+1
+  1129  0000                     ttemp5	set	btemp+1
+  1130  0000                     ttemp6	set	btemp+4
+  1131  0000                     ttemp7	set	btemp+8
+  1132                           tosu	equ	0xFFF
+  1133                           tosh	equ	0xFFE
+  1134                           tosl	equ	0xFFD
+  1135                           stkptr	equ	0xFFC
+  1136                           pclatu	equ	0xFFB
+  1137                           pclath	equ	0xFFA
+  1138                           pcl	equ	0xFF9
+  1139                           tblptru	equ	0xFF8
+  1140                           tblptrh	equ	0xFF7
+  1141                           tblptrl	equ	0xFF6
+  1142                           tablat	equ	0xFF5
+  1143                           prodh	equ	0xFF4
+  1144                           prodl	equ	0xFF3
+  1145                           indf0	equ	0xFEF
+  1146                           postinc0	equ	0xFEE
+  1147                           postdec0	equ	0xFED
+  1148                           preinc0	equ	0xFEC
+  1149                           plusw0	equ	0xFEB
+  1150                           fsr0h	equ	0xFEA
+  1151                           fsr0l	equ	0xFE9
+  1152                           wreg	equ	0xFE8
+  1153                           indf1	equ	0xFE7
+  1154                           postinc1	equ	0xFE6
+  1155                           postdec1	equ	0xFE5
+  1156                           preinc1	equ	0xFE4
+  1157                           plusw1	equ	0xFE3
+  1158                           fsr1h	equ	0xFE2
+  1159                           fsr1l	equ	0xFE1
+  1160                           bsr	equ	0xFE0
+  1161                           indf2	equ	0xFDF
+  1162                           postinc2	equ	0xFDE
+  1163                           postdec2	equ	0xFDD
+  1164                           preinc2	equ	0xFDC
+  1165                           plusw2	equ	0xFDB
+  1166                           fsr2h	equ	0xFDA
+  1167                           fsr2l	equ	0xFD9
+  1168                           status	equ	0xFD8
 
 
 Data Sizes:
@@ -1264,7 +1197,7 @@ Data Sizes:
 
 Auto Spaces:
     Space          Size  Autos    Used
-    COMRAM          126     23      60
+    COMRAM          126     19      56
     BANK0           128      0       0
     BANK1           256      0       0
 
@@ -1304,10 +1237,11 @@ Call Graph Tables:
  ---------------------------------------------------------------------------------
  (0) _main                                                 0     0      0     160
                             _TI_Init
+                            _initSIO
                         _motorKeypad
  ---------------------------------------------------------------------------------
- (1) _motorKeypad                                         10    10      0     115
-                                             13 COMRAM    10    10      0
+ (1) _motorKeypad                                          6     6      0     115
+                                             13 COMRAM     6     6      0
                          _TI_GetTics
                        _TI_ResetTics
  ---------------------------------------------------------------------------------
@@ -1316,6 +1250,8 @@ Call Graph Tables:
  ---------------------------------------------------------------------------------
  (2) _TI_GetTics                                          13     9      4      45
                                               0 COMRAM    13     9      4
+ ---------------------------------------------------------------------------------
+ (1) _initSIO                                              0     0      0       0
  ---------------------------------------------------------------------------------
  (1) _TI_Init                                              1     1      0      45
                                               0 COMRAM     1     1      0
@@ -1336,6 +1272,7 @@ Call Graph Tables:
 
  _main (ROOT)
    _TI_Init
+   _initSIO
    _motorKeypad
      _TI_GetTics
      _TI_ResetTics
@@ -1352,95 +1289,68 @@ BANK1              100      0       0       6        0.0%
 BITBANK0            80      0       0       3        0.0%
 BANK0               80      0       0       4        0.0%
 BITCOMRAM           7E      0       0       0        0.0%
-COMRAM              7E     17      3C       1       47.6%
+COMRAM              7E     13      38       1       44.4%
 BITSFR               0      0       0     200        0.0%
 SFR                  0      0       0     200        0.0%
 STACK                0      0       0       2        0.0%
 NULL                 0      0       0       0        0.0%
-ABS                  0      0      3C       7        0.0%
-DATA                 0      0      3C       9        0.0%
+ABS                  0      0      38       7        0.0%
+DATA                 0      0      38       9        0.0%
 CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.10 build 88905656 
-Symbol Table                                                                                   Mon Apr 17 21:24:02 2023
+Symbol Table                                                                                   Tue Apr 18 10:25:13 2023
 
-               _RSI_Timer0 0660                         u50 05F4                         u51 05F0  
-               _TI_GetTics 057A                        l164 0600                        l245 0488  
-                      l174 0628                        l255 0578                        l177 05C8  
-                      l992 05CA                        l998 05CE                        u700 0308  
-                      u701 0304                        u710 0332                        u711 032E  
-                      u800 052A                        u720 0346                        u801 0526  
-                      u721 0342                        u730 0398                        u650 0262  
-                      u731 0394                        u651 025E                        u740 03BE  
-                      u660 0284                        u741 03BA                        u661 0280  
-                      u750 0448                        u670 02A6                        u751 0444  
-                      u671 02A2                        u760 04A8                        u680 02C8  
-                      u761 04A4                        u681 02C4                        u770 04C6  
-                      u690 02E6                        u771 04C2                        u691 02E2  
-                      u780 04F4                        u781 04F0                        u790 0508  
-                      u791 0504                        _key 001F                        _sms 0201  
-                      prod 000FF3                        wreg 000FE8               __CFG_WDT$OFF 000000  
-                     l1000 05E2                       l1002 05E4                       l1004 05F4  
-                     l1006 05FC                       l1008 05FE                       l1410 0308  
-                     l1402 02D2                       l1420 0398                       l1404 02E6  
-                     l1430 03C8                       l1422 03A2                       l1414 0312  
-                     l1406 02EC                       l1440 0436                       l1432 03D0  
-                     l1424 03AA                       l1416 0332                       l1408 02F4  
-                     l1520 062A                       l1370 057C                       l1442 0448  
-                     l1434 03D4                       l1426 03AE                       l1418 0346  
-                     l1450 0494                       l1530 0636                       l1522 062E  
-                     l1372 0590                       l1364 0604                       l1460 04CC  
-                     l1452 04A8                       l1444 044C                       l1436 03FE  
-                     l1428 03BE                       l1380 0262                       l1532 063A  
-                     l1524 0630                       l1366 0606                       l1470 0516  
-                     l1462 04D4                       l1446 0482                       l1438 0434  
-                     l1390 0292                       l1382 0268                       l1526 0632  
-                     l1368 0626                       l1640 0542                       l1464 04F4  
-                     l1456 04B2                       l1448 048C                       l1392 02A6  
-                     l1384 0270                       l1376 024A                       l1528 0634  
-                     l1466 0508                       l1458 04C6                       l1394 02AC  
-                     l1386 0284                       l1378 024E                       l1396 02B4  
-                     l1388 028A                       l1476 052E                       l1398 02C8  
-    motorKeypad@rowPressed 001A                       i2l19 000E                       _TMR0 000FD6  
-                     _Tics 0015                       _Rows 0023                       _main 062A  
-                     indf2 000FDF                       fsr2l 000FD9                       btemp 003D  
-          __end_of_TI_Init 0602      __size_of_TI_ResetTics 0028          motorKeypad@keyAux 0019  
-                     prodh 000FF4                       prodl 000FF3                       start 0012  
-             ___param_bank 000000            _motorKeypad$586 0039            _motorKeypad$587 003B  
-                    ?_main 0026                      _T0CON 000FD5                      i2l159 0676  
-                    i2l990 066A                      i2l986 0660                      i2l988 0668  
-                    _TMR0L 000FD6                      _PORTB 000F81                      _PORTC 000F82  
-                    _Timer 0025               _TI_ResetTics 0602                      tablat 000FF5  
-                    ttemp5 003E                      ttemp6 0041                      ttemp7 0045  
-                    status 000FD8                      wtemp8 003E           __end_of_High_RSI 0012  
-          __initialization 0646               __end_of_main 0646                ?_RSI_Timer0 0026  
-           TI_Init@counter 0026                ?_TI_GetTics 0026                     ??_main 003D  
-            __activetblptr 000002                  ??_TI_Init 0026                     i2l1170 000A  
+               _RSI_Timer0 0518                 _TI_GetTics 044A                        l247 03B0  
+                      l993 049A                        u220 02AA                        u310 03F2  
+                      u240 02DE                        _key 001F                        _sms 0201  
+                      wreg 000FE8               __CFG_WDT$OFF 000000                       l1201 0320  
+                     l1207 0332                       l1233 03C6                       l1225 03B4  
+                     l1209 033A                       l1161 0262                       l1227 03BA  
+                     l1155 024C                       l1173 028E                       l1165 0272  
+                     l1253 0414                       l1247 0408                       l1239 03DC  
+                     l1191 02C8                       l1183 02B0                       l1167 0278  
+                     l1185 02B6                       l1273 0512                       l1179 02A0  
+                     l1199 0318      motorKeypad@rowPressed 001A                       _TMR0 000FD6  
+                     _Tics 0015                       _Rows 0023                       _main 04FE  
+                     fsr2h 000FDA                       indf2 000FDF                       fsr2l 000FD9  
+                     btemp 0039            __end_of_TI_Init 04C0      __size_of_TI_ResetTics 0024  
+        motorKeypad@keyAux 0019                       prodl 000FF3                       start 0012  
+             ___param_bank 000000            _motorKeypad$590 0035            _motorKeypad$591 0037  
+                    ?_main 0026                      _T0CON 000FD5                      _TMR0L 000FD6  
+                    _SPBRG 000FAF                      _PORTB 000F81                      _PORTC 000F82  
+                    _Timer 0025            __end_of_initSIO 053E               _TI_ResetTics 04C0  
+                    tablat 000FF5                      ttemp5 003A                      ttemp6 003D  
+                    ttemp7 0041                      status 000FD8                      wtemp8 003A  
+         __end_of_High_RSI 0012            __initialization 04E4               __end_of_main 0518  
+              ?_RSI_Timer0 0026             TI_Init@counter 0026                ?_TI_GetTics 0026  
+                   ??_main 0039              __activetblptr 000002                  ??_TI_Init 0026  
                    _OSCCON 000FD3                     _TMR0IF 007F92                     _RowAct 0021  
                    _Timers 0001               ?_motorKeypad 0026                     _keyNum 001E  
-                   clear_0 064C               __mediumconst 0000                     tblptrh 000FF7  
-                   tblptrl 000FF6                     tblptru 000FF8        __size_of_RSI_Timer0 0018  
-      __size_of_TI_GetTics 0050                 __accesstop 0080    __end_of__initialization 0652  
-          __CFG_PBADEN$DIG 000000              ___rparam_used 000001             __pcstackCOMRAM 0026  
-          __CFG_OSC$INTIO2 000000                  ?_High_RSI 0026    TI_ResetTics@TimerHandle 0026  
-               ??_High_RSI 0026                    _TI_Init 05CA                    _Columns 0022  
-                  __Hparam 0000                    __Lparam 0000               ??_RSI_Timer0 0026  
-             __psmallconst 0200               ??_TI_GetTics 002A                    __pcinit 0646  
-                  __ramtop 0200       __size_of_motorKeypad 0330                    __ptext0 062A  
-                  __ptext1 024A                    __ptext2 0602                    __ptext3 057A  
-                  __ptext4 05CA                    __ptext6 0660          __end_of_keyNumber 0249  
-     end_of_initialization 0652         __end_of_RSI_Timer0 0678              __Lmediumconst 0000  
-       __end_of_TI_GetTics 05CA                    postinc0 000FEE                    postinc2 000FDE  
-                _PORTDbits 000F83      TI_GetTics@TimerHandle 0032                  _TRISDbits 000F95  
-               _tmr_bounce 0024           motorKeypad@state 001C                  _ColumnAct 0020  
-      start_initialization 0646                __end_of_sms 023D          __size_of_High_RSI 000A  
+                   clear_0 04EA                  ??_initSIO 0026               __mediumconst 0000  
+                   tblptrh 000FF7                     tblptrl 000FF6                     tblptru 000FF8  
+      __size_of_RSI_Timer0 0018        __size_of_TI_GetTics 004C                 __accesstop 0080  
+  __end_of__initialization 04F0            __CFG_PBADEN$DIG 000000              ___rparam_used 000001  
+           __pcstackCOMRAM 0026            __CFG_OSC$INTIO2 000000                  ?_High_RSI 0026  
+  TI_ResetTics@TimerHandle 0026                 ??_High_RSI 0026                    _TI_Init 0496  
+                  _Columns 0022                    __Hparam 0000                    __Lparam 0000  
+             ??_RSI_Timer0 0026               __psmallconst 0200               ??_TI_GetTics 002A  
+                  __pcinit 04E4                    __ramtop 0200       __size_of_motorKeypad 0200  
+                  __ptext0 04FE                    __ptext1 024A                    __ptext2 04C0  
+                  __ptext3 044A                    __ptext4 0530                    __ptext5 0496  
+                  __ptext7 0518          __end_of_keyNumber 0249                    _initSIO 0530  
+     end_of_initialization 04F0         __end_of_RSI_Timer0 0530              __Lmediumconst 0000  
+       __end_of_TI_GetTics 0496                  _RCSTAbits 000FAB                    postinc0 000FEE  
+                  postinc2 000FDE      TI_GetTics@TimerHandle 0032                 _tmr_bounce 0024  
+                _TXSTAbits 000FAC           motorKeypad@state 001C                  _ColumnAct 0020  
+      start_initialization 04E4                __end_of_sms 023D          __size_of_High_RSI 000A  
               __pbssCOMRAM 0001              ?_TI_ResetTics 0026                   ?_TI_Init 0026  
-                __pintcode 0008                __smallconst 0200                  _keyNumber 023D  
-           ??_TI_ResetTics 0026                   _LATCbits 000F8B                   _LATDbits 000F8C  
+                __pintcode 0008                   ?_initSIO 0026                __smallconst 0200  
+                _keyNumber 023D             ??_TI_ResetTics 0026                   _LATCbits 000F8B  
                  _RCONbits 000FD0              ??_motorKeypad 0033                   _High_RSI 0008  
-         __size_of_TI_Init 0038                   __Hrparam 0000                   __Lrparam 0000  
-      __end_of_motorKeypad 057A                   _indexSMS 001D              __size_of_main 001C  
-     __end_of_TI_ResetTics 062A                   int$flags 003D      motorKeypad@colPressed 001B  
-              _OSCTUNEbits 000F9B                 _INTCONbits 000FF2  TI_GetTics@CopiaTicsActual 002E  
-                 intlevel2 0000                _motorKeypad 024A  
+         __size_of_TI_Init 002A                   __Hrparam 0000                   __Lrparam 0000  
+      __end_of_motorKeypad 044A           __size_of_initSIO 000E                   _indexSMS 001D  
+            __size_of_main 001A       __end_of_TI_ResetTics 04E4                   int$flags 0039  
+    motorKeypad@colPressed 001B                _OSCTUNEbits 000F9B                 _INTCONbits 000FF2  
+TI_GetTics@CopiaTicsActual 002E                   intlevel2 0000                _motorKeypad 024A  

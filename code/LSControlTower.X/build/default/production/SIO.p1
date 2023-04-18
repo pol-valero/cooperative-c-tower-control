@@ -1,91 +1,82 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[t ~ __interrupt . k ]
-[t T41 __interrupt high_priority ]
-"13 ./TAD_TIMER.h
-[; ;./TAD_TIMER.h: 13: void RSI_Timer0(void);
-[v _RSI_Timer0 `(v ~T0 @X0 0 ef ]
-[p mainexit ]
-"6100 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 6100: extern volatile unsigned char OSCCON __attribute__((address(0xFD3)));
-[v _OSCCON `Vuc ~T0 @X0 0 e@4051 ]
-"2546
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 2546:     struct {
-[s S83 :5 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S83 . TUN . PLLEN INTSRC ]
-"2552
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 2552:     struct {
-[s S84 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S84 . TUN0 TUN1 TUN2 TUN3 TUN4 ]
-"2545
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 2545: typedef union {
-[u S82 `S83 1 `S84 1 ]
-[n S82 . . . ]
-"2560
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 2560: extern volatile OSCTUNEbits_t OSCTUNEbits __attribute__((address(0xF9B)));
-[v _OSCTUNEbits `VS82 ~T0 @X0 0 e@3995 ]
-"5686
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 5686:     struct {
-[s S232 :1 `uc 1 ]
-[n S232 . NOT_BOR ]
-"5689
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 5689:     struct {
-[s S233 :1 `uc 1 :1 `uc 1 ]
-[n S233 . . NOT_POR ]
-"5693
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 5693:     struct {
-[s S234 :2 `uc 1 :1 `uc 1 ]
-[n S234 . . NOT_PD ]
-"5697
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 5697:     struct {
-[s S235 :3 `uc 1 :1 `uc 1 ]
-[n S235 . . NOT_TO ]
-"5701
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 5701:     struct {
-[s S236 :4 `uc 1 :1 `uc 1 ]
-[n S236 . . NOT_RI ]
-"5705
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 5705:     struct {
-[s S237 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S237 . nBOR nPOR nPD nTO nRI . IPEN ]
-"5714
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 5714:     struct {
-[s S238 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S238 . BOR POR PD TO RI . SBOREN ]
-"5685
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 5685: typedef union {
-[u S231 `S232 1 `S233 1 `S234 1 `S235 1 `S236 1 `S237 1 `S238 1 ]
-[n S231 . . . . . . . . ]
-"5724
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 5724: extern volatile RCONbits_t RCONbits __attribute__((address(0xFD0)));
-[v _RCONbits `VS231 ~T0 @X0 0 e@4048 ]
-"6707
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 6707:     struct {
-[s S269 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S269 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
-"6717
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 6717:     struct {
-[s S270 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S270 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
-"6727
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 6727:     struct {
-[s S271 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S271 . . GIEL GIEH ]
-"6706
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 6706: typedef union {
-[u S268 `S269 1 `S270 1 `S271 1 ]
-[n S268 . . . . ]
-"6733
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 6733: extern volatile INTCONbits_t INTCONbits __attribute__((address(0xFF2)));
-[v _INTCONbits `VS268 ~T0 @X0 0 e@4082 ]
-"17 ./TAD_TIMER.h
-[; ;./TAD_TIMER.h: 17: void TI_Init (void);
-[v _TI_Init `(v ~T0 @X0 0 ef ]
-"4 ./SIO.h
-[; ;./SIO.h: 4: void initSIO(void);
-[v _initSIO `(v ~T0 @X0 0 ef ]
-"5 ./Keypad.h
-[; ;./Keypad.h: 5: void motorKeypad(void);
-[v _motorKeypad `(v ~T0 @X0 0 ef ]
+"3132 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 3132:     struct {
+[s S112 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S112 . RX9D OERR FERR ADDEN CREN SREN RX9 SPEN ]
+"3142
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 3142:     struct {
+[s S113 :3 `uc 1 :1 `uc 1 ]
+[n S113 . . ADEN ]
+"3146
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 3146:     struct {
+[s S114 :5 `uc 1 :1 `uc 1 ]
+[n S114 . . SRENA ]
+"3150
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 3150:     struct {
+[s S115 :6 `uc 1 :1 `uc 1 ]
+[n S115 . . RC8_9 ]
+"3154
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 3154:     struct {
+[s S116 :6 `uc 1 :1 `uc 1 ]
+[n S116 . . RC9 ]
+"3158
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 3158:     struct {
+[s S117 :1 `uc 1 ]
+[n S117 . RCD8 ]
+"3131
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 3131: typedef union {
+[u S111 `S112 1 `S113 1 `S114 1 `S115 1 `S116 1 `S117 1 ]
+[n S111 . . . . . . . ]
+"3162
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 3162: extern volatile RCSTAbits_t RCSTAbits __attribute__((address(0xFAB)));
+[v _RCSTAbits `VS111 ~T0 @X0 0 e@4011 ]
+"3611
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 3611: extern volatile unsigned char SPBRG __attribute__((address(0xFAF)));
+[v _SPBRG `Vuc ~T0 @X0 0 e@4015 ]
+"3342
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 3342:     struct {
+[s S126 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S126 . TX9D TRMT BRGH SENDB SYNC TXEN TX9 CSRC ]
+"3352
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 3352:     struct {
+[s S127 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S127 . TX9D1 TRMT1 BRGH1 SENDB1 SYNC1 TXEN1 TX91 CSRC1 ]
+"3362
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 3362:     struct {
+[s S128 :6 `uc 1 :1 `uc 1 ]
+[n S128 . . TX8_9 ]
+"3366
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 3366:     struct {
+[s S129 :1 `uc 1 ]
+[n S129 . TXD8 ]
+"3341
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 3341: typedef union {
+[u S125 `S126 1 `S127 1 `S128 1 `S129 1 ]
+[n S125 . . . . . ]
+"3370
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 3370: extern volatile TXSTAbits_t TXSTAbits __attribute__((address(0xFAC)));
+[v _TXSTAbits `VS125 ~T0 @X0 0 e@4012 ]
+"2688
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 2688:     struct {
+[s S94 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S94 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF PSPIF ]
+"2698
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 2698:     struct {
+[s S95 :4 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S95 . . TX1IF RC1IF ]
+"2687
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 2687: typedef union {
+[u S93 `S94 1 `S95 1 ]
+[n S93 . . . ]
+"2704
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 2704: extern volatile PIR1bits_t PIR1bits __attribute__((address(0xF9E)));
+[v _PIR1bits `VS93 ~T0 @X0 0 e@3998 ]
+"3599
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 3599: extern volatile unsigned char RCREG __attribute__((address(0xFAE)));
+[v _RCREG `Vuc ~T0 @X0 0 e@4014 ]
+"3587
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 3587: extern volatile unsigned char TXREG __attribute__((address(0xFAD)));
+[v _TXREG `Vuc ~T0 @X0 0 e@4013 ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -500,69 +491,84 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7010
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4321.h: 7010: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"9 main.c
-[; ;main.c: 9:     OSCCON = 0b01100000;
-[p x OSC = INTIO2 ]
-"10
-[; ;main.c: 10:     OSCTUNEbits.PLLEN = 1;
-[p x PBADEN = DIG ]
-"11
-[; ;main.c: 11: 
-[p x WDT = OFF ]
-[v $root$_High_RSI `(v ~T0 @X0 0 e ]
-"14
-[; ;main.c: 14: 
-[v _High_RSI `(v ~T41 @X0 1 ef ]
+"5 SIO.c
+[; ;SIO.c: 5: void initSIO(void) {
+[v _initSIO `(v ~T0 @X0 1 ef ]
 {
-[e :U _High_RSI ]
+[e :U _initSIO ]
 [f ]
-"15
-[; ;main.c: 15:     RCONbits.IPEN = 0;
-[e ( _RSI_Timer0 ..  ]
-"16
-[; ;main.c: 16:     INTCONbits.PEIE = 1;
+"7
+[; ;SIO.c: 7:     RCSTAbits.SPEN = 1;
+[e = . . _RCSTAbits 0 7 -> -> 1 `i `uc ]
+"8
+[; ;SIO.c: 8:  RCSTAbits.RX9 = 0;
+[e = . . _RCSTAbits 0 6 -> -> 0 `i `uc ]
+"10
+[; ;SIO.c: 10:  SPBRG = 64;
+[e = _SPBRG -> -> 64 `i `uc ]
+"11
+[; ;SIO.c: 11:     TXSTAbits.TXEN = 1;
+[e = . . _TXSTAbits 0 5 -> -> 1 `i `uc ]
+"12
+[; ;SIO.c: 12:  RCSTAbits.CREN = 1;
+[e = . . _RCSTAbits 0 4 -> -> 1 `i `uc ]
+"13
+[; ;SIO.c: 13: }
 [e :UE 280 ]
 }
-[v $root$_main `(v ~T0 @X0 0 e ]
-"18
-[; ;main.c: 18: 
-[v _main `(v ~T0 @X0 1 ef ]
+"15
+[; ;SIO.c: 15: char SiCharAvail(void) {
+[v _SiCharAvail `(uc ~T0 @X0 1 ef ]
 {
-[e :U _main ]
+[e :U _SiCharAvail ]
 [f ]
-"22
-[; ;main.c: 22:     TI_Init ();
-[e = _OSCCON -> -> 96 `i `uc ]
-"23
-[; ;main.c: 23:     initSIO();
-[e = . . _OSCTUNEbits 0 2 -> -> 1 `i `uc ]
-"28
-[e = . . _RCONbits 5 6 -> -> 0 `i `uc ]
-"29
-[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
-"30
-[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-"35
-[e ( _TI_Init ..  ]
-"36
-[e ( _initSIO ..  ]
-"45
-[; ;main.c: 45:     while(1) {
-[e :U 283 ]
-{
-"46
-[; ;main.c: 46:         motorKeypad();
-[e ( _motorKeypad ..  ]
-"47
-[; ;main.c: 47:     }
-}
-[e :U 282 ]
-[e $U 283  ]
-[e :U 284 ]
-"49
-[; ;main.c: 49:     return;
+"16
+[; ;SIO.c: 16:     return PIR1bits.RCIF;
+[e ) -> . . _PIR1bits 0 5 `uc ]
 [e $UE 281  ]
-"50
-[; ;main.c: 50: }
+"17
+[; ;SIO.c: 17: }
 [e :UE 281 ]
+}
+"19
+[; ;SIO.c: 19: char SiGetChar(void) {
+[v _SiGetChar `(uc ~T0 @X0 1 ef ]
+{
+[e :U _SiGetChar ]
+[f ]
+"20
+[; ;SIO.c: 20:     return RCREG;
+[e ) -> _RCREG `uc ]
+[e $UE 282  ]
+"21
+[; ;SIO.c: 21: }
+[e :UE 282 ]
+}
+"23
+[; ;SIO.c: 23: char SiIsAvailable(void) {
+[v _SiIsAvailable `(uc ~T0 @X0 1 ef ]
+{
+[e :U _SiIsAvailable ]
+[f ]
+"24
+[; ;SIO.c: 24:  return TXSTAbits.TRMT;
+[e ) -> . . _TXSTAbits 0 1 `uc ]
+[e $UE 283  ]
+"25
+[; ;SIO.c: 25: }
+[e :UE 283 ]
+}
+"27
+[; ;SIO.c: 27: void SiSendChar(char c) {
+[v _SiSendChar `(v ~T0 @X0 1 ef1`uc ]
+{
+[e :U _SiSendChar ]
+[v _c `uc ~T0 @X0 1 r1 ]
+[f ]
+"28
+[; ;SIO.c: 28:  TXREG = c;
+[e = _TXREG -> _c `uc ]
+"29
+[; ;SIO.c: 29: }
+[e :UE 284 ]
 }
