@@ -3,13 +3,7 @@
 #include <xc.h>
 
 void initSIO(void) {
-	// Init the SIO and Baudrate
-    RCSTAbits.SPEN = 1;
-	RCSTAbits.RX9 = 0;
-    // Baudrate = 4096 bauds
-	SPBRG = 64;					
-    TXSTAbits.TXEN = 1;
-	RCSTAbits.CREN = 1;
+	//TODO: Init the SIO and Baudrate
 }
 
 char SiCharAvail(void) {
