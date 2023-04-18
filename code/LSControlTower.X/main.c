@@ -5,10 +5,13 @@
 #include "LcTLCD.h"
 #include "Keypad.h"
 #include "SIO.h"
+#include "T_HARBOR.h"
+#include "T_MENU.h"
 
 #pragma config OSC = INTIO2
 #pragma config PBADEN = DIG
 #pragma config WDT = OFF
+#pragma MCLRE = ON
 
 // HGIH_RSI pel timer.
 void __interrupt(high_priority) High_RSI(void) {
@@ -34,6 +37,7 @@ void main(void) {
      ***********************/
     TI_Init ();
     initSIO();
+    //initHarbor();
     
     /************************
      * INIT TADs
@@ -44,6 +48,7 @@ void main(void) {
      ***********************/
     while(1) {
         motorKeypad();
+        //motorHarbor();
     }
     
     return;
