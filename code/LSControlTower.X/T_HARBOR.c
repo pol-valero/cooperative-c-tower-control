@@ -114,7 +114,7 @@ void motorHarbor(void) {
 		case 8:
 			if (getKey() == (char) -1) {
 				LcClear();
-				showMainMenu();
+				//showMainMenu(); //TODO
 				state = 9;
 			}
 		break;

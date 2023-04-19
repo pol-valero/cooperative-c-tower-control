@@ -37,7 +37,7 @@ void main(void) {
      ***********************/
     TI_Init ();
     initSIO();
-    //initHarbor();
+    initHarbor();
     
     /************************
      * INIT TADs
@@ -48,7 +48,7 @@ void main(void) {
      ***********************/
     while(1) {
         motorKeypad();
-        //motorHarbor();
+        motorHarbor();
     }
     
     return;
