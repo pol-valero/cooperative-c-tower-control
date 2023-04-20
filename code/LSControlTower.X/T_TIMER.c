@@ -7,7 +7,7 @@
 
 #include <xc.h>
 #include "pic18f4321.h"
-#include "TAD_TIMER.h"
+#include "T_TIMER.h"
 
 #define T0CON_CONFIG 0b11000001
 #define RECARREGA_TMR0 56        

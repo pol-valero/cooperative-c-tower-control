@@ -1,10 +1,11 @@
+#include <xc.h>
 #include <pic18f4321.h>
 #include "T_HARBOR.h"
-#include "Keypad.h"
-#include "LcTLCD.h"
-#include "TAD_TIMER.h"
+#include "T_KEYPAD.h"
+#include "T_LCD.h"
+#include "T_TIMER.h"
 #include "T_MENU.h"
-#include "SIO.h"
+#include "T_SIO.h"
 
 
 
@@ -60,7 +61,7 @@ void motorHarbor(void) {
 				resetIndexSMS();
 				state = 10;
 			}
-			else if (getKey() == '#' && j == 3) {
+			else if (getKey() == '#' && j == 2) {
 				state = 4;
 			}
 		break;

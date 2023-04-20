@@ -1,7 +1,8 @@
+#include <xc.h>
 #include <pic18f4321.h>
-#include "Keypad.h"
-#include "LcTLCD.h"
-#include "TAD_TIMER.h"
+#include "T_KEYPAD.h"
+#include "T_LCD.h"
+#include "T_TIMER.h"
 
 #define MAX_TICS_BOUNCE  100
 
@@ -31,9 +32,9 @@ void initKeypad() {
     LATCbits.LATC2 = 1;
     // Create the bounce timer
     TI_NewTimer(&tmr_bounce);
-    // Inicialize variables
-    key = -1;
-    keyNum = -1;
+    // Initialize variables
+    key = (char) -1;
+    keyNum = (char) -1;
     indexSMS = 0;
 }
 
@@ -115,8 +116,8 @@ void motorKeypad(void) {
 				LATCbits.LATC0 = 0;
 				LATCbits.LATC1 = 1;
 				LATCbits.LATC2 = 1;
-				keyNum = -1;
-				key = -1;
+				keyNum = (char) -1;
+				key = (char) -1;
 				state = 0;
 			}
 			else if ((PORTB & 0x0F) != 0x0F) {
