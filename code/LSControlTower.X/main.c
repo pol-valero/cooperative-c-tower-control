@@ -7,6 +7,7 @@
 #include "T_SIO.h"
 #include "T_HARBOR.h"
 #include "T_MENU.h"
+#include "T_JOYSTICK.h"
 
 #pragma config OSC = INTIO2
 #pragma config PBADEN = DIG
@@ -49,6 +50,8 @@ void main(void) {
     while(1) {
         motorKeypad();
         motorHarbor();
+        
+        motorJoystick();
     }
     
     return;
