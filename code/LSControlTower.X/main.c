@@ -9,7 +9,7 @@
 #include "T_MENU.h"
 #include "T_JOYSTICK.h"
 
-#pragma config OSC = INTIO2
+#pragma config OSC = HSPLL
 #pragma config PBADEN = DIG
 #pragma config WDT = OFF
 #pragma MCLRE = ON
@@ -21,17 +21,11 @@ void __interrupt(high_priority) High_RSI(void) {
 
 void main(void) {
     /************************
-     * INIT OSC (16MHz)
-     ***********************/
-    OSCCON = 0b01100000;
-    OSCTUNEbits.PLLEN = 1;
-    
-    /************************
      * INIT IRQS
      ***********************/
-    RCONbits.IPEN = 0;          
-    INTCONbits.PEIE = 1;        // Activa les interrupcions de baixa prioritat
+    RCONbits.IPEN = 0;  
     INTCONbits.GIE = 1; 
+    INTCONbits.PEIE = 1;        
     
     /************************
      * INIT TMR & SIO
@@ -51,7 +45,6 @@ void main(void) {
         motorKeypad();
         motorHarbor();
         
-        motorJoystick();
     }
     
     return;

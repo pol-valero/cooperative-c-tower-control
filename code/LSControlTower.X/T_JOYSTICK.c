@@ -3,7 +3,18 @@
 #include <xc.h>
 
 void initJoystick(void) {
-	//TODO: Init
+	//Init port
+    TRISAbits.TRISA0 = 1;
+    
+    //Init ADC
+    ADCON1 = 0x0D; //00001101
+    ADCON2 = 0x03; //00000011
+    ADCON0 = 0x01; //00000001
+
+    //Initialize variables
+    go_down = 0;
+    go_down = 0;
+    
 }
 
 static char changeAux;
