@@ -9,8 +9,8 @@
 #include "pic18f4321.h"
 #include "T_TIMER.h"
 
-#define T0CON_CONFIG 0b11000001
-#define RECARREGA_TMR0 56        
+#define T0CON_CONFIG 0xC2 //11000010
+#define RECARREGA_TMR0 6       
 
 #define TI_NUMTIMERS 4              // Nombre de timers virtuals gestionats per aquest TAD. Si cal, s'incrementa o es disminueix...
 
@@ -29,8 +29,8 @@ void RSI_Timer0 () {
     Tics++;    
 }
 
-// Tinst = 250ns | Ttarget = 200us | PS = 1:4 --> Ttics = 200
-// Utilitzant 8bits de timer --> TMR0L = 2^8-200 = 56
+// Tinst = 100ns | Ttarget = 200us | PS = 1:8 --> Ttics = 250
+// Utilitzant 8bits de timer --> TMR0L = 2^8-250 = 6
 void TI_Init () {
 	for (unsigned char counter=0; counter<TI_NUMTIMERS; counter++) {
 		Timers[counter].Busy=TI_FALS;

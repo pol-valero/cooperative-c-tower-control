@@ -1,5 +1,5 @@
-#ifndef _JOYSTICK_H_
-#define _JOYSTICK_H_
+#ifndef _T_JOYSTICK_H_
+#define _T_JOYSTICK_H_
 
 void initJoystick(void);
 
@@ -15,5 +15,8 @@ char getGoUp(void);
 //Post: Returns 1 if the screen needs to go up 
 //(AND PUTS 0 THE VARIABLE), 0 if not
 
+void resetMoves(void);
+//Pre: -
+//Post: Puts 0 in go_up and go_down variables 
 
 #endif

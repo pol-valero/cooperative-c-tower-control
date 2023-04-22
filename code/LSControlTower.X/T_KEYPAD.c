@@ -26,6 +26,15 @@ char keyNum;
 char indexSMS;
 
 void initKeypad() {
+    // Init ports
+    TRISBbits.TRISB1 = 0;
+    TRISBbits.TRISB2 = 0;
+    TRISBbits.TRISB3 = 0;
+    TRISBbits.TRISB4 = 0;
+    TRISCbits.TRISC0 = 1;
+    TRISCbits.TRISC1 = 1;
+    TRISCbits.TRISC2 = 1;
+    
     // State 0 conditions
     LATCbits.LATC0 = 0;
     LATCbits.LATC1 = 1;

@@ -1,5 +1,5 @@
-#ifndef _SIO_H_
-#define _SIO_H_
+#ifndef _T_SIO_H_
+#define _T_SIO_H_
 
 void initSIO(void);
 

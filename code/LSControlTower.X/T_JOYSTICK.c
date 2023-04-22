@@ -2,25 +2,19 @@
 
 #include <xc.h>
 
+static char changeAux;
+static char go_up;
+static char go_down;
+
 void initJoystick(void) {
 	//Init port
     TRISAbits.TRISA0 = 1;
-    
-    //Init ADC
-    ADCON1 = 0x0D; //00001101
-    ADCON2 = 0x03; //00000011
-    ADCON0 = 0x01; //00000001
 
     //Initialize variables
     go_down = 0;
     go_down = 0;
     
 }
-
-static char changeAux;
-static char go_up;
-static char go_down;
-
 
 void motorJoystick(void) {
 	static char state = 0;
@@ -72,4 +66,9 @@ char getGoUp(void) {
     changeAux = go_up;
     go_up = 0;
     return changeAux; 
+}
+
+void resetMoves(void){
+    go_down = 0;
+    go_up = 0;
 }

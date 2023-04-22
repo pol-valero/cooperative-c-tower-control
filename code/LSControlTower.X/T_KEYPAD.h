@@ -1,5 +1,5 @@
-#ifndef _KEYPAD_H
-#define _KEYPAD_H
+#ifndef _T_KEYPAD_H
+#define _T_KEYPAD_H
 
 void initKeypad(void);
 void motorKeypad(void);
