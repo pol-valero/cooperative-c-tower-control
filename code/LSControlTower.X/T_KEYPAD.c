@@ -3,6 +3,7 @@
 #include "T_KEYPAD.h"
 #include "T_LCD.h"
 #include "T_TIMER.h"
+#include "T_MELODY.h"
 
 #define MAX_TICS_BOUNCE  100
 
@@ -27,14 +28,14 @@ char indexSMS;
 
 void initKeypad() {
     // Init ports
-    TRISBbits.TRISB1 = 0;
-    TRISBbits.TRISB2 = 0;
-    TRISBbits.TRISB3 = 0;
-    TRISBbits.TRISB4 = 0;
-    TRISCbits.TRISC0 = 1;
-    TRISCbits.TRISC1 = 1;
-    TRISCbits.TRISC2 = 1;
-    
+    TRISBbits.TRISB0 = 1;
+    TRISBbits.TRISB1 = 1;
+    TRISBbits.TRISB2 = 1;
+    TRISCbits.TRISC0 = 0;
+    TRISCbits.TRISC1 = 0;
+    TRISCbits.TRISC2 = 0;
+    TRISCbits.TRISC3 = 0;
+
     // State 0 conditions
     LATCbits.LATC0 = 0;
     LATCbits.LATC1 = 1;
@@ -59,11 +60,12 @@ void motorKeypad(void) {
 				LATCbits.LATC0 = 1;
 				LATCbits.LATC1 = 0;
 				LATCbits.LATC2 = 1;
+				LATCbits.LATC3 = 1;
 				state = 1;
 			}
 			else if ((PORTB & 0x0F) != 0x0F) {
 				TI_ResetTics(tmr_bounce);
-				state = 3;
+				state = 4;
 			}
 		break;
 		case 1:
@@ -71,11 +73,12 @@ void motorKeypad(void) {
 				LATCbits.LATC0 = 1;
 				LATCbits.LATC1 = 1;
 				LATCbits.LATC2 = 0;
+				LATCbits.LATC3 = 1;
 				state = 2;
 			}
 			else if ((PORTB & 0x0F) != 0x0F) {
 				TI_ResetTics(tmr_bounce);
-				state = 3;
+				state = 4;
 			}
 		break;
 		case 2:
@@ -83,21 +86,29 @@ void motorKeypad(void) {
 				LATCbits.LATC0 = 0;
 				LATCbits.LATC1 = 1;
 				LATCbits.LATC2 = 1;
+				LATCbits.LATC3 = 1;
 				state = 0;
 			}
 			else if ((PORTB & 0x0F) != 0x0F) {
 				TI_ResetTics(tmr_bounce);
+				state = 4;
+			}
+			else if ((PORTB & 0x0F) == 0x0F) {
+				LATCbits.LATC0 = 1;
+				LATCbits.LATC1 = 1;
+				LATCbits.LATC2 = 1;
+				LATCbits.LATC3 = 0;
 				state = 3;
 			}
 		break;
-		case 3:
+		case 4:
 			if ((TI_GetTics(tmr_bounce) >= MAX_TICS_BOUNCE) && ((PORTB & 0x0F) != 0x0F) ) {
-				colPressed = ((~(PORTC & 0X07)) >> 1) & 0x7F;
-				rowPressed = ((~(PORTB & 0x0F)) >> 1) & 0x7F;
+				colPressed = ((~(PORTB & 0X07)) >> 1) & 0x7F;
+				rowPressed = ((~(PORTC & 0x0F)) >> 1) & 0x7F;
 				rowPressed = rowPressed == 3 ? 2 : rowPressed;
 				rowPressed = rowPressed > 3 ? 3 : rowPressed;
 				keyNum = keyNumber[rowPressed][colPressed];
-				//playNote(keyNum);                         //TODO: AFEGIR QUAN TINGUEM MELODY 
+				playNote(keyNum);
 				keyAux = sms[rowPressed][colPressed][indexSMS++];
 				if(keyAux == '-') {
 				    indexSMS = 0;
@@ -105,31 +116,38 @@ void motorKeypad(void) {
 				} else {
 				    key = keyAux;
 				}
-				state = 4;
+				state = 5;
 			}
 			else if ((PORTB & 0x0F) == 0x0F) {
 				LATCbits.LATC0 = 0;
 				LATCbits.LATC1 = 1;
 				LATCbits.LATC2 = 1;
+				LATCbits.LATC3 = 1;
 				state = 0;
 			}
 		break;
-		case 4:
+		case 5:
 			if ((PORTB & 0x0F) == 0x0F) {
 				TI_ResetTics(tmr_bounce);
-				state = 5;
+				state = 6;
 			}
 		break;
-		case 5:
+		case 6:
 			if ((TI_GetTics(tmr_bounce) >= MAX_TICS_BOUNCE) && ((PORTB & 0x0F) == 0x0F) ) {
 				LATCbits.LATC0 = 0;
 				LATCbits.LATC1 = 1;
 				LATCbits.LATC2 = 1;
-				keyNum = (char) -1;
-				key = (char) -1;
+				keyNum = -1;
+				key = -1;
 				state = 0;
 			}
 			else if ((PORTB & 0x0F) != 0x0F) {
+				state = 5;
+			}
+		break;
+		case 3:
+			if ((PORTB & 0x0F) != 0x0F) {
+				TI_ResetTics(tmr_bounce);
 				state = 4;
 			}
 		break;

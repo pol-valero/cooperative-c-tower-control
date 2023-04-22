@@ -19,5 +19,3 @@ void SiSendChar(char c);
 //Post: starts sending the specified character.
 
 #endif
-
-
