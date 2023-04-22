@@ -7,12 +7,10 @@ void initSIO(void) {
     TRISCbits.RC7 = 1;
     
     //Init regs & baudcon ())
-    //TXSTA=0x20; //0010 0000
-    //RCSTA=0x90; //1001 0000
-    //BAUDCON=0;
-    //TXSTAbits.BRGH=1;
-    //BAUDCONbits.BRG16=0;
-    //SPBRG=64;
+    TXSTA=0x24; //00100100
+    RCSTA=0x90; //10010000
+    BAUDCON=0x08; //00001000
+    SPBRG=172;
 }
 
 char SiCharAvail(void) {
