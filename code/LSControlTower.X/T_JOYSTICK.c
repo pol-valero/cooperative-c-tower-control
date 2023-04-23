@@ -5,6 +5,7 @@
 static char changeAux;
 static char go_up;
 static char go_down;
+static char state;
 
 void initJoystick(void) {
 	//Init port
@@ -12,13 +13,11 @@ void initJoystick(void) {
 
     //Initialize variables
     go_down = 0;
-    go_down = 0;
-    
+    go_up = 0;
+    state = 0;
 }
 
 void motorJoystick(void) {
-	static char state = 0;
-
 	switch(state) {
 		case 0:
 			ADCON0bits.GO = 1;
@@ -33,7 +32,7 @@ void motorJoystick(void) {
 				go_down = 1;
 				state = 3;
 			}
-			else if ((ADCON0bits.GO == 0) && ((ADRESH >= 38) || (ADRESH <= 217))) {
+			else if ((ADCON0bits.GO == 0) && ((ADRESH >= 38) && (ADRESH <= 217))) {
 				state = 0;
 			}
 		break;
@@ -53,6 +52,9 @@ void motorJoystick(void) {
 				ADCON0bits.GO = 1;
 			}
 		break;
+        case 5:
+
+		break;
 	}
 }
 
@@ -68,7 +70,7 @@ char getGoUp(void) {
     return changeAux; 
 }
 
-void resetMoves(void){
+void resetMoves(void){  //TODO: Cridar a aquesta funció quan entri a menu o record per assegurar-se que no han tocat el joystick
     go_down = 0;
     go_up = 0;
 }

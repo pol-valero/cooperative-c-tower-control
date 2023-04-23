@@ -10,10 +10,10 @@
 
 
 
-#define END_CHAR '0'
+#define END_CHAR 0
 #define ONE_SECOND 5000
 
-const char* promptStr = "PORT NAME:0";
+const char* promptStr = "PORT NAME:\0";
 char harborName[4];
 
 char i;

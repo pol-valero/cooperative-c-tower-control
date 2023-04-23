@@ -58,6 +58,9 @@ void main(void) {
      ***********************/
     initHarbor();
     initKeypad();
+    initMenu();
+    initMarquee();
+    initJoystick();
     
     /************************
      * MOTORS LOOP
@@ -65,7 +68,9 @@ void main(void) {
     while(1) {
         motorKeypad();
         motorHarbor();
-        
+        motorMenu();
+        motorMarquee();
+        motorJoystick();
     }
     
     return;

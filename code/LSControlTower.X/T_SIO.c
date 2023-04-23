@@ -5,7 +5,7 @@ void initSIO(void) {
 	//Init ports
     TRISCbits.TRISC6 = 1;
     TRISCbits.TRISC7 = 1;
-    
+    //BAUDRATE: 57600
     //Init regs & baudcon ())
     TXSTA=0x24; //00100100
     RCSTA=0x90; //10010000
