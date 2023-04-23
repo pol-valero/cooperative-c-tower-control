@@ -3,8 +3,8 @@
 
 void initSIO(void) {
 	//Init ports
-    TRISCbits.RC6 = 1;
-    TRISCbits.RC7 = 1;
+    TRISCbits.TRISC6 = 1;
+    TRISCbits.TRISC7 = 1;
     
     //Init regs & baudcon ())
     TXSTA=0x24; //00100100

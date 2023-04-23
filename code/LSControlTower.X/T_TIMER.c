@@ -6,13 +6,12 @@
 
 
 #include <xc.h>
-#include "pic18f4321.h"
 #include "T_TIMER.h"
 
 #define T0CON_CONFIG 0xC2 //11000010
 #define RECARREGA_TMR0 6       
 
-#define TI_NUMTIMERS 4              // Nombre de timers virtuals gestionats per aquest TAD. Si cal, s'incrementa o es disminueix...
+#define TI_NUMTIMERS 8              // Nombre de timers virtuals gestionats per aquest TAD. Si cal, s'incrementa o es disminueix...
 
 // VARIABLES GLOBALS DEL TAD
 struct Timer {
@@ -24,8 +23,8 @@ static volatile unsigned long Tics=0;
 
 void RSI_Timer0 () {
     // Pre: IMPORTANT! Funcio que ha der ser cridada des de la RSI, en en cas que TMR0IF==1.
-    TMR0=RECARREGA_TMR0;
-    TMR0IF=0;
+    TMR0L=RECARREGA_TMR0;   //TODO: Test
+    INTCONbits.TMR0IF=0;    //TODO: Test
     Tics++;    
 }
 
@@ -39,6 +38,9 @@ void TI_Init () {
     TMR0L=RECARREGA_TMR0;
 	INTCONbits.TMR0IF = 0;
 	INTCONbits.TMR0IE = 1;
+    
+    TMR0L=RECARREGA_TMR0;   //TODO: Test
+    
     // Caldr? que des del main o des d'on sigui s'activin les interrupcions globals!
 }
 
