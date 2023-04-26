@@ -4,7 +4,7 @@
 void initMarquee(void);
 void motorMarquee(void);
 
-void activateMarquee(char OP);
+void activateMarquee(char op);
 //Pre: - 
 //Post: Enables and restarts the marquee
 

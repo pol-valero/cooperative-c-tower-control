@@ -69,6 +69,12 @@ void LcInit(char rows, char columns);
 // Post: This routine can last up to 100ms
 // Post: The display remains cleared, the cursor turned off and at the position 0, 0.
 
+void motorLCD(void);
+
+char stringIsFinished();
+// Pre: -
+// Post: Indicates if the LcPutString is finished
+
 void LcEnd(void);
 // The destructor
 

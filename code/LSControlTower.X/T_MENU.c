@@ -16,7 +16,7 @@ static char the_end;
 static char* towerName;
 unsigned static char tmr_end;
 static char OP;
-const char endMsg[] = {'b', 'y', 'e', ' ', 'b', 'y', 'e', ' ', '\0'};
+static char endMsg[] = {'b', 'y', 'e', ' ', 'b', 'y', 'e', ' ', '\0'};
 static char state;
 
 
@@ -34,8 +34,8 @@ void motorMenu(void) {
 
 		break;
 		case 1:
+            hideCurrentTime();
 			activateMarquee(OP);  
-            resetMoves();
 			state = 2;
 		break;
 		case 2:
@@ -43,12 +43,14 @@ void motorMenu(void) {
 				disableMarquee(); 
 				state = 3;
 			}
-			else if ((getGoDown() == 1) && (OP < 4)) {
+			else if ((getGoDown() == 1) && (OP < 4)) {   
 				OP++;
+                resetMoves();
 				state = 1;
 			}
 			else if ((getGoUp() == 1) && (OP > 0)) {
 				OP--;
+                resetMoves();
 				state = 1;
 			}
 		break;
@@ -59,19 +61,24 @@ void motorMenu(void) {
 			else if (OP == 1) {
 				state = 5;
 			}
-			else if (OP == 2) {
+			else if (OP == 3) {
+                showCurrentTime();
 				state = 6;
 			}
-			else if (OP == 3) {
+			else if (OP == 2) {
+				showModifyTime();
 				state = 7;
 			}
-			else if (OP == 4) {
-				//LcPutString(endMsg);  //TODO: POSARE
+			else if (OP == 4) {  
+                LcClear();
+                LcPutString(endMsg);  
 				state = 8;
 			}
 		break;
 		case 6:
-
+            if(getKey() == (char) -1) {
+                state = 11;
+            }
 		break;
 		case 5:
 
@@ -80,19 +87,60 @@ void motorMenu(void) {
 
 		break;
 		case 7:
-
+			if (getFinishedModify() == 1) {
+				state = 13;
+			}
+			else if (getKey() == '*') {
+				hideModifyTime();
+				state = 14;
+			}
 		break;
 		case 8:
-            if (/*printFinished() ==*/ 1) { //TODO: POSARE
-				//LcPutString(portName);    //TODO: POSARE
-				TI_ResetTics(tmr_end);
+            if (stringIsFinished() == 1) { 
+				LcPutString(towerName);   
 				state = 9;
 			}
 		break;
 		case 9:
-			if (TI_GetTics(tmr_end) >= MAX_TICS_END) {
+			if (stringIsFinished() == 1) {
+                LcPutChar('!');
+                TI_ResetTics(tmr_end);
+				state = 10;
+                
+			}
+		break;
+        
+        case 10:
+            if (TI_GetTics(tmr_end) >= MAX_TICS_END) {
 				the_end = 1;
-				state = 0;
+				state = 0;         
+			} 
+        break;
+        
+        case 11:
+            if(getKey() == '*') {
+                hideCurrentTime();
+                state = 12;
+            } 
+        break;
+        case 12:
+            if(getKey() == (char) -1) {
+                state = 1;
+            }
+        break;
+        case 13:
+			if (getKey() == '#') {
+				setSaveTime();
+				state = 14;
+			}
+			else if (getKey() == '*') {
+				hideModifyTime();
+				state = 14;
+			}
+		break;
+		case 14:
+			if (getKey() == (char) -1) {
+				state = 1;
 			}
 		break;
 	}
@@ -102,6 +150,8 @@ void showMainMenu(void){
     OP = 0;
     state = 1;
     the_end = 0;
+    resetMoves();
+    startTime();
 }
 
 void setTowerName(char* tower){

@@ -19,4 +19,12 @@ void resetMoves(void);
 //Pre: -
 //Post: Puts 0 in go_up and go_down variables 
 
+void disableJoystick(void);
+//Pre: -
+//Post: Disables the joystick flow and changes to CH=1
+
+void enableJoystick(void);
+//Pre: -
+//Post: Enables the joystick flow and changes to CH=0
+
 #endif

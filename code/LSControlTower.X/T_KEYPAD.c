@@ -21,10 +21,12 @@ const char keyNumber[4][3] = {
     {10, 11, 12}
 };
 
-unsigned char tmr_bounce; 
-char key;
-char keyNum;
-char indexSMS;
+static unsigned char tmr_bounce; 
+static char key;
+static char keyNum;
+static char indexSMS;
+static char colPressed;
+static char rowPressed;
 
 void initKeypad() {
     // Init ports
@@ -52,8 +54,6 @@ void initKeypad() {
 
 void motorKeypad(void) {
 	static char state = 0;
-    static char colPressed;
-    static char rowPressed;
     static char keyAux;
     
 	switch(state) {
@@ -98,14 +98,18 @@ void motorKeypad(void) {
 		break;
 		case 4:
 			if ((TI_GetTics(tmr_bounce) >= MAX_TICS_BOUNCE) && ((PORTB & 0x07) != 0x07) ) {
-				colPressed = ((~(PORTB & 0X07)) >> 1) & 0x7F;
-				rowPressed = ((~(PORTC & 0x0F)) >> 1) & 0x7F;
-				rowPressed = rowPressed == 3 ? 2 : rowPressed;
-				rowPressed = rowPressed > 3 ? 3 : rowPressed;
+				colPressed = ((~(PORTB & 0X07)) >> 1) & 0x03;
+				rowPressed = ((~(PORTC & 0x0F)) >> 1) & 0x07;
+                if (rowPressed == 3) {
+                  rowPressed = 2;
+                }
+                if (rowPressed > 3) {
+                  rowPressed = 3;
+                }
 				keyNum = keyNumber[rowPressed][colPressed];
 				playNote(keyNum);
 				keyAux = sms[rowPressed][colPressed][indexSMS++];
-				if(keyAux == '-') {
+				if(keyAux == '-' || indexSMS == 6) {
 				    indexSMS = 0;
 				    key = sms[rowPressed][colPressed][indexSMS++];
 				} else {
@@ -133,8 +137,8 @@ void motorKeypad(void) {
 				LATCbits.LATC1 = 1;
 				LATCbits.LATC2 = 1;
 				LATCbits.LATC3 = 1;
-				keyNum = -1;
-				key = -1;
+				keyNum = (char) -1;
+				key = (char) -1;
 				state = 0;
 			}
 			else if ((PORTB & 0x07) != 0x07) {
@@ -167,6 +171,9 @@ char getKeyNum(void) {
 
 void resetIndexSMS(void) {
     indexSMS = 0;
+    if (key != (char) -1) {
+        key = sms[rowPressed][colPressed][indexSMS];
+    }
 }
 
 

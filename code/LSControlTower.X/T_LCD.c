@@ -33,6 +33,7 @@
 #define DISPLAY_CLEAR	0x01
 #define ENTRY_MODE		0x04
 #define SET_DDRAM		0x80
+#define END_CHAR        0
 //
 //---------------------------End--CONSTANTS---AREA-----------
 //
@@ -44,6 +45,11 @@
 static unsigned char Rows, Columns;
 static unsigned char RowAct, ColumnAct;
 static unsigned char Timer;
+static char finished;
+static char state;
+static char *string;
+static char i;
+
 //
 //---------------------------End--VARIABLES---AREA-----------
 //
@@ -99,10 +105,34 @@ void LcInit(char rows, char columns) {
 		WaitForBusy(); 	CantaIR(DISPLAY_ON | CURSOR_ON); // Auto Increment and shift
 		WaitForBusy(); 	CantaIR(DISPLAY_CONTROL | DISPLAY_ON | CURSOR_ON | DISPLAY_CLEAR); 		// Display On
 	}
+    
+    state = 0;
+    finished = 0;
 	//The manual says that it should work but it doesn't initialize 
     //correctly after 40ms. Therefore, there is a loop with two initializations 
     //from here the initialization works correctly if a reset is made or if
     //the supply is turned ON and OFF. 
+}
+
+void motorLCD(void) {
+	switch(state) {
+		case 0:
+
+		break;
+		case 1:
+			if (string[i] != END_CHAR) {
+				LcPutChar(string[i++]);
+			}
+			else if (string[i] == END_CHAR) {
+                finished = 1;
+				state = 0;
+			}
+		break;
+	}
+}
+
+char stringIsFinished(){
+    return finished;
 }
 
 void LcEnd(void) {
@@ -115,6 +145,7 @@ void LcClear(void) {
 // Post: The next order can last up to 1.6ms. 
 	WaitForBusy(); 	CantaIR(DISPLAY_CLEAR);	   //Spaces
 	Espera(Timer, 3); // V1.1
+    LcGotoXY(0,0);
 }
 
 void LcCursorOn(void) {
@@ -196,7 +227,10 @@ void LcPutString(char *s) {
 // Post: Paints the string from the actual cursor position. 
 // The coordinate criteria is the same as the LcPutChar. 
 // Post: Can last up to 40us for each char of a routine output.
-	while(*s) LcPutChar(*s++);
+    finished = 0;
+    state = 1;
+    string = s;
+    i = 0;
 }
 
 //
@@ -209,7 +243,7 @@ void LcPutString(char *s) {
 
 void Espera(unsigned char Timer, int ms) {
 	TI_ResetTics(Timer);
-	while(TI_GetTics(Timer) < ms);
+	while(TI_GetTics(Timer) < 5*ms); //We multiply by 5 because 1ms = 5 tics (0.2ms interruption rate)
 }
 
 void CantaPartAlta(char c) {
@@ -272,7 +306,7 @@ void WaitForBusy(void) { char Busy;
 		// The lower part of the address counter, it is not interesting for us. 
 		EnableDown();
 		EnableDown();
-		if (TI_GetTics(Timer)) break; // More than one ms means that the LCD has gone mad.
+		if (TI_GetTics(Timer) >= 5) break; // More than one ms means that the LCD has gone mad. We multiply by 5 because timer interrupts every 0.2ms
 	} while(Busy);
 }
 

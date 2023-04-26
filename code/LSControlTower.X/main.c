@@ -16,7 +16,7 @@
 #include "T_SIO.h"
 #include "T_TIMER.h"
 
-#pragma config OSC = HSPLL
+#pragma config OSC = INTIO2
 #pragma config PBADEN = DIG
 #pragma config WDT = OFF
 #pragma MCLRE = ON
@@ -27,16 +27,24 @@
 #pragma config WDT = OFF   //TODO: Test
 #pragma config LVP = OFF   //TODO: Test
 
-// HGIH_RSI pel timer.
-void __interrupt(high_priority) High_RSI(void) {
+// HIGH_RSI pel timer.
+void __interrupt() High_RSI(void) {
     RSI_Timer0();
 }
 
 void main(void) {
+    TRISAbits.TRISA3 = 0;
+    LATAbits.LATA3 = 0;
+    /************************
+     * INIT OSC (16MHz)
+     ***********************/
+    OSCCON = 0b01100000;            
+    OSCTUNEbits.PLLEN = 1;          
+        
     /************************
      * INIT IRQS
      ***********************/
-    RCONbits.IPEN = 1;      //TODO: Test
+    RCONbits.IPEN = 0;     
     INTCONbits.GIE = 1; 
     INTCONbits.PEIE = 1;        
     
@@ -50,7 +58,7 @@ void main(void) {
      * INIT ADC
      ***********************/    
     ADCON1 = 0x0D; //00001101
-    ADCON2 = 0x12; //00000011   //TODO: Test
+    ADCON2 = 0x00; //00000011   
     ADCON0 = 0x01; //00000001
         
     /************************
@@ -60,8 +68,10 @@ void main(void) {
     initKeypad();
     initMenu();
     initMarquee();
+    initCurrentTime();
     initJoystick();
-    
+    LcInit(2, 16);
+    LcCursorOn();
     /************************
      * MOTORS LOOP
      ***********************/
@@ -71,6 +81,10 @@ void main(void) {
         motorMenu();
         motorMarquee();
         motorJoystick();
+        motorLCD();
+        motorCurrentTime();
+        motorModifyTime();
+        motorModifyTime();
     }
     
     return;

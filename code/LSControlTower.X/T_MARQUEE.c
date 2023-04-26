@@ -7,20 +7,19 @@
 #define MAX_TICS_MARQUEE 5000
 
 const char* menuOp[] = {
-    "1.START RECORDING \0",
-    "2.PLAY RECORDINGS \0",
+    "1.START RECORDING     \0",
+    "2.PLAY RECORDINGS     \0",
     "3.MODIFY CURRENT TIME \0",
-    "4.SHOW CURRENT TIME \0",
-    "5.END COMMUNICATION \0"
-    "                \0"
+    "4.SHOW CURRENT TIME   \0",
+    "5.END COMMUNICATION   \0",
+    "                      \0"
 };
 
 const char OpLen[] = {
-    19,18,22,20,20
+    18,22,22,20,20
 };
 
-static char shiftUp;
-static char shiftDown;
+static char shift;
 static char i;
 static unsigned char tmr_marquee;
 static char state;
@@ -29,8 +28,7 @@ static char OP;
 void initMarquee(void){
     TI_NewTimer(&tmr_marquee);
     i = 0;
-    shiftUp = 0;
-    shiftDown = 0;
+    shift = 0;
     state = 0;
 }
 
@@ -40,65 +38,61 @@ void motorMarquee(void) {
 
 		break;
 		case 1:
-			if(shiftUp >= OpLen[OP]) {
-			    shiftUp = 0;
-			    LcPutChar(menuOp[OP][i + shiftUp]);
-			} else if (shiftUp + i >= OpLen[OP]) {
-				  LcPutChar(menuOp[OP][i + shiftUp - OpLen[OP]]);
-			} else {
-			    LcPutChar(menuOp[OP][i + shiftUp]);
-			}
-			i++;
+            if (shift + i >= OpLen[OP]) {
+                  LcPutChar(menuOp[OP][i + shift - OpLen[OP]]);
+            } else {
+                LcPutChar(menuOp[OP][i + shift]);
+            }
+
+            i++;
 			state = 2;
 		break;
 		case 2:
 			if (i >= 16) {
-				LcGotoXY(0,1);
-				if(i >= 16) i = 0;
-				if(shiftDown >= OpLen[OP]) {
-				    shiftDown = 0;
-				    LcPutChar(menuOp[OP][i + shiftDown]);
-				} else if (shiftDown + i >= OpLen[OP]) {
-					  LcPutChar(menuOp[OP][i + shiftDown - OpLen[OP]]);
-				} else {
-				    LcPutChar(menuOp[OP][i + shiftDown]);
-				}
-				i++;
+                LcGotoXY(0,1);
+				i = 0;
 				state = 3;
 			}
-			else if (i < 16 ) {
+			else if (i < 16) {
 				state = 1;
 			}
 		break;
 		case 3:
 			if (i >= 16) {
-				i=0;
+				i = 0;
 				TI_ResetTics(tmr_marquee);
 				state = 4;
 			}
-			else if (i < 16 ) {
-				state = 2;
+			else if (i < 16) {
+                if (shift + i >= OpLen[OP]) {
+                      LcPutChar(menuOp[OP + 1][i + shift - OpLen[OP]]);
+                } else {
+                    LcPutChar(menuOp[OP + 1][i + shift]);
+                }
+                i++;
 			}
 		break;
 		case 4:
 			if (TI_GetTics(tmr_marquee) >= MAX_TICS_MARQUEE) {
-				shiftUp++;
-				shiftDown++;
-				state = 5;
+				shift++;
+                LcGotoXY(0,0);
+                if(shift >= OpLen[OP]) {
+                    shift = 0;
+                }
+				state = 1;
 			}
-		break;
-		case 5:
-
 		break;
 	}
 }
 
-void activateMarquee(char OP){
+void activateMarquee(char op){
+    LcGotoXY(0,0);
     i = 0;
-    shiftUp = 0;
-    shiftDown = 0;
+    //shiftUp = 0;
+    //shiftDown = 0;
+    shift = 0;
     state = 1;
-    
+    OP = op;
 }
 
 void disableMarquee(){

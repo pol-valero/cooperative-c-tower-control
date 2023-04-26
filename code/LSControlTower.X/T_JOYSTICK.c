@@ -1,6 +1,6 @@
-#include "T_JOYSTICK.h"
-
+#include <pic18f4321.h>
 #include <xc.h>
+#include "T_JOYSTICK.h"
 
 static char changeAux;
 static char go_up;
@@ -10,7 +10,8 @@ static char state;
 void initJoystick(void) {
 	//Init port
     TRISAbits.TRISA0 = 1;
-
+    // Selects CH0
+    ADCON0bits.CHS0 = 0;
     //Initialize variables
     go_down = 0;
     go_up = 0;
@@ -45,10 +46,13 @@ void motorJoystick(void) {
 			state = 4;
 		break;
 		case 4:
-			if ((ADCON0bits.GO == 0) && (ADRESH > 116) && (ADRESH < 139) && (go_down = 0) && (go_up = 0)) {
+			if ((ADCON0bits.GO == 0) && (ADRESH > 116) && (ADRESH < 139)) {
 				state = 0;
+                go_down = 0;
+                go_up = 0;
+                
 			}
-			else if ((ADCON0bits.GO == 0) && ((ADRESH <= 116) || (ADRESH >= 139) || (go_down = 1) || (go_up = 1))) {
+			else if ((ADCON0bits.GO == 0) && ((ADRESH <= 116) || (ADRESH >= 139))) {
 				ADCON0bits.GO = 1;
 			}
 		break;
@@ -59,18 +63,30 @@ void motorJoystick(void) {
 }
 
 char getGoDown(void) {
-    changeAux = go_down;
-    go_down = 0;
-    return changeAux;
+    return go_down;
 }
 
 char getGoUp(void) {
-    changeAux = go_up;
-    go_up = 0;
-    return changeAux; 
+    return go_up;
 }
 
-void resetMoves(void){  //TODO: Cridar a aquesta funció quan entri a menu o record per assegurar-se que no han tocat el joystick
+void resetMoves(void){  //TODO: Cridar a aquesta funció quan entri al record per assegurar-se que no han tocat el joystick
     go_down = 0;
     go_up = 0;
+}
+
+void disableJoystick() {    //TODO: Que el record controli aquesta funcio
+    go_down = 0;
+    go_up = 0;
+    state = 5;
+    // Selects CH1
+    ADCON0bits.CHS0 = 1;
+}
+
+void enableJoystick() {     //TODO: Que el record controli aquesta funcio
+    go_down = 0;
+    go_up = 0;
+    state = 0;
+    // Selects CH0
+    ADCON0bits.CHS0 = 0;
 }

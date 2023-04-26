@@ -13,18 +13,19 @@
 #define END_CHAR 0
 #define ONE_SECOND 5000
 
-const char* promptStr = "PORT NAME:\0";
-char harborName[4];
+static const char* promptStr = "PORT NAME:\0";
+static char harborName[4];
 
-char i;
-char j;
-char currentKeyNum;
+static char i;
+static char j;
+static char currentKeyNum;
 
-unsigned char tmr_handler;
+static unsigned char tmr_handler;
 
 void initHarbor() {
     TI_NewTimer(&tmr_handler);
     i = j = currentKeyNum = 0;
+    harborName[3] = '\0';
 }
 
 
@@ -44,10 +45,12 @@ void motorHarbor(void) {
 			}
 		break;
 		case 1:
-			if (getKey() != (char) -1) {
-				harborName[j] = getKey();
-				currentKeyNum = getKeyNum();
-				LcPutChar(harborName[j]);
+			if ((getKey() != (char) -1 && j < 3) || (getKey() == '#' ) || getKey() == '*') {
+                if (getKey() != '#' && getKey() != '*') {
+                    currentKeyNum = getKeyNum();
+                    harborName[j] = getKey();
+                    LcPutChar(harborName[j]);
+                }
 				state = 2;
 			}
 		break;
@@ -61,27 +64,31 @@ void motorHarbor(void) {
 				resetIndexSMS();
 				state = 10;
 			}
-			else if (getKey() == '#' && j == 2) {
+			else if (getKey() == '#' && j >= 2) {
 				state = 4;
 			}
 		break;
 		case 3:
-			if (getKey() != (char) -1 && TI_GetTics(tmr_handler)<ONE_SECOND && currentKeyNum == getKeyNum()) {
+			if (getKey() != (char) -1 && getKey() != '#' && TI_GetTics(tmr_handler)<ONE_SECOND && currentKeyNum == getKeyNum()) {
 				harborName[j] = getKey();
 				LcGotoXY(j,1);
 				LcPutChar(harborName[j]);
 				state = 2;
 			}
 			else if ((getKey() == (char) -1 && TI_GetTics(tmr_handler)>=ONE_SECOND) || (getKey() != (char) -1 && currentKeyNum != getKeyNum())) {
-				j++;
+				if (getKey() != '#') {
+                    j++;
+                }
 				resetIndexSMS();
 				state = 1;
 			}
+            
 		break;
 		case 10:
 			if (getKey() == (char) -1) {
 				LcClear();
 				state = 0;
+                i = 0;
 			}
 		break;
 		case 4:
@@ -115,12 +122,19 @@ void motorHarbor(void) {
 		case 8:
 			if (getKey() == (char) -1) {
 				LcClear();
-				//showMainMenu(); //TODO
+				showMainMenu();
+                setTowerName(harborName);
 				state = 9;
 			}
 		break;
 		case 9:
-
+            if(getTheEnd() == 1) {
+                state = 0;
+                currentKeyNum = 0;
+                j = 0;
+                i = 0;
+                LcClear();
+            }
 		break;
 	}
 }
