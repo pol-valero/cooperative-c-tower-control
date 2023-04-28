@@ -82,7 +82,7 @@ void main(void) {
     while(1) {
         motorReadList();
         motorKeypad();
-        motorHarbor();
+        //motorHarbor();
         motorMenu();
         motorMarquee();
         motorJoystick();
