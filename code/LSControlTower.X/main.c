@@ -33,7 +33,7 @@ void __interrupt() High_RSI(void) {
 }
 
 void main(void) {
-    TRISAbits.TRISA3 = 0;
+    TRISAbits.TRISA3 = 0;   //TODO: DEBUG
     LATAbits.LATA3 = 0;
     /************************
      * INIT OSC (16MHz)
@@ -71,6 +71,7 @@ void main(void) {
     initCurrentTime();
     initJoystick();
     LcInit(2, 16);
+    initRecord();
     LcCursorOn();
     /************************
      * MOTORS LOOP
@@ -85,6 +86,7 @@ void main(void) {
         motorCurrentTime();
         motorModifyTime();
         motorModifyTime();
+        motorRecord();
     }
     
     return;

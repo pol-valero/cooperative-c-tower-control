@@ -4,10 +4,11 @@
 #include "T_TIMER.h"
 #include "T_KEYPAD.h"
 
-#define MAX_TICS_SEG	5000
+#define MAX_TICS_SEG	4000
 
 static char min[2];
 static char seg[2];
+static char timestamp[4];
 static char showTime;
 static unsigned char tmr_time; 
 static char state;
@@ -202,4 +203,12 @@ void showCurrentTime(){
 
 void hideCurrentTime(){
     showTime = 0;
+}
+
+char* getTimestamp(){
+    timestamp[0] = min[1] + '0';
+    timestamp[1] = min[0] + '0';
+    timestamp[2] = seg[1] + '0';
+    timestamp[3] = seg[0] + '0';
+    return timestamp;
 }

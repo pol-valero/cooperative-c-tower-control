@@ -4,7 +4,7 @@
 #include "T_LCD.h"
 #include "T_TIMER.h"
 
-#define MAX_TICS_MARQUEE 5000
+#define MAX_TICS_MARQUEE 4000
 
 const char* menuOp[] = {
     "1.START RECORDING     \0",

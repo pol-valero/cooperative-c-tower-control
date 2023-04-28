@@ -5,7 +5,7 @@
 #include "T_TIMER.h"
 #include "T_MELODY.h"
 
-#define MAX_TICS_BOUNCE  100
+#define MAX_TICS_BOUNCE  80
 
 const char sms[4][3][5] = {
     {"1----", "ABC2-", "DEF3-"},

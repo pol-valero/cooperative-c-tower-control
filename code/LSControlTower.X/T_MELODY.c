@@ -3,7 +3,7 @@
 #include "T_MELODY.h"
 #include "T_TIMER.h"
 
-#define TICS_NOTE 1500
+#define TICS_NOTE 1200
 
 static char stateNote;
 static char stateMelody;

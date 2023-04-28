@@ -10,13 +10,14 @@
 #include "T_RECORD.h"
 #include "T_TIMER.h"
 
-#define MAX_TICS_END 10000
+#define MAX_TICS_END 8000
 
 static char the_end;
 static char* towerName;
 unsigned static char tmr_end;
 static char OP;
 static char endMsg[] = {'b', 'y', 'e', ' ', 'b', 'y', 'e', ' ', '\0'};
+static char recordMsg[] = {'R', 'E', 'C', 'O', 'R', 'D', 'I', 'N', 'G', '.', '.', '.', '\0'};
 static char state;
 
 
@@ -56,6 +57,11 @@ void motorMenu(void) {
 		break;
 		case 3:
 			if (OP == 0) {
+                doRecord();
+                LcClear();
+                LcGotoXY(0,0);
+                LcCursorOff();
+                LcPutString(recordMsg);
 				state = 4;
 			}
 			else if (OP == 1) {
@@ -84,7 +90,9 @@ void motorMenu(void) {
 
 		break;
 		case 4:
-
+            if ((stringIsFinished() == 1) && (recordFinished() == 1)) {
+                state = 1;
+            }
 		break;
 		case 7:
 			if (getFinishedModify() == 1) {

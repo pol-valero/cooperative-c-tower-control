@@ -34,4 +34,8 @@ void setSaveTime();
 //Pre: -
 //Post: Orders to set the new time into the system
 
+char* getTimestamp();
+//Pre: -
+//Post: Gets the actual timestamp of the system
+
 #endif

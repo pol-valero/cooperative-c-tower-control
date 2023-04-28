@@ -11,7 +11,7 @@
 
 
 #define END_CHAR 0
-#define ONE_SECOND 5000
+#define ONE_SECOND 4000
 
 static const char* promptStr = "PORT NAME:\0";
 static char harborName[4];
