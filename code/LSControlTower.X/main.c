@@ -89,6 +89,7 @@ void main(void) {
         motorModifyTime();
         motorRecord();
         motorNote();
+        motorMelody();
     }
     
     return;

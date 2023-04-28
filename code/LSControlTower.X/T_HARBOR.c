@@ -41,6 +41,7 @@ void motorHarbor(void) {
 			}
 			else if (promptStr[i] == END_CHAR) {
 				LcGotoXY(0,1);
+                LcCursorOn();
 				state = 1;
 			}
 		break;
@@ -50,6 +51,9 @@ void motorHarbor(void) {
                     currentKeyNum = getKeyNum();
                     harborName[j] = getKey();
                     LcPutChar(harborName[j]);
+                    if (j == 2) {
+                        LcCursorOff();
+                    }
                 }
 				state = 2;
 			}

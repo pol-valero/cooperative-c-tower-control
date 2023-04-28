@@ -4,6 +4,7 @@
 #include "T_TIMER.h"
 #include "T_SIO.h"
 #include "T_JOYSTICK.h"
+#include "T_MELODY.h"
 
 #define MAX_TICS_REC 1
 
@@ -84,6 +85,7 @@ void motorRecord(void) {
 		case 8:
 			if (i >= 4) {
 				isFinished = 1;
+                playMelody();
 				enableJoystick();
 				state = 0;
 			}

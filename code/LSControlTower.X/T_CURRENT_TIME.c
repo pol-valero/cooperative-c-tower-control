@@ -151,6 +151,7 @@ void motorModifyTime(void) {
 			}
 			else if (getKey() == (char) -1 && i >= 4) {
 				finishedModify = 1;
+                LcCursorOff();
 				state_mod = 5;
 			}
 		break;

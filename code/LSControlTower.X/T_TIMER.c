@@ -11,7 +11,7 @@
 #define RECARREGA_TMR0 6
 
 
-#define TI_NUMTIMERS 9              // Nombre de timers virtuals gestionats per aquest TAD. Si cal, s'incrementa o es disminueix...
+#define TI_NUMTIMERS 10              // Nombre de timers virtuals gestionats per aquest TAD. Si cal, s'incrementa o es disminueix...
 
 // VARIABLES GLOBALS DEL TAD
 struct Timer {
