@@ -2,6 +2,8 @@
 #define _T_RECORD_LIST_H
 
 void initRecordList(void);
-void motorRecordList(void);
+void motorReadList(void);
+void motorWriteList(void);
+
 
 #endif

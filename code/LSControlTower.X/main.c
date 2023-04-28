@@ -74,10 +74,13 @@ void main(void) {
     LcInit(2, 16);
     initRecord();
     LcCursorOn();
+    initRecordList();
+    
     /************************
      * MOTORS LOOP
      ***********************/
     while(1) {
+        motorReadList();
         motorKeypad();
         motorHarbor();
         motorMenu();
