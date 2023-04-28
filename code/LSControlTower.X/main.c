@@ -70,6 +70,7 @@ void main(void) {
     initMarquee();
     initCurrentTime();
     initJoystick();
+    initMelody();
     LcInit(2, 16);
     initRecord();
     LcCursorOn();
@@ -87,6 +88,7 @@ void main(void) {
         motorModifyTime();
         motorModifyTime();
         motorRecord();
+        motorNote();
     }
     
     return;
