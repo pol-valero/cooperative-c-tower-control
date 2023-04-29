@@ -56,9 +56,6 @@ void addData(char data, unsigned char index) {  //TODO: DEBUG
 }
 
 void initRecordList(){
-    //addData(2, 48);
-    //LcPutChar(readROM(48) + '0');
-    
     //READ INITS
     i = ADR_NUM_REC;
         
