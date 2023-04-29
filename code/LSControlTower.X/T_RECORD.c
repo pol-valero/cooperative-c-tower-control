@@ -5,6 +5,7 @@
 #include "T_SIO.h"
 #include "T_JOYSTICK.h"
 #include "T_MELODY.h"
+#include "T_RECORD_LIST.h"
 
 #define MAX_TICS_REC 1
 
@@ -15,6 +16,7 @@ static char isFinished;
 static char state;
 static char byteReceived;
 static unsigned char tmr_rec;
+
 
 void initRecord(){
     TI_NewTimer(&tmr_rec);
@@ -87,6 +89,7 @@ void motorRecord(void) {
 				isFinished = 1;
                 playMelody();
 				enableJoystick();
+                saveRecord(timestamp, index);
 				state = 0;
 			}
 			else if (i < 4) {

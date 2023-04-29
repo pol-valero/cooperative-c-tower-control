@@ -65,6 +65,7 @@ void motorMenu(void) {
 				state = 4;
 			}
 			else if (OP == 1) {
+				enablePlayRecord();
 				state = 5;
 			}
 			else if (OP == 3) {
@@ -87,7 +88,10 @@ void motorMenu(void) {
             }
 		break;
 		case 5:
-
+			if (getKey() == '*') {
+				disablePlayRecord();
+				state = 15;
+			}
 		break;
 		case 4:
             if ((stringIsFinished() == 1) && (recordFinished() == 1)) {
@@ -147,6 +151,11 @@ void motorMenu(void) {
 			}
 		break;
 		case 14:
+			if (getKey() == (char) -1) {
+				state = 1;
+			}
+		break;
+        case 15:
 			if (getKey() == (char) -1) {
 				state = 1;
 			}

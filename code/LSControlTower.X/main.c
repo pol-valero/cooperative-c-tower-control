@@ -75,6 +75,7 @@ void main(void) {
     initRecord();
     LcCursorOn();
     initRecordList();
+    initPlayRecord();
     
     /************************
      * MOTORS LOOP
@@ -82,7 +83,7 @@ void main(void) {
     while(1) {
         motorReadList();
         motorKeypad();
-        //motorHarbor();
+        motorHarbor();
         motorMenu();
         motorMarquee();
         motorJoystick();
@@ -93,7 +94,9 @@ void main(void) {
         motorRecord();
         motorNote();
         motorMelody();
+        motorWriteList();
+        motorPlayRecord();
     }
-    
+        
     return;
 }
