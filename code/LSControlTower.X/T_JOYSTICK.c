@@ -70,12 +70,12 @@ char getGoUp(void) {
     return go_up;
 }
 
-void resetMoves(void){  //TODO: Cridar a aquesta funció quan entri al record per assegurar-se que no han tocat el joystick
+void resetMoves(void){  
     go_down = 0;
     go_up = 0;
 }
 
-void disableJoystick() {    //TODO: Que el record controli aquesta funcio
+void disableJoystick() { 
     go_down = 0;
     go_up = 0;
     state = 5;
@@ -83,7 +83,7 @@ void disableJoystick() {    //TODO: Que el record controli aquesta funcio
     ADCON0bits.CHS0 = 1;
 }
 
-void enableJoystick() {     //TODO: Que el record controli aquesta funcio
+void enableJoystick() {  
     go_down = 0;
     go_up = 0;
     state = 0;

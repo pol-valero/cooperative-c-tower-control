@@ -30,7 +30,7 @@ static char rowPressed;
 
 void initKeypad() {
     // Init ports
-    INTCON2bits.RBPU = 0; //TODO: Test
+    INTCON2bits.RBPU = 0; 
     TRISBbits.TRISB0 = 1;
     TRISBbits.TRISB1 = 1;
     TRISBbits.TRISB2 = 1;

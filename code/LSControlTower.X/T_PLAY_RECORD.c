@@ -19,6 +19,7 @@ static char id[2];
 static char ADR;
 static char OP;
 static char i;
+static char flag_put;
 
 void initPlayRecord(void){
     state = 0;
@@ -45,10 +46,12 @@ void motorPlayRecord(void) {
 					}
 				}
 				i = 0;
+                flag_put = 0;
                 LcGotoXY(0,0);
 				if(recordList[ADR] > '0') {
 				    LcPutChar(recordList[ADR]);
-				}
+                    flag_put = 1;
+				} 
 				ADR++;
 				first = 1;
 				state = 2;
@@ -56,6 +59,7 @@ void motorPlayRecord(void) {
 		break;
 		case 2:
 			if(i > 4) {
+                flag_put = 0;
 			    if(ADR >= 47) ADR = 0;
 			    first = 0;
 			    i = 0;
@@ -66,10 +70,13 @@ void motorPlayRecord(void) {
 			    LcGotoXY(0,1);
 			    if(recordList[ADR] > '0') {
 			        LcPutChar(recordList[ADR]);
+                    flag_put = 1;
 			        ADR++;
 			    }
 			}
 			if(i == 1) {
+                if(flag_put == 0) 
+                   LcPutChar('0');
 			    LcPutChar(' ');
 			    LcPutChar('-');
 			    LcPutChar(' ');
@@ -77,7 +84,10 @@ void motorPlayRecord(void) {
 			if(i == 3) {
 			    LcPutChar(':');
 			}
-			LcPutChar(recordList[ADR]);
+            if(recordList[ADR] >= '0' && recordList[ADR] <= '9') {
+                LcPutChar(recordList[ADR]); 
+                flag_put = 1;
+            }
 			ADR++;
 			i++;
 			state = 4;

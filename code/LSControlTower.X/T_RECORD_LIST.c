@@ -2,9 +2,6 @@
 #include <pic18f4321.h>
 #include "T_RECORD_LIST.h"
 
-//TODO: DEBUG
-//#include "T_LCD.h"
-
 #define ADR_NUM_REC 0x30
 
 static char ADRPW;
@@ -25,8 +22,6 @@ char readROM(char index) {
     return EEDATA;
 }
 
-
-
 void writeROM(char data, char index) { 
     EEADR = index;
     EEDATA = data;
@@ -38,21 +33,6 @@ void writeROM(char data, char index) {
     EECON2 = 0xAA;
     EECON1bits.WR = 1;
     ei();
-}
-
-void addData(char data, unsigned char index) {  //TODO: DEBUG
-    EEADR = index;
-    EEDATA = data;
-    EECON1bits.WREN = 1;
-    INTCONbits.GIE = 0;
-    EECON2 = 0x55;
-    EECON2 = 0xAA;
-    EECON1bits.WR = 1;
-    INTCONbits.GIE = 1;
-    
-    while (EECON1bits.WR == 1);
-    
-    EECON1bits.WREN = 0;
 }
 
 void initRecordList(){

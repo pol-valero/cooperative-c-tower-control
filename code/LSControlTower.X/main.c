@@ -10,7 +10,6 @@
 #include "T_MELODY.h"
 #include "T_MENU.h"
 #include "T_PLAY_RECORD.h"
-#include "T_QUEUE.h"
 #include "T_RECORD.h"
 #include "T_RECORD_LIST.h"
 #include "T_SIO.h"
@@ -20,21 +19,18 @@
 #pragma config PBADEN = DIG
 #pragma config WDT = OFF
 #pragma MCLRE = ON
-
-#pragma config DEBUG = OFF  //TODO: Test
-#pragma config PWRT = OFF   //TODO: Test
-#pragma config BOR = OFF   //TODO: Test
-#pragma config WDT = OFF   //TODO: Test
-#pragma config LVP = OFF   //TODO: Test
+#pragma config DEBUG = OFF  
+#pragma config PWRT = OFF   
+#pragma config BOR = OFF   
+#pragma config WDT = OFF   
+#pragma config LVP = OFF   
 
 // HIGH_RSI pel timer.
 void __interrupt() High_RSI(void) {
     RSI_Timer0();
 }
 
-void main(void) {
-    TRISAbits.TRISA3 = 0;   //TODO: DEBUG
-    LATAbits.LATA3 = 0;
+void main(void) {    
     /************************
      * INIT OSC (16MHz)
      ***********************/

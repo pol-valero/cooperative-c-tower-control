@@ -127,8 +127,6 @@ void motorMelody(void){
 }
 
 void playNote(char noteNum){
-    //Pre: 0 <= noteNum <= 12
-    //Post: Play a note 200ms
     keyNum = noteNum;
     state = 1;
 }

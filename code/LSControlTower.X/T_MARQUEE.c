@@ -88,8 +88,6 @@ void motorMarquee(void) {
 void activateMarquee(char op){
     LcGotoXY(0,0);
     i = 0;
-    //shiftUp = 0;
-    //shiftDown = 0;
     shift = 0;
     state = 1;
     OP = op;

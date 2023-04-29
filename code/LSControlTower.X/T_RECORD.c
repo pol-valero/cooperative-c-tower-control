@@ -7,8 +7,6 @@
 #include "T_MELODY.h"
 #include "T_RECORD_LIST.h"
 
-#include "T_LCD.h"  //TODO: DEBUG
-
 #define MAX_TICS_REC 1
 
 static char index[2]; //En ASCII!
@@ -49,8 +47,8 @@ void motorRecord(void) {
 			}
 		break;
 		case 3:
-			if (/*ADCON0bits.GO == 0 &&*/  SiIsAvailable()) {
-				SiSendChar(127);
+			if (ADCON0bits.GO == 0 &&  SiIsAvailable()) {
+				SiSendChar(ADRESH);
 				state = 4;
 			}
 		break;
