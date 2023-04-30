@@ -86,7 +86,6 @@ void main(void) {
         motorLCD();
         motorCurrentTime();
         motorModifyTime();
-        motorModifyTime();
         motorRecord();
         motorNote();
         motorMelody();
